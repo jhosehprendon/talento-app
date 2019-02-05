@@ -1,9 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logIn } from '../store/actions';
+import { logIn, changeAuthNull, changeAuthBack } from '../store/actions';
 import AuthForm from './AuthForm';
 
 class Login extends React.Component {
+
+    componentDidMount() {
+        this.props.changeAuthNull()
+    }
+
+    componentWillUnmount() {
+        this.props.changeAuthBack()
+    }
 
     onSubmit = (formValues) => {
         this.props.logIn(formValues)
@@ -21,4 +29,4 @@ class Login extends React.Component {
 }
 
 
-export default connect(null, { logIn })(Login)
+export default connect(null, { logIn, changeAuthNull, changeAuthBack })(Login)
