@@ -30,10 +30,13 @@ class ProjectList extends React.Component {
                     <div className="ui items">
                         <div className="item" >
                             <div className="content">
-                                <Link className="header" to={`/projects/${project._id}`} className="header">
+                                <Link to={`/projects/${project._id}`} className="header">
                                     {project.name}
-                                    {project.description}
                                 </Link>
+                                <div>
+                                    {project.description}
+                                </div>
+
                                 {this.renderAdmin(project)}
                             </div>
                         </div>

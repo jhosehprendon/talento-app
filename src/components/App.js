@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import ProjectCreate from '../components/projects/ProjectCreate';
 // import ProductEdit from '../components/products/ProductEdit';
-// import ProductDelete from '../components/products/ProductDelete';
+import ProjectDelete from '../components/projects/ProjectDelete';
 // import ProductDetail from '../components/products/ProductDetail';
 import ProjectList from '../components/projects/ProjectList';
 // import OrderList from '../components/orders/OrderList';
@@ -24,12 +24,8 @@ const App = () => {
                         <Route path="/signup" component={Signup}/>
                         <Route path="/login" component={Login}/>
                         <Route path="/projects/new" component={ProjectCreate}/>
-                        {/* <Route path="/products/edit/:id" exact component={ProductEdit}/>
-                        <Route path="/products/delete/:id" exact component={ProductDelete}/>
-                        <Route path="/orders/delete/:id" exact component={OrderDelete}/>
-                        <Route path="/products/:id" exact component={ProductDetail}/>
-                        <Route path="/orders/:id" exact component={OrderDetail}/>
-                        <Route path="/orders" component={OrderList}/>  */}
+                        {/* <Route path="/products/edit/:id" exact component={ProductEdit}/> */}
+                        <Route path="/projects/delete/:id" exact component={ProjectDelete}/>
                     </Switch>
                 </div>
             </Router>
