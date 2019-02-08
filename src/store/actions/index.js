@@ -83,6 +83,7 @@ export const createProject = formValues => {
 export const fetchProjects = () => {
     return async dispatch => {
         const response = await talento.get('http://localhost:3002/projects')
+        console.log(response.data.projects)
         dispatch({ type: FETCH_PROJECTS, payload: response.data.projects })
     }
 }

@@ -24,14 +24,15 @@ class ProjectList extends React.Component {
     }
 
     renderList = () => {
-        this.props.projects.map(project => {
+        return this.props.projects.map(project => {
             return (
-                <div className="ui celled list">
+                <div className="ui celled list" key={project._id}>
                     <div className="ui items">
-                        <div className="item" key={project._id}>
+                        <div className="item" >
                             <div className="content">
                                 <Link className="header" to={`/projects/${project._id}`} className="header">
                                     {project.name}
+                                    {project.description}
                                 </Link>
                                 {this.renderAdmin(project)}
                             </div>

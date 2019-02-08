@@ -41,8 +41,8 @@ class AuthForm extends React.Component {
 
     render() {
         return (
-            <div class="ui card" style={{margin: 'auto', marginTop: '50px'}}>
-                <div class="content">
+            <div className="ui card" style={{margin: 'auto', marginTop: '50px'}}>
+                <div className="content">
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
                         <Field name="email" component={this.renderInput} label="Enter email"/>
                         <Field name="password" component={this.renderInputPassword} label="Enter password"/>

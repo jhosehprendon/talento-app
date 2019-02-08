@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createProject } from '../../store/actions/index';
-import ProductForm from './ProductForm';
+import ProjectForm from './ProjectForm';
 
 class ProjectCreate extends React.Component {
 
@@ -13,7 +13,7 @@ class ProjectCreate extends React.Component {
         return (
             <div>
                 <h3>Create a Project</h3>
-                <ProductForm 
+                <ProjectForm 
                     onSubmit={this.onSubmit} 
                     buttonText='Create Project' 
                     imageMessage='You must select a project image'
