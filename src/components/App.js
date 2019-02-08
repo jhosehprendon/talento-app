@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import ProjectCreate from '../components/projects/ProjectCreate';
-// import ProductEdit from '../components/products/ProductEdit';
+import ProjectEdit from '../components/projects/ProjectEdit';
 import ProjectDelete from '../components/projects/ProjectDelete';
 // import ProductDetail from '../components/products/ProductDetail';
 import ProjectList from '../components/projects/ProjectList';
@@ -24,7 +24,7 @@ const App = () => {
                         <Route path="/signup" component={Signup}/>
                         <Route path="/login" component={Login}/>
                         <Route path="/projects/new" component={ProjectCreate}/>
-                        {/* <Route path="/products/edit/:id" exact component={ProductEdit}/> */}
+                        <Route path="/projects/edit/:id" exact component={ProjectEdit}/>
                         <Route path="/projects/delete/:id" exact component={ProjectDelete}/>
                     </Switch>
                 </div>
