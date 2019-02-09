@@ -6,7 +6,8 @@ import { fetchProjects } from '../../store/actions/index';
 class ProjectList extends React.Component {
 
     componentDidMount() {
-        this.props.fetchProjects()
+        const userId = localStorage.getItem('userId')
+        this.props.fetchProjects(userId)
     }
 
     renderAdmin = (project) => {
@@ -24,24 +25,26 @@ class ProjectList extends React.Component {
     }
 
     renderList = () => {
+        if(this.props.projects.length < 1) {
+            return <div>No Projects created</div>
+        }
+
         return this.props.projects.map(project => {
             return (
                 <div className="ui celled list" key={project._id}>
                     <div className="ui items">
                         <div className="item" >
-                            <div className="content">
+                            <div className="content" style={{fontSize: '12px'}}>
                                 <Link to={`/projects/${project._id}`} className="header">
                                     {project.name}
-                                </Link>
-                                <div>
-                                    {project.description}
-                                </div>
+                                </Link>                
 
                                 {this.renderAdmin(project)}
                             </div>
                         </div>
                     </div>
                 </div>
+
             )
         })
     }
@@ -64,11 +67,16 @@ class ProjectList extends React.Component {
 
         return(
             <div>
-                <h2>Projects</h2>
+                <h2>Dashboard</h2>
+                <h4 className="ui horizontal divider header" style={{marginTop:'-15px', marginBottom: '40px'}}>
+                    <i className="clipboard outline icon"></i>
+                        Projects
+                </h4>
+                    {this.renderCreate()}
                 <div className="ui celled list">
                     {this.renderList()}
                 </div>
-                {this.renderCreate()}
+                
             </div>
         )
     }

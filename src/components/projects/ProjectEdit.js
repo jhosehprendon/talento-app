@@ -25,9 +25,9 @@ class ProjectEdit extends React.Component {
 
         return (
             <div>
-                <h3>Edit Porject</h3>
+                <h3>Edit Project</h3>
                 <ProjectForm 
-                    initialValues={{name: this.props.project.name, price: this.props.project.description}}
+                    initialValues={{name: this.props.project.name, description: this.props.project.description}}
                     onSubmit={this.onSubmit}
                     buttonText='Edit Project'
                 />

@@ -20,16 +20,20 @@ class Signup extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <h3 style={{textAlign: 'center'}}>Sign Up</h3>
-                <AuthForm onSubmit={this.onSubmit} authMode='SignUp' />
-                <div style={{color: 'red', textAlign: 'center'}}>{this.props.authError}</div>
-                <div style={{textAlign: 'center', marginTop: '10px'}}>
-                    <p>Already have an account?</p>
-                    <Link to={'/login'} className="header">Click Here</Link>
+        return (    
+            <div class="ui placeholder segment">
+                <div class="ui two column very relaxed stackable grid">
+                    <div class="column">
+                        <AuthForm onSubmit={this.onSubmit} authMode='SignUp' />
+                    </div>
+                    <div class="middle aligned column">
+                        <Link to={'/login'} className="header ui big button" style={{padding: '10px'}}>Log In</Link>
+                    </div>
                 </div>
-            </div>    
+                <div class="ui vertical divider">
+                    Or
+                </div>
+            </div>
         )
     }  
 }

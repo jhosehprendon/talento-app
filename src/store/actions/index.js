@@ -8,7 +8,8 @@ import { SIGN_UP,
     FETCH_PROJECTS,
     FETCH_PROJECT,
     EDIT_PROJECT,
-    DELETE_PROJECT
+    DELETE_PROJECT,
+    CLEAR_PROJECTS
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -42,9 +43,14 @@ export const signOut = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
     history.push('/')
-    return {
-        type: SIGN_OUT
+ 
+    return dispatch => {
+        dispatch({type: SIGN_OUT})
+        dispatch({type: CLEAR_PROJECTS})
     } 
+    // return {
+    //     type: SIGN_OUT
+    // }
 }
 
 export const changeAuthNull = () => {
@@ -80,9 +86,9 @@ export const createProject = formValues => {
     }
 }
 
-export const fetchProjects = () => {
+export const fetchProjects = (id) => {
     return async dispatch => {
-        const response = await talento.get('http://localhost:3002/projects')
+        const response = await talento.get(`http://localhost:3002/projects/${id}`)
         console.log(response.data.projects)
         dispatch({ type: FETCH_PROJECTS, payload: response.data.projects })
     }
@@ -91,7 +97,7 @@ export const fetchProjects = () => {
 export const fetchProject = (id) => {
     return async dispatch => {
 
-        const response = await talento.get(`http://localhost:3002/projects/${id}`)
+        const response = await talento.get(`http://localhost:3002/projects/project/${id}`)
         dispatch({ type: FETCH_PROJECT, payload: response.data.project })
     }
 }

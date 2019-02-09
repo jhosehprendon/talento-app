@@ -24,6 +24,17 @@ class ProjectForm extends React.Component {
         )
     }
 
+    renderTextArea = ({input, label, meta}) => {
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`
+        return (
+            <div className={className}>
+                <label>{label}</label>
+                <textarea rows="10" {...input} autoComplete='off'/>
+                {this.renderError(meta)}
+            </div>
+        )
+    }
+
 
 
     onSubmit = (formValues) => {
@@ -39,7 +50,7 @@ class ProjectForm extends React.Component {
                 <div className="content">
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
                         <Field name="name" component={this.renderInput} label="Enter project name"/>
-                        <Field name="description" component={this.renderInput} label="Enter project description"/>
+                        <Field name="description" component={this.renderTextArea} label="Enter project description"/>
                         <button style={{marginTop: '15px'}} className="ui button primary">{this.props.buttonText}</button>
                     </form>
                 </div>

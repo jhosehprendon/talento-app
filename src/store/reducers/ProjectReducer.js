@@ -3,7 +3,8 @@ import {
     FETCH_PROJECTS,
     FETCH_PROJECT,
     EDIT_PROJECT,
-    DELETE_PROJECT
+    DELETE_PROJECT,
+    CLEAR_PROJECTS
 } from '../actions/types'
 import _ from 'lodash'
 
@@ -23,6 +24,8 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, [action.payload._id]: action.payload}
         case DELETE_PROJECT:
             return _.omit(state, action.payload)
+        case CLEAR_PROJECTS:
+            return {...state, projects: []}
         default:
             return state
     }

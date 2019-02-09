@@ -3,7 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import ProjectCreate from '../components/projects/ProjectCreate';
 import ProjectEdit from '../components/projects/ProjectEdit';
 import ProjectDelete from '../components/projects/ProjectDelete';
-// import ProductDetail from '../components/products/ProductDetail';
+import ProjectDetail from '../components/projects/ProjectDetail';
 import ProjectList from '../components/projects/ProjectList';
 // import OrderList from '../components/orders/OrderList';
 // import OrderDelete from '../components/orders/OrderDelete';
@@ -26,6 +26,7 @@ const App = () => {
                         <Route path="/projects/new" component={ProjectCreate}/>
                         <Route path="/projects/edit/:id" exact component={ProjectEdit}/>
                         <Route path="/projects/delete/:id" exact component={ProjectDelete}/>
+                        <Route path="/projects/:id" exact component={ProjectDetail}/>
                     </Switch>
                 </div>
             </Router>
