@@ -9,7 +9,8 @@ import { SIGN_UP,
     FETCH_PROJECT,
     EDIT_PROJECT,
     DELETE_PROJECT,
-    CLEAR_PROJECTS
+    CLEAR_PROJECTS,
+    FETCH_CANDIDATES
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -134,4 +135,16 @@ export const deleteProject = (id) => {
         dispatch({ type: DELETE_PROJECT, payload: id })
         history.push('/')
     }
+}
+
+
+
+// CANDIDATES
+
+export const fetchCandidates = () => {
+    return async dispatch => {
+        const response = await talento.get('http://localhost:3002/candidates')
+        console.log(response.data.candidates)
+        dispatch({ type: FETCH_CANDIDATES, payload: response.data.candidates })
+    }   
 }

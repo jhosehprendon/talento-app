@@ -5,6 +5,7 @@ import ProjectEdit from '../components/projects/ProjectEdit';
 import ProjectDelete from '../components/projects/ProjectDelete';
 import ProjectDetail from '../components/projects/ProjectDetail';
 import ProjectList from '../components/projects/ProjectList';
+import CandidateCreate from '../components/candidates/CandidateCreate';
 // import OrderList from '../components/orders/OrderList';
 // import OrderDelete from '../components/orders/OrderDelete';
 // import OrderDetail from '../components/orders/OrderDetail';
@@ -27,6 +28,7 @@ const App = () => {
                         <Route path="/projects/edit/:id" exact component={ProjectEdit}/>
                         <Route path="/projects/delete/:id" exact component={ProjectDelete}/>
                         <Route path="/projects/:id" exact component={ProjectDetail}/>
+                        <Route path="/candidates/new" component={CandidateCreate}/>
                     </Switch>
                 </div>
             </Router>

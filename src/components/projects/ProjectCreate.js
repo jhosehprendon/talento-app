@@ -16,7 +16,6 @@ class ProjectCreate extends React.Component {
                 <ProjectForm 
                     onSubmit={this.onSubmit} 
                     buttonText='Create Project' 
-                    imageMessage='You must select a project image'
                 />
             </div>    
         )

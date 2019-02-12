@@ -5,7 +5,7 @@ import {
     EDIT_PROJECT,
     DELETE_PROJECT,
     CLEAR_PROJECTS
-} from '../actions/types'
+} from '../actions/types';
 import _ from 'lodash'
 
 const INITIAL_STATE = {
