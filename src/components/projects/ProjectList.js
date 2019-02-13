@@ -53,7 +53,7 @@ class ProjectList extends React.Component {
         if(this.props.isSignedIn) {
             return (
                 <div style={{textAlign:'right'}}>
-                    <Link to="/projects/new" className="ui button primary">Create Project</Link>
+                    <Link to={`/projects/new/${localStorage.getItem('userId')}`} className="ui button primary">Create Project</Link>
                 </div>
             )
         }

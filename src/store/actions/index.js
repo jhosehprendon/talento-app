@@ -11,7 +11,8 @@ import { SIGN_UP,
     DELETE_PROJECT,
     CLEAR_PROJECTS,
     FETCH_CANDIDATES,
-    FETCH_CANDIDATE
+    FETCH_CANDIDATE,
+    CREATE_CANDIDATE
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -142,9 +143,9 @@ export const deleteProject = (id) => {
 
 // CANDIDATES
 
-export const fetchCandidates = () => {
+export const fetchCandidates = (id) => {
     return async dispatch => {
-        const response = await talento.get('http://localhost:3002/candidates')
+        const response = await talento.get(`http://localhost:3002/candidates/${id}`)
         console.log(response.data.candidates)
         dispatch({ type: FETCH_CANDIDATES, payload: response.data.candidates })
     }   
@@ -155,5 +156,24 @@ export const fetchCandidate = (id) => {
 
         const response = await talento.get(`http://localhost:3002/candidates/${id}`)
         dispatch({ type: FETCH_CANDIDATE, payload: response.data.candidate })
+    }
+}
+
+export const createCandidate = (formValues) => {
+    return async dispatch => {
+        const token = window.localStorage.getItem('token')
+        // const {userId} = getState().auth
+        if(token) {
+            const response = await talento.post('http://localhost:3002/candidates', formValues, {
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+                }
+            })
+            dispatch({ type: CREATE_CANDIDATE, payload: response.data })
+            history.push('/')
+        } else {
+            dispatch(signOut())
+        } 
     }
 }

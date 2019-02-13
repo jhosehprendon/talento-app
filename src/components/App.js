@@ -25,11 +25,11 @@ const App = () => {
                         <Route path="/" exact component={ProjectList}/>
                         <Route path="/signup" component={Signup}/>
                         <Route path="/login" component={Login}/>
-                        <Route path="/projects/new" component={ProjectCreate}/>
+                        <Route path="/projects/new/:id" component={ProjectCreate}/>
                         <Route path="/projects/edit/:id" exact component={ProjectEdit}/>
                         <Route path="/projects/delete/:id" exact component={ProjectDelete}/>
                         <Route path="/projects/:id" exact component={ProjectDetail}/>
-                        <Route path="/candidates/new" component={CandidateCreate}/>
+                        <Route path="/candidates/new/:id" component={CandidateCreate}/>
                         <Route path="/candidates/:id" exact component={CandidateDetail}/>
                     </Switch>
                 </div>

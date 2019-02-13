@@ -25,8 +25,9 @@ class CandidateForm extends React.Component {
 
     onSubmit = (formValues) => {
         const userId = localStorage.getItem('userId')
-
-        this.props.onSubmit({...formValues, userId})
+        const projectId =this.props.projectId
+        console.log(projectId)
+        this.props.onSubmit({...formValues, userId, projectId})
         
     }
 

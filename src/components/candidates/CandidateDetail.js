@@ -15,15 +15,14 @@ class CandidateDetail extends React.Component {
             return <div>loading...</div>
         }
 
-        const { name, description } = this.props.candidate
+        const { name, email } = this.props.candidate
 
         return (
             <div >
                 <div className="ui card" style={{margin: 'auto', float: 'left'}}>
                     <div className="content">
                         <h1 className="header">{name}</h1>
-                        <h5>Description:</h5>
-                        <p>{description}</p>
+                        <p>{email}</p>
                     </div>   
                 </div>
             </div>

@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { createCandidate } from '../../store/actions';
+import { createCandidate } from '../../store/actions';
 import CandidateForm from './CandidateForm';
 
 class CandidateCreate extends React.Component {
+
+    onSubmit = (formValues) => {
+        this.props.createCandidate(formValues)
+    }
+
     render() {
         return (
             <div>
@@ -11,10 +16,11 @@ class CandidateCreate extends React.Component {
                 <CandidateForm 
                     onSubmit={this.onSubmit} 
                     buttonText='Add Candidate' 
+                    projectId={this.props.match.params.id}
                 />
             </div>
         )
     }
 }
 
-export default connect(null)(CandidateCreate)
+export default connect(null, {createCandidate})(CandidateCreate)

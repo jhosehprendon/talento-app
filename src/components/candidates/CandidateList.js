@@ -5,17 +5,20 @@ import { Link } from 'react-router-dom';
 
 class CandidateList extends React.Component {
     componentDidMount() {
-        this.props.fetchCandidates()
+        this.props.fetchCandidates(this.props.projectId)
     }
 
     renderCandidateList = () => {
+        if(this.props.candidates.length < 1) {
+            return <div>No Candidates yet</div>
+        }
+
         return this.props.candidates.map(candidate => {
             return (
                 <div key={candidate._id}>
                     <Link to={`/candidates/${candidate._id}`} className="header">
-                        <p>Name: {candidate.name}, Email: {candidate.email}</p>
+                        {candidate.name}
                     </Link> 
-    
                 </div>
             )
         })
@@ -25,9 +28,11 @@ class CandidateList extends React.Component {
         return (
             <div>
                 <div style={{textAlign:'right', marginBottom: '30px'}}>
-                    <Link to="/candidates/new" className="ui button primary">Add New Candidate</Link>
+                    <Link to={`/candidates/new/${this.props.projectId}`} className="ui button primary">Add New Candidate</Link>
                 </div>
-                {this.renderCandidateList()} 
+                <div className="ui celled list">
+                    {this.renderCandidateList()} 
+                </div>
             </div>
         )
     }
