@@ -10,7 +10,8 @@ import { SIGN_UP,
     EDIT_PROJECT,
     DELETE_PROJECT,
     CLEAR_PROJECTS,
-    FETCH_CANDIDATES
+    FETCH_CANDIDATES,
+    FETCH_CANDIDATE
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -68,9 +69,9 @@ export const changeAuthBack = () => {
 
 // PROJECTS
 
-export const createProject = formValues => {
+export const createProject = (formValues) => {
     return async (dispatch, getState) => {
-        const token = localStorage.getItem('token')
+        const token = window.localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
             const response = await talento.post('http://localhost:3002/projects', formValues, {
@@ -147,4 +148,12 @@ export const fetchCandidates = () => {
         console.log(response.data.candidates)
         dispatch({ type: FETCH_CANDIDATES, payload: response.data.candidates })
     }   
+}
+
+export const fetchCandidate = (id) => {
+    return async dispatch => {
+
+        const response = await talento.get(`http://localhost:3002/candidates/${id}`)
+        dispatch({ type: FETCH_CANDIDATE, payload: response.data.candidate })
+    }
 }

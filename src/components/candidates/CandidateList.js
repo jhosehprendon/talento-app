@@ -12,7 +12,10 @@ class CandidateList extends React.Component {
         return this.props.candidates.map(candidate => {
             return (
                 <div key={candidate._id}>
-                    <p>Name: {candidate.name}, Email: {candidate.email}</p>
+                    <Link to={`/candidates/${candidate._id}`} className="header">
+                        <p>Name: {candidate.name}, Email: {candidate.email}</p>
+                    </Link> 
+    
                 </div>
             )
         })
