@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <div className="ui sencondary pointing menu">
             <Link to="/" className="item">
-                My Shop
+                Talento
             </Link>
             <div className="right menu">
                 <AuthButton />

@@ -36,7 +36,7 @@ class ProjectList extends React.Component {
                         <div className="item" >
                             <div className="content" style={{fontSize: '12px'}}>
                                 <Link to={`/projects/${project._id}`} className="header">
-                                    {project.name}
+                                    {project.name} <p style={{fontSize: '12px'}}>for {project.company}</p>
                                 </Link>                
 
                                 {this.renderAdmin(project)}
@@ -61,8 +61,8 @@ class ProjectList extends React.Component {
 
     render() {
 
-        if(!this.props.projects) {
-            return <div>loading...</div>
+        if(!this.props.isSignedIn) {
+            return <div></div>
         }
 
         return(

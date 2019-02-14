@@ -23,11 +23,19 @@ class ProjectEdit extends React.Component {
             return <div>loading...</div>
         }
 
+        const { name, description, location, seniority, company } = this.props.project
+
         return (
             <div>
                 <h3>Edit Project</h3>
                 <ProjectForm 
-                    initialValues={{name: this.props.project.name, description: this.props.project.description}}
+                    initialValues={{
+                        name: name, 
+                        description: description,
+                        location: location,
+                        seniority: seniority,
+                        company: company
+                    }}
                     onSubmit={this.onSubmit}
                     buttonText='Edit Project'
                 />

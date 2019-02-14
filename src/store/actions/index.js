@@ -92,7 +92,6 @@ export const createProject = (formValues) => {
 export const fetchProjects = (id) => {
     return async dispatch => {
         const response = await talento.get(`http://localhost:3002/projects/${id}`)
-        console.log(response.data.projects)
         dispatch({ type: FETCH_PROJECTS, payload: response.data.projects })
     }
 }
@@ -146,7 +145,6 @@ export const deleteProject = (id) => {
 export const fetchCandidates = (id) => {
     return async dispatch => {
         const response = await talento.get(`http://localhost:3002/candidates/${id}`)
-        console.log(response.data.candidates)
         dispatch({ type: FETCH_CANDIDATES, payload: response.data.candidates })
     }   
 }
@@ -154,7 +152,7 @@ export const fetchCandidates = (id) => {
 export const fetchCandidate = (id) => {
     return async dispatch => {
 
-        const response = await talento.get(`http://localhost:3002/candidates/${id}`)
+        const response = await talento.get(`http://localhost:3002/candidates/candidate/${id}`)
         dispatch({ type: FETCH_CANDIDATE, payload: response.data.candidate })
     }
 }
@@ -171,7 +169,7 @@ export const createCandidate = (formValues) => {
                 }
             })
             dispatch({ type: CREATE_CANDIDATE, payload: response.data })
-            history.push('/')
+            history.push(`/projects/${formValues.projectId}`)
         } else {
             dispatch(signOut())
         } 

@@ -15,10 +15,11 @@ class CandidateList extends React.Component {
 
         return this.props.candidates.map(candidate => {
             return (
-                <div key={candidate._id}>
+                <div key={candidate._id} style={{margin: '10px'}}>
                     <Link to={`/candidates/${candidate._id}`} className="header">
                         {candidate.name}
                     </Link> 
+                    <div className="ui fitted divider"></div>
                 </div>
             )
         })
@@ -30,9 +31,7 @@ class CandidateList extends React.Component {
                 <div style={{textAlign:'right', marginBottom: '30px'}}>
                     <Link to={`/candidates/new/${this.props.projectId}`} className="ui button primary">Add New Candidate</Link>
                 </div>
-                <div className="ui celled list">
                     {this.renderCandidateList()} 
-                </div>
             </div>
         )
     }

@@ -49,8 +49,11 @@ class ProjectForm extends React.Component {
             <div className="ui card" style={{margin: 'auto', marginTop: '50px'}}>
                 <div className="content">
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
-                        <Field name="name" component={this.renderInput} label="Enter project name"/>
-                        <Field name="description" component={this.renderTextArea} label="Enter project description"/>
+                        <Field name="name" component={this.renderInput} label="Project Name"/>
+                        <Field name="location" component={this.renderInput} label="City or Remote"/>
+                        <Field name="seniority" component={this.renderInput} label="Seniority Level"/>
+                        <Field name="company" component={this.renderInput} label="Company Requiring Candidate"/>
+                        <Field name="description" component={this.renderTextArea} label="Project Description"/>
                         <button style={{marginTop: '15px'}} className="ui button primary">{this.props.buttonText}</button>
                     </form>
                 </div>
@@ -65,6 +68,18 @@ const validate = (formValues) => {
 
     if(!formValues.name) {
         errors.name = 'You must enter a name'
+    }
+
+    if(!formValues.location) {
+        errors.location = 'You must enter City or Remote'
+    }
+
+    if(!formValues.seniority) {
+        errors.seniority = 'You must enter Seniority Level'
+    }
+
+    if(!formValues.company) {
+        errors.company = 'You must enter which company requires this position'
     }
 
     if(!formValues.description) {
