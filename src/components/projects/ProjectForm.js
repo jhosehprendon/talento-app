@@ -39,14 +39,14 @@ class ProjectForm extends React.Component {
 
     onSubmit = (formValues) => {
         const userId = localStorage.getItem('userId')
-
-        this.props.onSubmit({...formValues, userId})
-        
+        const userIds =[]
+        userIds.push(userId)
+        this.props.onSubmit({...formValues, userIds}) 
     }
     
     render() {
         return (
-            <div className="ui card" style={{margin: 'auto', marginTop: '50px'}}>
+            <div className="ui card" style={{margin: 'auto', marginTop: '50px', marginBottom: '50px'}}>
                 <div className="content">
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
                         <Field name="name" component={this.renderInput} label="Project Name"/>

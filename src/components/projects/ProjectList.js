@@ -12,7 +12,7 @@ class ProjectList extends React.Component {
 
     renderAdmin = (project) => {
         const currentUserId = localStorage.getItem('userId')
-        if(project.userId === currentUserId && !!currentUserId) {
+        if(project.userIds[0] === currentUserId && !!currentUserId) {
             return (
                 <div className="right floated content">
                     <Link className="ui button basic primary " to={`/projects/edit/${project._id}`}>Edit</Link>
@@ -67,10 +67,9 @@ class ProjectList extends React.Component {
 
         return(
             <div>
-                <h2>Dashboard</h2>
+                <h2>Projects</h2>
                 <h4 className="ui horizontal divider header" style={{marginTop:'-15px', marginBottom: '40px'}}>
                     <i className="clipboard outline icon"></i>
-                        Projects
                 </h4>
                     {this.renderCreate()}
                 <div className="ui celled list">
