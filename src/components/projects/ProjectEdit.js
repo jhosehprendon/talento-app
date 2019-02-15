@@ -28,6 +28,7 @@ class ProjectEdit extends React.Component {
         return (
             <div>
                 <h3>Edit Project</h3>
+                <div className="ui fitted divider"></div>
                 <ProjectForm 
                     initialValues={{
                         name: name, 

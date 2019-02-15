@@ -29,7 +29,7 @@ class CandidateList extends React.Component {
         return (
             <div>
                 <div style={{textAlign:'right', marginBottom: '30px'}}>
-                    <Link to={`/candidates/new/${this.props.projectId}`} className="ui button primary">Add New Candidate</Link>
+                    <Link to={`/candidates/new/${this.props.projectId}`} className="ui button primary">Add New Candidate <i style={{marginLeft: '5px'}} className="plus circle icon"></i></Link>
                 </div>
                     {this.renderCandidateList()} 
             </div>

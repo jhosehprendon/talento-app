@@ -13,6 +13,7 @@ class CandidateCreate extends React.Component {
         return (
             <div>
                 <h3>Add a Candidate</h3>
+                <div className="ui fitted divider"></div>
                 <CandidateForm 
                     onSubmit={this.onSubmit} 
                     buttonText='Add Candidate' 

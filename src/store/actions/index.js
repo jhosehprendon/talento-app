@@ -12,7 +12,8 @@ import { SIGN_UP,
     CLEAR_PROJECTS,
     FETCH_CANDIDATES,
     FETCH_CANDIDATE,
-    CREATE_CANDIDATE
+    CREATE_CANDIDATE,
+    GET_USER_INFO
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -173,5 +174,15 @@ export const createCandidate = (formValues) => {
         } else {
             dispatch(signOut())
         } 
+    }
+}
+
+// USER ACTIONS
+
+export const getUserInfo = (email) => {
+    return async dispatch => {
+
+        const response = await talento.get(`http://localhost:3002/user/${email}`)
+        dispatch({ type: GET_USER_INFO, payload: response.data.user[0]._id })
     }
 }

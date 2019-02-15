@@ -13,6 +13,7 @@ class ProjectCreate extends React.Component {
         return (
             <div>
                 <h3>Create a Project</h3>
+                <div className="ui fitted divider"></div>
                 <ProjectForm 
                     onSubmit={this.onSubmit} 
                     buttonText='Create Project' 

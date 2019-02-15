@@ -1,14 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchProject } from '../../store/actions';
+import { fetchProject, getUserInfo, editProject } from '../../store/actions';
 import CandidateList from '../candidates/CandidateList';
+import InviteForm from './InviteForm';
 
 class ProjectDetail extends React.Component {
+
+    state = {
+        showInvite: false
+    }
 
     componentDidMount() {
         const { id } = this.props.match.params
 
         this.props.fetchProject(id);
+    }
+
+    onShowInvite = () => {
+        this.setState({ showInvite: !this.state.showInvite })
+    }
+
+    onSendInvite = async (formValues) => {
+        await this.props.getUserInfo(formValues).then(() => {
+            console.log('UserId: ', this.props.userId)
+        })
+        const userId = {userId: this.props.userId}
+        this.props.editProject(this.props.match.params.id, userId)
+
+    }
+
+    renderInvite = () => {
+        if(this.state.showInvite) {
+            return (
+                <InviteForm 
+                    onSubmit={this.onSendInvite}
+                    buttonText='Send Invite'
+                />
+            )
+        } else {
+            return null
+        }
     }
 
     render() {
@@ -20,9 +51,10 @@ class ProjectDetail extends React.Component {
 
         return (
             <div >
-                <div className="ui card" style={{margin: 'auto', float: 'left'}}>
+                <div className="ui card" style={{margin: 'auto', float: 'left', marginBottom: '50px'}}>
                     <div className="content">
                         <h1 className="header">{name}</h1>
+                        <div className="ui fitted divider"></div>
                         <h5>Description</h5>
                         <p>{description}</p>
                         <h5>Location</h5>
@@ -32,7 +64,10 @@ class ProjectDetail extends React.Component {
                         <h5>Company</h5>
                         <p>{company}</p>
                     </div>   
+                    <button onClick={this.onShowInvite} to={`/candidates/new/${this.props.projectId}`} className="ui button primary">Invite Team Member<i style={{marginLeft:'10px'}} className="user plus icon"></i></button>
+                    {this.renderInvite()}
                 </div>
+            
                 <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>
                     <h5 style={{margin:'10px'}}>Candidates for this position</h5>
                     <div className="content">
@@ -47,8 +82,9 @@ class ProjectDetail extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        project: state.projects[ownProps.match.params.id]
+        project: state.projects[ownProps.match.params.id],
+        userId: state.user
     }
 }
 
-export default connect(mapStateToProps, {fetchProject})(ProjectDetail);
+export default connect(mapStateToProps, {fetchProject, getUserInfo, editProject})(ProjectDetail);

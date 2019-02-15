@@ -22,6 +22,7 @@ class CandidateDetail extends React.Component {
                 <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%'}}>
                     <div className="content">
                         <h1 className="header">{name}</h1>
+                        <div className="ui fitted divider"></div>
                         <h5>Email</h5>
                         <p>{email}</p>
                     </div>   
