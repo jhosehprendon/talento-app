@@ -7,7 +7,8 @@ import InviteForm from './InviteForm';
 class ProjectDetail extends React.Component {
 
     state = {
-        showInvite: false
+        showInvite: false,
+        noEmailError: ''
     }
 
     componentDidMount() {
@@ -21,12 +22,19 @@ class ProjectDetail extends React.Component {
     }
 
     onSendInvite = async (formValues) => {
-        await this.props.getUserInfo(formValues).then(() => {
-            console.log('UserId: ', this.props.userId)
-        })
-        const userId = {userId: this.props.userId}
-        this.props.editProject(this.props.match.params.id, userId)
+        await this.props.getUserInfo(formValues)
+        if(this.props.userId.length < 1) {
+            this.setState({ noEmailError: 'Email not found'})
+        } else {
+            const userId = {userId: this.props.userId}
+            this.props.editProject(this.props.match.params.id, userId)
+        }
+        
 
+    }
+
+    clearNoEmailError = () => {
+        this.setState({ noEmailError: '' })
     }
 
     renderInvite = () => {
@@ -35,6 +43,8 @@ class ProjectDetail extends React.Component {
                 <InviteForm 
                     onSubmit={this.onSendInvite}
                     buttonText='Send Invite'
+                    noEmailError={this.state.noEmailError}
+                    clearNoEmailError={this.clearNoEmailError}
                 />
             )
         } else {

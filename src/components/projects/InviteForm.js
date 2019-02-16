@@ -14,6 +14,9 @@ class InviteForm extends React.Component {
 
     renderInput = ({input, label, meta}) => {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
+        if(meta.touched) {
+            this.props.clearNoEmailError()
+        }
         return (
             <div className={className}>
                 <label>{label}</label>
@@ -34,6 +37,7 @@ class InviteForm extends React.Component {
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
                         <Field name="email" component={this.renderInput} label="Enter colleague email"/>
                         <button style={{marginTop: '15px'}} className="ui button primary">{this.props.buttonText}</button>
+                        <p style={{color:'red'}}>{this.props.noEmailError}</p>
                     </form>
                 </div>
         )

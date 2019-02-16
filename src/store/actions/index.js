@@ -181,8 +181,12 @@ export const createCandidate = (formValues) => {
 
 export const getUserInfo = (email) => {
     return async dispatch => {
-
         const response = await talento.get(`http://localhost:3002/user/${email}`)
-        dispatch({ type: GET_USER_INFO, payload: response.data.user[0]._id })
+        if(response.data.user.length < 1) {
+            return
+            
+        } else {
+            dispatch({ type: GET_USER_INFO, payload: response.data.user[0]._id })
+        }
     }
 }
