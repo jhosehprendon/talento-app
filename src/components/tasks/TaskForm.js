@@ -1,7 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-class CandidateForm extends React.Component {
+class TaskForm extends React.Component {
+
     renderError = ({ error, touched }) => {
         if(touched && error) {
             return (
@@ -23,22 +24,31 @@ class CandidateForm extends React.Component {
         )
     }
 
-    onSubmit = (formValues) => {
-        const userId = localStorage.getItem('userId')
-        const projectId =this.props.projectId
-        const tasks = []
-        this.props.onSubmit({...formValues, userId, projectId, tasks})
-        
+    renderTextArea = ({input, label, meta}) => {
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`
+        return (
+            <div className={className}>
+                <label>{label}</label>
+                <textarea rows="10" {...input} autoComplete='off'/>
+                {this.renderError(meta)}
+            </div>
+        )
     }
 
+
+
+    onSubmit = (formValues) => {
+        this.props.onSubmit(formValues)
+    }
+    
     render() {
         return (
-            <div className="ui card" style={{margin: 'auto', marginTop: '50px'}}>
+            <div className="ui card" style={{margin: 'auto', marginTop: '50px', marginBottom: '50px'}}>
                 <div className="content">
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
-                        <Field name="name" component={this.renderInput} label="Enter candidate name"/>
-                        <Field name="email" component={this.renderInput} label="Enter candidate email"/>
-                        <button style={{marginTop: '15px'}} className="ui button primary">{this.props.buttonText}</button>
+                        <Field name="name" component={this.renderInput} label="Task Name"/>
+                        <Field name="description" component={this.renderTextArea} label="Task Description"/>
+                        <button style={{marginTop: '15px'}} className="ui button primary">Add Task</button>
                     </form>
                 </div>
             </div>
@@ -54,8 +64,8 @@ const validate = (formValues) => {
         errors.name = 'You must enter a name'
     }
 
-    if(!formValues.email) {
-        errors.description = 'You must enter an email'
+    if(!formValues.description) {
+        errors.description = 'You must enter a description'
     }
 
     return errors
@@ -64,6 +74,6 @@ const validate = (formValues) => {
 
 
 export default reduxForm({
-    form: 'candidateForm',
+    form: 'taskForm',
     validate: validate
-})(CandidateForm);
+})(TaskForm);

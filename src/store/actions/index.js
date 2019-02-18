@@ -13,6 +13,7 @@ import { SIGN_UP,
     FETCH_CANDIDATES,
     FETCH_CANDIDATE,
     CREATE_CANDIDATE,
+    EDIT_CANDIDATE,
     GET_USER_INFO
 } from './types';
 import talento from '../../apis/talento';
@@ -174,6 +175,26 @@ export const createCandidate = (formValues) => {
         } else {
             dispatch(signOut())
         } 
+    }
+}
+
+export const editCandidate = (id, formValues) => {
+    return async (dispatch, getState) => {
+        const token = localStorage.getItem('token')
+        // const {userId} = getState().auth
+        if(token) {
+            const response = await talento.patch(`http://localhost:3002/candidates/${id}`, formValues, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + token
+                }
+              })
+            dispatch({ type: EDIT_CANDIDATE, payload: response.data })
+            history.push('/')
+        } else {
+            dispatch(signOut())
+        } 
+       
     }
 }
 

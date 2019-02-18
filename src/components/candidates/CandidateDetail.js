@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCandidate } from '../../store/actions'
+import { fetchCandidate } from '../../store/actions';
+import TaskList from '../tasks/TaskList';
 
 class CandidateDetail extends React.Component {
 
@@ -27,24 +28,13 @@ class CandidateDetail extends React.Component {
                         <p>{email}</p>
                     </div>   
                 </div>
-                <div className="ui grid">
-                <div className="four wide column">
-                    <div className="ui vertical fluid tabular menu">
-                        <a href='https://semantic-ui.com/collections/menu.html' className="item active">
-                            First phone interview
-                        </a>
-                        <a href='https://semantic-ui.com/collections/menu.html' className="item">
-                            Technical Interview
-                        </a>
-                        <a href='https://semantic-ui.com/collections/menu.html' className="item">
-                            Offer
-                        </a>
-                    </div>
-                    </div>
-                    <div className="twelve wide stretched column">
-                        <div className="ui segment">
-                        This is an stretched grid column. This segment will always match the tab height
-                        </div>
+                <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>
+                    <h5 style={{margin:'10px'}}>Candidates for this position</h5>
+                    <div className="content">
+                        <TaskList 
+                            tasks={['First Phone Interview', 'Technical Interview']}
+                            candidateId={this.props.match.params.id}
+                        />
                     </div>
                 </div>
             </div>
