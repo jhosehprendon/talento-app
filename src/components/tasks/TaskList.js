@@ -11,9 +11,12 @@ class TaskList extends React.Component {
 
         return this.props.tasks.map((task, i) => {
             return (
-                <div key={task[i]} style={{margin: '10px'}}>
-                    <Link to={`/tasks/${task[i]}`} className="header">
-                        {task}
+                <div key={task.name} style={{margin: '10px'}}>
+                    <Link 
+                        to={`/tasks/${i}/${this.props.candidateId}`} 
+                        className="header"
+                    >
+                        {task.name}
                     </Link> 
                     <div className="ui fitted divider"></div>
                 </div>

@@ -190,7 +190,7 @@ export const editCandidate = (id, formValues) => {
                 }
               })
             dispatch({ type: EDIT_CANDIDATE, payload: response.data })
-            history.push('/')
+            history.push(`/candidates/${id}`)
         } else {
             dispatch(signOut())
         } 

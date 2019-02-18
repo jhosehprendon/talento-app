@@ -16,7 +16,7 @@ class CandidateDetail extends React.Component {
             return <div>loading...</div>
         }
 
-        const { name, email } = this.props.candidate
+        const { name, email, tasks } = this.props.candidate
 
         return (
             <div style={{marginTop: '50px'}}>
@@ -32,7 +32,7 @@ class CandidateDetail extends React.Component {
                     <h5 style={{margin:'10px'}}>Candidates for this position</h5>
                     <div className="content">
                         <TaskList 
-                            tasks={['First Phone Interview', 'Technical Interview']}
+                            tasks={tasks}
                             candidateId={this.props.match.params.id}
                         />
                     </div>
