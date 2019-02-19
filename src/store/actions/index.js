@@ -14,7 +14,8 @@ import { SIGN_UP,
     FETCH_CANDIDATE,
     CREATE_CANDIDATE,
     EDIT_CANDIDATE,
-    GET_USER_INFO
+    GET_USER_INFO,
+    EDIT_CANDIDATE_NOTE
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -190,6 +191,28 @@ export const editCandidate = (id, formValues) => {
                 }
               })
             dispatch({ type: EDIT_CANDIDATE, payload: response.data })
+            history.push(`/candidates/${id}`)
+        } else {
+            dispatch(signOut())
+        } 
+       
+    }
+}
+
+// NOTE IN CADIDATE
+
+export const editCandidateNote = (id, taskId, formValues) => {
+    return async (dispatch, getState) => {
+        const token = localStorage.getItem('token')
+        // const {userId} = getState().auth
+        if(token) {
+            const response = await talento.patch(`http://localhost:3002/notes/${id}/${taskId}`, formValues, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + token
+                }
+              })
+            dispatch({ type: EDIT_CANDIDATE_NOTE, payload: response.data })
             history.push(`/candidates/${id}`)
         } else {
             dispatch(signOut())

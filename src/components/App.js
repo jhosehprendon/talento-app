@@ -9,6 +9,7 @@ import CandidateCreate from '../components/candidates/CandidateCreate';
 import CandidateDetail from '../components/candidates/CandidateDetail';
 import TaskCreate from '../components/tasks/TaskCreate';
 import TaskDetail from '../components/tasks/TaskDetail';
+import NoteCreate from '../components/tasks/NoteCreate';
 // import OrderList from '../components/orders/OrderList';
 // import OrderDelete from '../components/orders/OrderDelete';
 // import OrderDetail from '../components/orders/OrderDetail';
@@ -35,6 +36,7 @@ const App = () => {
                         <Route path="/candidates/:id" exact component={CandidateDetail}/>
                         <Route path="/tasks/new/:id" component={TaskCreate}/>
                         <Route path="/tasks/:id/:candidateId" exact component={TaskDetail}/>
+                        <Route path="/notes/new/:taskId/:candidateId" component={NoteCreate}/>
                     </Switch>
                 </div>
             </Router>
