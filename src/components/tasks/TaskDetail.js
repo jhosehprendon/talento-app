@@ -14,7 +14,7 @@ class TaskDetail extends React.Component {
             return <div>loading...</div>
         }
 
-        const { name, description, note = [] } = this.props.candidate.tasks[this.props.match.params.id]
+        const { name, description, notes } = this.props.candidate.tasks[this.props.match.params.id]
 
         return (
             <div style={{marginTop: '50px'}}>
@@ -30,7 +30,7 @@ class TaskDetail extends React.Component {
                     <h5 style={{margin:'10px'}}>Notes on this Task</h5>
                     <div className="content">
                         <NoteList 
-                            notes={note}
+                            notes={notes}
                             candidateId={this.props.match.params.candidateId}
                             taskId={this.props.match.params.id}
                         />

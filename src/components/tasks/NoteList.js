@@ -18,7 +18,7 @@ class NoteList extends React.Component {
                     >
                         {task.name}
                     </Link>  */}
-                    {note.content}
+                    {note.note}
                     <div className="ui fitted divider"></div>
                 </div>
             )

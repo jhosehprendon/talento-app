@@ -206,14 +206,14 @@ export const editCandidateNote = (id, taskId, formValues) => {
         const token = localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.patch(`http://localhost:3002/notes/${id}/${taskId}`, formValues, {
+            const response = await talento.patch(`http://localhost:3002/candidates/notes/${id}/${taskId}`, formValues, {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': 'Bearer ' + token
                 }
               })
             dispatch({ type: EDIT_CANDIDATE_NOTE, payload: response.data })
-            history.push(`/candidates/${id}`)
+            history.push(`/tasks/${taskId}/${id}`)
         } else {
             dispatch(signOut())
         } 
