@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchProject, getUserInfo, editProject } from '../../store/actions';
+import { fetchProject, getUserInfo, editProject, getUser } from '../../store/actions';
 import CandidateList from '../candidates/CandidateList';
 import InviteForm from './InviteForm';
 
@@ -13,8 +13,10 @@ class ProjectDetail extends React.Component {
 
     componentDidMount() {
         const { id } = this.props.match.params
-
         this.props.fetchProject(id);
+
+        const userId = localStorage.getItem('userId')
+        this.props.getUser(userId)
     }
 
     onShowInvite = () => {
@@ -73,6 +75,8 @@ class ProjectDetail extends React.Component {
                         <p>{seniority}</p>
                         <h5>Company</h5>
                         <p>{company}</p>
+                        <h5>Created by</h5>
+                        <p>{this.props.user.user[0].name}</p>
                     </div>   
                     <button onClick={this.onShowInvite} to={`/candidates/new/${this.props.projectId}`} className="ui button primary">Invite Team Member<i style={{marginLeft:'10px'}} className="user plus icon"></i></button>
                     {this.renderInvite()}
@@ -93,8 +97,9 @@ class ProjectDetail extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         project: state.projects[ownProps.match.params.id],
-        userId: state.user
+        userId: state.user.userId,
+        user: state.user.user
     }
 }
 
-export default connect(mapStateToProps, {fetchProject, getUserInfo, editProject})(ProjectDetail);
+export default connect(mapStateToProps, {fetchProject, getUserInfo, editProject, getUser})(ProjectDetail);
