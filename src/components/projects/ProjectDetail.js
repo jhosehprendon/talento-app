@@ -79,7 +79,7 @@ class ProjectDetail extends React.Component {
                 </div>
             
                 <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>
-                    <h5 style={{margin:'10px'}}>Candidates for this position</h5>
+                    <h5 style={{margin:'10px'}}><i className="users icon"></i> Candidates for this position</h5>
                     <div className="content">
                         <CandidateList projectId={this.props.match.params.id}/>
                     </div>

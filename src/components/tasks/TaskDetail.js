@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { fetchCandidate } from '../../store/actions';
 import NoteList from './NoteList';
 
@@ -27,7 +26,7 @@ class TaskDetail extends React.Component {
                     </div>   
                 </div>
                 <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>
-                    <h5 style={{margin:'10px'}}>Notes on this Task</h5>
+                    <h5 style={{margin:'10px'}}><i className="clipboard outline icon"></i> Notes on this Task</h5>
                     <div className="content">
                         <NoteList 
                             notes={notes}

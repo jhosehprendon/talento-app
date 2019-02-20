@@ -15,6 +15,8 @@ import { SIGN_UP,
     CREATE_CANDIDATE,
     EDIT_CANDIDATE,
     GET_USER_INFO,
+    GET_USER,
+    CLEAR_USER,
     EDIT_CANDIDATE_NOTE
 } from './types';
 import talento from '../../apis/talento';
@@ -41,6 +43,7 @@ export const logIn = formValues => {
         dispatch({ type: LOG_IN, payload: response.data })
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.userId);
+        dispatch(getUser(localStorage.getItem('userId', response.data.userId)))
         history.push('/')
     }
 }
@@ -53,6 +56,7 @@ export const signOut = () => {
     return dispatch => {
         dispatch({type: SIGN_OUT})
         dispatch({type: CLEAR_PROJECTS})
+        dispatch({type: CLEAR_USER})
     } 
     // return {
     //     type: SIGN_OUT
@@ -232,5 +236,12 @@ export const getUserInfo = (email) => {
         } else {
             dispatch({ type: GET_USER_INFO, payload: response.data.user[0]._id })
         }
+    }
+}
+
+export const getUser = (userId) => {
+    return async dispatch => {
+        const response = await talento.get(`http://localhost:3002/user/user/${userId}`)
+        dispatch({ type: GET_USER, payload: response.data })
     }
 }

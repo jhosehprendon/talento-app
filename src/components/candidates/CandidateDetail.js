@@ -29,7 +29,7 @@ class CandidateDetail extends React.Component {
                     </div>   
                 </div>
                 <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>
-                    <h5 style={{margin:'10px'}}>Tasks assigned to this candidate</h5>
+                    <h5 style={{margin:'10px'}}><i className="tasks icon"></i> Tasks assigned to this candidate </h5>
                     <div className="content">
                         <TaskList 
                             tasks={tasks}

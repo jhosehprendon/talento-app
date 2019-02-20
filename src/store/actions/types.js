@@ -16,3 +16,5 @@ export const CREATE_CANDIDATE = 'CREATE_CANDIDATE';
 export const GET_USER_INFO = 'GET_USER_INFO';
 export const EDIT_CANDIDATE = 'EDIT_CANDIDATE';
 export const EDIT_CANDIDATE_NOTE = 'EDIT_CANDIDATE_NOTE';
+export const GET_USER = 'GET_USER';
+export const CLEAR_USER = 'CLEAR_USER'

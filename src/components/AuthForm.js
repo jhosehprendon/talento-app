@@ -44,8 +44,9 @@ class AuthForm extends React.Component {
             <div className="ui card" style={{margin: 'auto', marginTop: '50px'}}>
                 <div className="content">
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
-                        <Field name="email" component={this.renderInput} label="Enter email"/>
-                        <Field name="password" component={this.renderInputPassword} label="Enter password"/>
+                        {this.props.authMode === 'SignUp' ? <Field name="name" component={this.renderInput} label="Name"/> : null}
+                        <Field name="email" component={this.renderInput} label="Email"/>
+                        <Field name="password" component={this.renderInputPassword} label="Password"/>
                         <button className="ui button primary">{this.props.authMode}</button>
                     </form>
                 </div>
