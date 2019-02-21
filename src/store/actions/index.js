@@ -43,14 +43,16 @@ export const logIn = formValues => {
         dispatch({ type: LOG_IN, payload: response.data })
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.userId);
-        dispatch(getUser(localStorage.getItem('userId', response.data.userId)))
-        history.push('/')
+        dispatch(getUser(localStorage.getItem('userId', response.data.userId))).then(() => {
+            history.push('/')
+        })
     }
 }
 
 export const signOut = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
+    localStorage.removeItem('userName')
     history.push('/')
  
     return dispatch => {
@@ -230,11 +232,11 @@ export const editCandidateNote = (id, taskId, formValues) => {
 export const getUserInfo = (email) => {
     return async dispatch => {
         const response = await talento.get(`http://localhost:3002/user/${email}`)
+        console.log(response.data)
         if(response.data.user.length < 1) {
-            return
-            
+            return      
         } else {
-            dispatch({ type: GET_USER_INFO, payload: response.data.user[0]._id })
+            dispatch({ type: GET_USER_INFO, payload: response.data.user[0] })
         }
     }
 }
@@ -242,6 +244,8 @@ export const getUserInfo = (email) => {
 export const getUser = (userId) => {
     return async dispatch => {
         const response = await talento.get(`http://localhost:3002/user/user/${userId}`)
-        dispatch({ type: GET_USER, payload: response.data })
+
+        localStorage.setItem('userName', response.data.user[0].name);
+        dispatch({ type: GET_USER, payload: response.data.user })
     }
 }

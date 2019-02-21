@@ -8,15 +8,15 @@ class ProjectDetail extends React.Component {
 
     state = {
         showInvite: false,
-        noEmailError: ''
+        noEmailError: '',
+        creator: ''
     }
 
     componentDidMount() {
         const { id } = this.props.match.params
-        this.props.fetchProject(id);
-
-        const userId = localStorage.getItem('userId')
-        this.props.getUser(userId)
+        this.props.fetchProject(id).then(() => {
+            this.setState({creator: this.props.project.userIds[0].name})
+        })
     }
 
     onShowInvite = () => {
@@ -28,8 +28,8 @@ class ProjectDetail extends React.Component {
         if(this.props.userId.length < 1) {
             this.setState({ noEmailError: 'Email not found'})
         } else {
-            const userId = {userId: this.props.userId}
-            this.props.editProject(this.props.match.params.id, userId)
+            const userInfo = {userInfo: this.props.userInfo}
+            this.props.editProject(this.props.match.params.id, userInfo)
         }
         
 
@@ -76,7 +76,7 @@ class ProjectDetail extends React.Component {
                         <h5>Company</h5>
                         <p>{company}</p>
                         <h5>Created by</h5>
-                        <p>{this.props.user.user[0].name}</p>
+                        <p>{this.state.creator}</p>
                     </div>   
                     <button onClick={this.onShowInvite} to={`/candidates/new/${this.props.projectId}`} className="ui button primary">Invite Team Member<i style={{marginLeft:'10px'}} className="user plus icon"></i></button>
                     {this.renderInvite()}
@@ -97,8 +97,9 @@ class ProjectDetail extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         project: state.projects[ownProps.match.params.id],
-        userId: state.user.userId,
-        user: state.user.user
+        userId: state.user.userInfo._id,
+        user: state.user.user,
+        userInfo: state.user.userInfo
     }
 }
 

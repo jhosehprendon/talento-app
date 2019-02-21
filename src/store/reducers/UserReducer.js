@@ -6,13 +6,13 @@ import {
 
 const INITIAL_STATE = {
     user: {},
-    userId: ''
+    userInfo: {}
 }
 
 export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case GET_USER_INFO:
-            return {...state, userId: action.payload}
+            return {...state, userInfo: action.payload}
         case GET_USER:
             return {...state, user: action.payload}
         case CLEAR_USER:

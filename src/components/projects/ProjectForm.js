@@ -39,9 +39,10 @@ class ProjectForm extends React.Component {
 
     onSubmit = (formValues) => {
         if(this.props.buttonText === 'Create Project') {
-            var userId = localStorage.getItem('userId')
+            var _id = localStorage.getItem('userId')
+            var name = localStorage.getItem('userName')
             var userIds =[]
-            userIds.push(userId)
+            userIds.push({_id, name})
         }
         
         this.props.onSubmit({...formValues, userIds}) 

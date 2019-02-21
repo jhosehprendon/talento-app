@@ -5,17 +5,15 @@ import AuthButton from './AuthButton';
 import {getUser} from '../store/actions'
 
 class Header extends React.Component  {
-    componentDidMount() {
-        const userId = localStorage.getItem('userId')
-        this.props.getUser(userId)
+
+    state = {
+        userName: ''
     }
 
-    renderName = () => {
-        if(!this.props.user.user) {
-            return null
-        } else {
-            return this.props.user.user[0].name.split(' ')[0]
-        }
+    componentDidMount() {
+        this.setState({userName: localStorage.getItem('userName')})
+        const userId = localStorage.getItem('userId')
+        this.props.getUser(userId)
     }
 
     render() {
@@ -26,7 +24,7 @@ class Header extends React.Component  {
                 </Link>
                 
                 <div className="right menu">
-                    <div style={{marginTop: '14px', marginRight: '10px', color: '#585858'}}>{this.renderName()}</div>
+                    <div style={{marginTop: '14px', marginRight: '10px', color: '#585858'}}>{localStorage.getItem('userId') !== null ? this.state.userName  : null}</div>
                     <AuthButton />
                 </div>
             </div>
@@ -34,10 +32,5 @@ class Header extends React.Component  {
     } 
 }
 
-const mapStateToProps = state => {
-    return {
-        user: state.user.user
-    }
-}
 
-export default connect(mapStateToProps, {getUser})(Header)
+export default connect(null, {getUser})(Header);
