@@ -59,7 +59,7 @@ class ProjectDetail extends React.Component {
             return <div>loading...</div>
         }
 
-        const { name, description, location, seniority, company } = this.props.project
+        const { name, description, location, seniority, company, userIds } = this.props.project
 
         return (
             <div >
@@ -77,6 +77,8 @@ class ProjectDetail extends React.Component {
                         <p>{company}</p>
                         <h5>Created by</h5>
                         <p>{this.state.creator}</p>
+                        <h5>Memebers assigned</h5>
+                        {userIds.map(el => <div key={el._id}>{el.name}</div>)}
                     </div>   
                     <button onClick={this.onShowInvite} to={`/candidates/new/${this.props.projectId}`} className="ui button primary">Invite Team Member<i style={{marginLeft:'10px'}} className="user plus icon"></i></button>
                     {this.renderInvite()}
