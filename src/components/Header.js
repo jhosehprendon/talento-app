@@ -6,16 +6,6 @@ import {getUser} from '../store/actions'
 
 class Header extends React.Component  {
 
-    state = {
-        userName: ''
-    }
-
-    componentDidMount() {
-        this.setState({userName: localStorage.getItem('userName')})
-        const userId = localStorage.getItem('userId')
-        this.props.getUser(userId)
-    }
-
     render() {
         return (
             <div className="ui sencondary pointing menu">
@@ -24,7 +14,7 @@ class Header extends React.Component  {
                 </Link>
                 
                 <div className="right menu">
-                    <div style={{marginTop: '14px', marginRight: '10px', color: '#585858'}}>{localStorage.getItem('userId') !== null ? this.state.userName  : null}</div>
+                    <div style={{marginTop: '14px', marginRight: '10px', color: '#585858'}}>{localStorage.getItem('userName') !== null ? localStorage.getItem('userName')  : null}</div>
                     <AuthButton />
                 </div>
             </div>
@@ -33,4 +23,4 @@ class Header extends React.Component  {
 }
 
 
-export default connect(null, {getUser})(Header);
+export default Header;

@@ -43,6 +43,7 @@ export const logIn = formValues => {
         dispatch({ type: LOG_IN, payload: response.data })
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.userId);
+        localStorage.setItem('userName', response.data.userName);
         dispatch(getUser(localStorage.getItem('userId', response.data.userId))).then(() => {
             history.push('/')
         })
