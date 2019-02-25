@@ -12,7 +12,7 @@ class Header extends React.Component  {
                 </Link>
                 
                 <div className="right menu">
-                    <div style={{marginTop: '14px', marginRight: '10px', color: '#585858'}}>{localStorage.getItem('userName') !== null ? localStorage.getItem('userName')  : null}</div>
+                    <div style={{marginTop: '14px', marginRight: '10px', color: '#585858'}}>{localStorage.getItem('userName') !== null ? localStorage.getItem('userName').split(' ')[0]  : null}</div>
                     <AuthButton />
                 </div>
             </div>

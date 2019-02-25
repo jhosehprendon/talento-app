@@ -7,6 +7,7 @@ import ProjectDetail from '../components/projects/ProjectDetail';
 import ProjectList from '../components/projects/ProjectList';
 import CandidateCreate from '../components/candidates/CandidateCreate';
 import CandidateDetail from '../components/candidates/CandidateDetail';
+import CandidateEdit from '../components/candidates/CandidateEdit';
 import TaskCreate from '../components/tasks/TaskCreate';
 import TaskDetail from '../components/tasks/TaskDetail';
 import NoteCreate from '../components/tasks/NoteCreate';
@@ -36,6 +37,7 @@ class App extends React.Component {
                             <Route path="/projects/:id" exact component={ProjectDetail}/>
                             <Route path="/candidates/new/:id" component={CandidateCreate}/>
                             <Route path="/candidates/:id" exact component={CandidateDetail}/>
+                            <Route path="/candidates/edit/:id" exact component={CandidateEdit}/>
                             <Route path="/tasks/new/:id" component={TaskCreate}/>
                             <Route path="/tasks/:id/:candidateId" exact component={TaskDetail}/>
                             <Route path="/notes/new/:taskId/:candidateId" component={NoteCreate}/>

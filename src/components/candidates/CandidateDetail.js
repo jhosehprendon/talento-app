@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchCandidate } from '../../store/actions';
+import { Link } from 'react-router-dom';
 import TaskList from '../tasks/TaskList';
 
 class CandidateDetail extends React.Component {
@@ -22,7 +23,10 @@ class CandidateDetail extends React.Component {
             <div style={{marginTop: '50px'}}>
                 <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%'}}>
                     <div className="content">
-                        <h1 className="header">{name}</h1>
+                        <div style={{display: "flex", justifyContent: "space-between"}}>
+                            <h3 className="header">{name}</h3>
+                            <Link className="ui basic primary " to={`/candidates/edit/${this.props.match.params.id}`}><i className="edit outline icon"></i></Link>
+                        </div>
                         <div className="ui fitted divider"></div>
                         <h5>Email</h5>
                         <p>{email}</p>

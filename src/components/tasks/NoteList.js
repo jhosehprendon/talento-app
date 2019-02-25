@@ -9,9 +9,9 @@ class NoteList extends React.Component {
             return <div>No Notes created yet</div>
         }
 
-        return this.props.notes.map((note) => {
+        return this.props.notes.map((note, i) => {
             return (
-                <div key={note} style={{margin: '10px'}}>
+                <div key={i} style={{margin: '10px'}}>
                     {/* <Link 
                         to={`/tasks/${i}/${this.props.candidateId}`} 
                         className="header"

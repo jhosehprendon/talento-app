@@ -24,10 +24,13 @@ class CandidateForm extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        const userId = localStorage.getItem('userId')
-        const projectId =this.props.projectId
-        const tasks = []
-        this.props.onSubmit({...formValues, userId, projectId, tasks})
+        if(this.props.buttonText === 'Add Candidate') {
+            const userId = localStorage.getItem('userId')
+            const projectId =this.props.projectId
+            const tasks = []
+            this.props.onSubmit({...formValues, userId, projectId, tasks})
+        }
+        this.props.onSubmit(formValues) 
         
     }
 
