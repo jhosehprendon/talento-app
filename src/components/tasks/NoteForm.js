@@ -28,6 +28,8 @@ class NoteForm extends React.Component {
 
 
     onSubmit = (formValues) => {
+        formValues.note = this.props.candidateName + ': ' + formValues.note
+        console.log(formValues)
         this.props.onSubmit(formValues)
     }
     
