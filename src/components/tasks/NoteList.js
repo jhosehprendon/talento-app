@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 class NoteList extends React.Component {
 
+    // renderNote = () => {
+    //     <p>{note}</p>
+    // }
+
     renderNoteList = () => {
 
         if(this.props.notes.length < 1 ) {
@@ -18,7 +22,7 @@ class NoteList extends React.Component {
                     >
                         {task.name}
                     </Link>  */}
-                    {note.note}
+                    <p><span style={{fontWeight: 'bold'}}>{note.note.split(' ')[0]}</span> {note.note.split(' ').slice(1).join(' ')}</p>
                     <div className="ui fitted divider"></div>
                 </div>
             )

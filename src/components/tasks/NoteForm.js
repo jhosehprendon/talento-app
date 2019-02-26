@@ -28,8 +28,7 @@ class NoteForm extends React.Component {
 
 
     onSubmit = (formValues) => {
-        formValues.note = this.props.candidateName + ': ' + formValues.note
-        console.log(formValues)
+        formValues.note = this.props.candidateName.split(' ')[0] + ': ' + formValues.note
         this.props.onSubmit(formValues)
     }
     
