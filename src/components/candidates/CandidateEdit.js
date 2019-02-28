@@ -32,10 +32,12 @@ class CandidateEdit extends React.Component {
                 <CandidateForm 
                     initialValues={{
                         name: name, 
-                        email: email
+                        email: email,
+                        candidateCV:this.props.candidate.candidateCV
                     }}
                     onSubmit={this.onSubmit}
                     buttonText='Edit Candidate'
+                    candidateCV={this.props.candidate.candidateCV}
                 />
             </div>
         )

@@ -9,6 +9,17 @@ class CandidateForm extends React.Component {
         blob: null
     }
 
+    componentDidMount() {
+
+        if(this.props.candidateCV) {
+
+            this.setState({
+                file: `http://localhost:3002/${this.props.candidateCV}`,
+                candidateCV: this.state.candidateCV
+            })
+        }
+    }
+
     renderError = ({ error, touched }) => {
         if(touched && error) {
             return (
@@ -92,10 +103,10 @@ class CandidateForm extends React.Component {
 
             // NO CV
             if(this.state.candidateCV === null) {
-                var arr = []
+                arr = []
 
-                for (var key of formData.entries()) {
-                    var obj = {}
+                for (key of formData.entries()) {
+                    obj = {}
                     obj['propName'] = key[0]
                     obj['value'] = key[1]
                     arr.push(obj)
@@ -122,6 +133,10 @@ class CandidateForm extends React.Component {
                         <Field name="name" component={this.renderInput} label="Enter candidate name"/>
                         <Field name="email" component={this.renderInput} label="Enter candidate email"/>
                         <Field name="candidateCV" component={this.renderInputFile} label="Select CV file"/>
+                        <div style={{marginTop: '10px'}}>
+                            <p>{this.props.candidateCV}</p>
+                            <img style={{width: '120px'}} src={this.state.file} alt={this.state.file}/>
+                        </div>
                         <button style={{marginTop: '15px'}} className="ui button primary">{this.props.buttonText}</button>
                     </form>
                 </div>
