@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editCandidate } from '../../store/actions';
+import { editCandidateTask } from '../../store/actions';
 import TaskForm from './TaskForm';
 
 class TaskCreate extends React.Component {
 
 
     onSubmit = (formValues) => {
-        this.props.editCandidate(this.props.match.params.id, formValues)
+        this.props.editCandidateTask(this.props.match.params.id, formValues)
     }
 
     render() {
@@ -29,4 +29,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, {editCandidate})(TaskCreate)
+export default connect(mapStateToProps, {editCandidateTask})(TaskCreate)

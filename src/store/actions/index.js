@@ -206,6 +206,26 @@ export const editCandidate = (id, formValues) => {
     }
 }
 
+export const editCandidateTask = (id, formValues) => {
+    return async (dispatch, getState) => {
+        const token = localStorage.getItem('token')
+        // const {userId} = getState().auth
+        if(token) {
+            const response = await talento.patch(`http://localhost:3002/candidates/task/${id}`, formValues, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + token
+                }
+              })
+            dispatch({ type: EDIT_CANDIDATE, payload: response.data })
+            history.push(`/candidates/${id}`)
+        } else {
+            dispatch(signOut())
+        } 
+       
+    }
+}
+
 // NOTE IN CADIDATE
 
 export const editCandidateNote = (id, taskId, formValues) => {
