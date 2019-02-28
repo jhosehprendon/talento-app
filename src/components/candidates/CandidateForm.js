@@ -58,14 +58,12 @@ class CandidateForm extends React.Component {
 
             const userId = localStorage.getItem('userId')
             const projectId =this.props.projectId
-            const tasks = []
 
             let formData = new FormData();
             formData.set('name', formValues.name)
             formData.set('email', formValues.email)
             formData.set('userId', userId)
             formData.set('projectId', projectId)
-            formData.set('tasks', tasks)
 
             // NO CV
             if(this.state.candidateCV === null) {

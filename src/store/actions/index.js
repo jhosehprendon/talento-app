@@ -167,7 +167,7 @@ export const fetchCandidate = (id) => {
     }
 }
 
-export const createCandidate = (formValues) => {
+export const createCandidate = (formValues, projectId) => {
     return async dispatch => {
         const token = window.localStorage.getItem('token')
         // const {userId} = getState().auth
@@ -179,7 +179,7 @@ export const createCandidate = (formValues) => {
                 }
             })
             dispatch({ type: CREATE_CANDIDATE, payload: response.data })
-            history.push(`/projects/${formValues.projectId}`)
+            history.push(`/projects/${projectId}`)
         } else {
             dispatch(signOut())
         } 

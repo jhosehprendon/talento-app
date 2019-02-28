@@ -6,7 +6,7 @@ import CandidateForm from './CandidateForm';
 class CandidateCreate extends React.Component {
 
     onSubmit = (formValues) => {
-        this.props.createCandidate(formValues)
+        this.props.createCandidate(formValues, this.props.match.params.id)
     }
 
     render() {
