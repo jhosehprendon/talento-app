@@ -25,7 +25,7 @@ class ProjectDetail extends React.Component {
 
     onSendInvite = async (formValues) => {
         await this.props.getUserInfo(formValues)
-        if(this.props.userId.length < 1) {
+        if(!this.props.userId) {
             this.setState({ noEmailError: 'Email not found'})
         } else {
             const userInfo = {userInfo: this.props.userInfo}
