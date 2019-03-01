@@ -39,6 +39,7 @@ class CandidateEdit extends React.Component {
                     buttonText='Edit Candidate'
                     candidateCV={this.props.candidate.candidateCV}
                     fileMessage='Choose a new file if you want to edit, otherwise leave it'
+                    errorEditCandidate = {this.props.errorEditCandidate}
                 />
             </div>
         )
@@ -47,7 +48,8 @@ class CandidateEdit extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        candidate: state.candidates[ownProps.match.params.id]
+        candidate: state.candidates[ownProps.match.params.id],
+        errorEditCandidate: state.candidates.errorEditCandidate
     }
 }
 

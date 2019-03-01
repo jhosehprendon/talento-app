@@ -18,7 +18,8 @@ import { SIGN_UP,
     GET_USER,
     CLEAR_USER,
     EDIT_CANDIDATE_NOTE,
-    GET_CV
+    GET_CV,
+    ERROR_EDIT_CANDIDATE
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -193,14 +194,19 @@ export const editCandidate = (id, formValues) => {
         const token = localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.patch(`http://localhost:3002/candidates/${id}`, formValues, {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': 'Bearer ' + token
-                }
-              })
-            dispatch({ type: EDIT_CANDIDATE, payload: response.data })
-            history.push(`/candidates/${id}`)
+            try{
+                const response = await talento.patch(`http://localhost:3002/candidates/${id}`, formValues, {
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': 'Bearer ' + token
+                    }
+                  })
+                dispatch({ type: EDIT_CANDIDATE, payload: response.data })
+                history.push(`/candidates/${id}`)
+            } catch {
+                dispatch({ type: ERROR_EDIT_CANDIDATE, payload: 'Select correct file type .pdf or .doc' })
+            }
+            
         } else {
             dispatch(signOut())
         } 
@@ -277,8 +283,10 @@ export const getUser = (userId) => {
 
 export const downloadCV = (filePath) => {
     return async dispatch => {
+
         const response = await talento.get(`http://localhost:3002/candidates/download/${filePath}`, {responseType: 'blob'})
         saveAs(response.data, filePath)
         dispatch({ type: GET_CV, payload: response.data.user })
+      
     }
 }

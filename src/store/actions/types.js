@@ -19,3 +19,4 @@ export const EDIT_CANDIDATE_NOTE = 'EDIT_CANDIDATE_NOTE';
 export const GET_USER = 'GET_USER';
 export const CLEAR_USER = 'CLEAR_USER';
 export const GET_CV = 'GET_CV';
+export const ERROR_EDIT_CANDIDATE = 'ERROR_EDIT_CANDIDATE'

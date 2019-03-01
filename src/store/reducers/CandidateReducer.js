@@ -4,11 +4,13 @@ import {
     CREATE_CANDIDATE,
     EDIT_CANDIDATE,
     EDIT_CANDIDATE_NOTE,
-    GET_CV
+    GET_CV,
+    ERROR_EDIT_CANDIDATE
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    candidates:[]
+    candidates:[],
+    errorEditCandidate: null
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,6 +27,8 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, [action.payload._id]: action.payload}
         case GET_CV:
             return {...state, cv: action.payload}
+        case ERROR_EDIT_CANDIDATE:
+            return {...state, errorEditCandidate: action.payload}
         // case DELETE_PROJECT:
         //     return _.omit(state, action.payload)
         // case CLEAR_PROJECTS:
