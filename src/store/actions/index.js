@@ -17,10 +17,12 @@ import { SIGN_UP,
     GET_USER_INFO,
     GET_USER,
     CLEAR_USER,
-    EDIT_CANDIDATE_NOTE
+    EDIT_CANDIDATE_NOTE,
+    GET_CV
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
+import {saveAs} from 'file-saver'
 
 // AUTHENTICATION
 
@@ -268,5 +270,15 @@ export const getUser = (userId) => {
 
         localStorage.setItem('userName', response.data.user[0].name);
         dispatch({ type: GET_USER, payload: response.data.user })
+    }
+}
+
+// FILE
+
+export const downloadCV = (filePath) => {
+    return async dispatch => {
+        const response = await talento.get(`http://localhost:3002/candidates/download/${filePath}`, {responseType: 'blob'})
+        saveAs(response.data, 'report.jpeg')
+        dispatch({ type: GET_CV, payload: response.data.user })
     }
 }

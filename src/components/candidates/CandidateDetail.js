@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCandidate } from '../../store/actions';
+import { fetchCandidate, downloadCV } from '../../store/actions';
 import { Link } from 'react-router-dom';
 import TaskList from '../tasks/TaskList';
 
@@ -17,7 +17,7 @@ class CandidateDetail extends React.Component {
             return <div>loading...</div>
         }
 
-        const { name, email, tasks } = this.props.candidate
+        const { name, email, tasks, candidateCV } = this.props.candidate
 
         return (
             <div style={{marginTop: '50px'}}>
@@ -30,6 +30,9 @@ class CandidateDetail extends React.Component {
                         <div className="ui fitted divider"></div>
                         <h5>Email</h5>
                         <p>{email}</p>
+                        <h5>CV File</h5>
+                        <a onClick={() => this.props.downloadCV(candidateCV)}>Download</a>
+                        {/* <a href={`http://localhost:3002/${candidateCV}`}>Download</a> */}
                     </div>   
                 </div>
                 <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>
@@ -53,4 +56,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchCandidate})(CandidateDetail)
+export default connect(mapStateToProps, {fetchCandidate, downloadCV})(CandidateDetail)

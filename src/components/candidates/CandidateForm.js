@@ -125,6 +125,7 @@ class CandidateForm extends React.Component {
         
     } 
 
+
     render() {
         return (
             <div className="ui card" style={{margin: 'auto', marginTop: '50px'}}>
@@ -134,8 +135,8 @@ class CandidateForm extends React.Component {
                         <Field name="email" component={this.renderInput} label="Enter candidate email"/>
                         <Field name="candidateCV" component={this.renderInputFile} label="Select CV file"/>
                         <div style={{marginTop: '10px'}}>
+                            <p style={{color:'#6699cc'}}>{this.props.fileMessage}</p>
                             <p>{this.props.candidateCV}</p>
-                            <img style={{width: '120px'}} src={this.state.file} alt={this.state.file}/>
                         </div>
                         <button style={{marginTop: '15px'}} className="ui button primary">{this.props.buttonText}</button>
                     </form>

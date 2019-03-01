@@ -3,7 +3,8 @@ import {
     FETCH_CANDIDATE,
     CREATE_CANDIDATE,
     EDIT_CANDIDATE,
-    EDIT_CANDIDATE_NOTE
+    EDIT_CANDIDATE_NOTE,
+    GET_CV
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -22,6 +23,8 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, [action.payload._id]: action.payload}
         case EDIT_CANDIDATE_NOTE:
             return {...state, [action.payload._id]: action.payload}
+        case GET_CV:
+            return {...state, cv: action.payload}
         // case DELETE_PROJECT:
         //     return _.omit(state, action.payload)
         // case CLEAR_PROJECTS:

@@ -38,6 +38,7 @@ class CandidateEdit extends React.Component {
                     onSubmit={this.onSubmit}
                     buttonText='Edit Candidate'
                     candidateCV={this.props.candidate.candidateCV}
+                    fileMessage='Choose a new file if you want to edit, otherwise leave it'
                 />
             </div>
         )
