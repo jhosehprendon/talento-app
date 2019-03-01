@@ -278,7 +278,7 @@ export const getUser = (userId) => {
 export const downloadCV = (filePath) => {
     return async dispatch => {
         const response = await talento.get(`http://localhost:3002/candidates/download/${filePath}`, {responseType: 'blob'})
-        saveAs(response.data, 'report.jpeg')
+        saveAs(response.data, filePath)
         dispatch({ type: GET_CV, payload: response.data.user })
     }
 }
