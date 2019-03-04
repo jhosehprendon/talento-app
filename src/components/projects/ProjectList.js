@@ -30,6 +30,8 @@ class ProjectList extends React.Component {
         }
 
         return this.props.projects.map(project => {
+            let content = project.projectStatus.find(el => el.status === true).prop
+            let color = project.projectStatus.find(el => el.prop === content).color
             return (
                 <div className="ui celled list" key={project._id}>
                     <div className="ui items">
@@ -38,8 +40,10 @@ class ProjectList extends React.Component {
                                 <Link to={`/projects/${project._id}`} className="header">
                                     {project.name} <p style={{fontSize: '12px'}}>for {project.company}</p>
                                 </Link>                
-
-                                {this.renderAdmin(project)}
+                                <div style={{float: 'right', color: color}}>
+                                    <span style={{marginRight: '15px', fontSize: '14px'}}>{content}</span>
+                                    {this.renderAdmin(project)}
+                                </div>
                             </div>
                         </div>
                     </div>

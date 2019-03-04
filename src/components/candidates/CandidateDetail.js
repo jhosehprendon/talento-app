@@ -6,22 +6,13 @@ import TaskList from '../tasks/TaskList';
 
 class CandidateDetail extends React.Component {
 
-    state = {
-        colorStatus: ''
-    }
 
     componentDidMount() {
         const { id } = this.props.match.params
 
-        this.props.fetchCandidate(id).then(() => {
-            let color = this.renderColorStatus().color
-            this.setState({ colorStatus: color})
-        })
+        this.props.fetchCandidate(id)
     }
 
-    renderColorStatus = () => {
-        return this.props.candidate.candidateStatus.find(el => el.status === true)
-    }
 
     renderDropdownOptions = () => {
         return this.props.candidate.candidateStatus.map((el, i) => {
@@ -33,10 +24,7 @@ class CandidateDetail extends React.Component {
 
     handleDropdownChange = (event) => {
         this.props.editCandidateStatus(this.props.match.params.id, {value: event.target.value}).then(() => {
-            this.props.fetchCandidate(this.props.match.params.id).then(() => {
-                let color = this.renderColorStatus().color
-                this.setState({ colorStatus: color})
-            })
+            this.props.fetchCandidate(this.props.match.params.id)
         })
       }
 
@@ -56,7 +44,7 @@ class CandidateDetail extends React.Component {
                             <Link className="ui basic primary " to={`/candidates/edit/${this.props.match.params.id}`}><i className="edit outline icon"></i></Link>
                         </div>
                         <div className="ui fitted divider"></div>
-                        <p style={{float: 'right', margin: '10px 0', color: this.state.colorStatus }}>{(this.props.candidate.candidateStatus.find(el => el.status === true)).prop}</p>
+                        <p style={{float: 'right', margin: '10px 0', color: (this.props.candidate.candidateStatus.find(el => el.status === true)).color }}>{(this.props.candidate.candidateStatus.find(el => el.status === true)).prop}</p>
                         <h5>Status</h5>
                         <select onChange={this.handleDropdownChange} value={(this.props.candidate.candidateStatus.find(el => el.status === true)).prop} className="ui selection dropdown">
                             {this.renderDropdownOptions()}

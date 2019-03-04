@@ -21,7 +21,7 @@ class TaskList extends React.Component {
         return this.props.tasks.map((task, i) => {
             return (
                 <div key={task.name} style={{margin: '10px'}}>
-                       <input type="checkbox" checked={task.completed.completed} onChange={() => this.onChangeTaskStatus(!task.completed.completed, i)} /> <Link 
+                       <input type="checkbox" value={task.completed.completed} checked={task.completed.completed} onChange={() => this.onChangeTaskStatus(!task.completed.completed, i)} /> <Link 
                         to={`/tasks/${i}/${this.props.candidateId}`} 
                         className="header"
                     >

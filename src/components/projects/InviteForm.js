@@ -27,8 +27,7 @@ class InviteForm extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        this.props.onSubmit(formValues.email)
-        
+        this.props.onSubmit(formValues.email)  
     }
 
     render() {

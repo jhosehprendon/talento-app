@@ -129,7 +129,9 @@ export const editProject = (id, formValues) => {
                 }
               })
             dispatch({ type: EDIT_PROJECT, payload: response.data })
-            history.push('/')
+            if(!formValues.status) {
+                history.push('/')
+            }
         } else {
             dispatch(signOut())
         } 

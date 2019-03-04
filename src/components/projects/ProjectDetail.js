@@ -52,6 +52,14 @@ class ProjectDetail extends React.Component {
         }
     }
 
+    handleDropdownChange = (event) => {
+        this.props.editProject(this.props.match.params.id, {status: event.target.value})
+        .then(() => {
+            this.props.fetchProject(this.props.match.params.id)
+        })
+      }
+
+
     render() {
         if(!this.props.project) {
             return <div>loading...</div>
@@ -65,6 +73,12 @@ class ProjectDetail extends React.Component {
                     <div className="content">
                         <h1 className="header">{name}</h1>
                         <div className="ui fitted divider"></div>
+                        <p style={{float: 'right', margin: '10px 0', color: (this.props.project.projectStatus.find(el => el.status === true)).color }}>{(this.props.project.projectStatus.find(el => el.status === true)).prop}</p>
+                        <h5>Status</h5>
+                        <select onChange={this.handleDropdownChange} value={(this.props.project.projectStatus.find(el => el.status === true)).prop} className="ui selection dropdown">
+                            <option key={0} value='Open'>Open</option>
+                            <option key={1} value='Closed'>Closed</option>
+                        </select>
                         <h5>Description</h5>
                         <p>{description}</p>
                         <h5>Location</h5>
