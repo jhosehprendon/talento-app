@@ -1,7 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {editCandidateTaskStatus, fetchCandidate} from '../../store/actions'
 
 class TaskList extends React.Component {
+
+    onChangeTaskStatus = (status, i) => {
+        status = { completed: status }
+        this.props.editCandidateTaskStatus(this.props.candidateId, i, status).then(() => {
+            this.props.fetchCandidate(this.props.candidateId);
+        })
+    }
 
     renderTaskList = () => {
 
@@ -12,12 +21,13 @@ class TaskList extends React.Component {
         return this.props.tasks.map((task, i) => {
             return (
                 <div key={task.name} style={{margin: '10px'}}>
-                    <Link 
+                       <input type="checkbox" checked={task.completed.completed} onChange={() => this.onChangeTaskStatus(!task.completed.completed, i)} /> <Link 
                         to={`/tasks/${i}/${this.props.candidateId}`} 
                         className="header"
                     >
                         {task.name}
                     </Link> 
+                    {task.completed.completed ? <p>Completed</p> : <p>Not completed</p>}
                     <div className="ui fitted divider"></div>
                 </div>
             )
@@ -37,4 +47,4 @@ class TaskList extends React.Component {
 }
 
 
-export default TaskList
+export default connect(null, {editCandidateTaskStatus, fetchCandidate})(TaskList)

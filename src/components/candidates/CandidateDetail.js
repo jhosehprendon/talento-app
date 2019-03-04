@@ -31,7 +31,7 @@ class CandidateDetail extends React.Component {
                         <h5>Email</h5>
                         <p>{email}</p>
                         <h5>CV File</h5>
-                        {candidateCV ? <a onClick={() => this.props.downloadCV(candidateCV)}>Download</a> : <p>No CV uploaded yet</p>}
+                        {candidateCV ? <a href='#' onClick={() => this.props.downloadCV(candidateCV)}>Download</a> : <p>No CV uploaded yet</p>}
                     </div>   
                 </div>
                 <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>

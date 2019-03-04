@@ -37,7 +37,8 @@ class TaskForm extends React.Component {
 
     onSubmit = (formValues) => {
         const notes = []
-        this.props.onSubmit({...formValues, notes})
+        const completed = false
+        this.props.onSubmit({...formValues, notes, completed})
     }
     
     render() {

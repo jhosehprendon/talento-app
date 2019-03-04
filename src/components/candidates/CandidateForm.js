@@ -78,7 +78,6 @@ class CandidateForm extends React.Component {
 
             // NO CV
             if(this.state.candidateCV === null) {
-
                 var arr = []
 
                 for (var key of formData.entries()) {
