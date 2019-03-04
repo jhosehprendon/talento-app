@@ -1,16 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCandidate, downloadCV } from '../../store/actions';
+import { fetchCandidate, downloadCV, editCandidateStatus } from '../../store/actions';
 import { Link } from 'react-router-dom';
 import TaskList from '../tasks/TaskList';
 
 class CandidateDetail extends React.Component {
 
+    state = {
+        colorStatus: ''
+    }
+
     componentDidMount() {
         const { id } = this.props.match.params
 
-        this.props.fetchCandidate(id);
+        this.props.fetchCandidate(id).then(() => {
+            let color = this.renderColorStatus().color
+            this.setState({ colorStatus: color})
+        })
     }
+
+    renderColorStatus = () => {
+        return this.props.candidate.candidateStatus.find(el => el.status === true)
+    }
+
+    renderDropdownOptions = () => {
+        return this.props.candidate.candidateStatus.map((el, i) => {
+            return (    
+                <option key={i} value= {el.prop}>{el.prop}</option>
+            )
+        })
+    }
+
+    handleDropdownChange = (event) => {
+        this.props.editCandidateStatus(this.props.match.params.id, {value: event.target.value}).then(() => {
+            this.props.fetchCandidate(this.props.match.params.id).then(() => {
+                let color = this.renderColorStatus().color
+                this.setState({ colorStatus: color})
+            })
+        })
+      }
 
     render() {
         if(!this.props.candidate) {
@@ -28,6 +56,11 @@ class CandidateDetail extends React.Component {
                             <Link className="ui basic primary " to={`/candidates/edit/${this.props.match.params.id}`}><i className="edit outline icon"></i></Link>
                         </div>
                         <div className="ui fitted divider"></div>
+                        <p style={{float: 'right', margin: '10px 0', color: this.state.colorStatus }}>{(this.props.candidate.candidateStatus.find(el => el.status === true)).prop}</p>
+                        <h5>Status</h5>
+                        <select onChange={this.handleDropdownChange} value={(this.props.candidate.candidateStatus.find(el => el.status === true)).prop} className="ui selection dropdown">
+                            {this.renderDropdownOptions()}
+                        </select>
                         <h5>Email</h5>
                         <p>{email}</p>
                         <h5>CV File</h5>
@@ -55,4 +88,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchCandidate, downloadCV})(CandidateDetail)
+export default connect(mapStateToProps, {fetchCandidate, downloadCV, editCandidateStatus})(CandidateDetail)

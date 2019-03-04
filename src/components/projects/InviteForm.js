@@ -37,7 +37,7 @@ class InviteForm extends React.Component {
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
                         <Field name="email" component={this.renderInput} label="Enter colleague email"/>
                         <button style={{marginTop: '15px'}} className="ui button primary">{this.props.buttonText}</button>
-                        <p style={{color:'red'}}>{this.props.noEmailError}</p>
+                        <p style={{color:'#e74c3c'}}>{this.props.noEmailError}</p>
                     </form>
                 </div>
         )

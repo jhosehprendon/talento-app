@@ -133,7 +133,7 @@ class CandidateForm extends React.Component {
                         <Field name="email" component={this.renderInput} label="Enter candidate email"/>
                         <Field name="candidateCV" component={this.renderInputFile} label="Select CV file"/>
                         <div style={{marginTop: '10px'}}>
-                            {this.props.errorEditCandidate ? <p style={{color:'red'}}>{this.props.errorEditCandidate}</p> : null}
+                            {this.props.errorEditCandidate ? <p style={{color:'#e74c3c'}}>{this.props.errorEditCandidate}</p> : null}
                             <p style={{color:'#6699cc'}}>{this.props.fileMessage}</p>
                             <p>{this.props.candidateCV}</p>
                         </div>

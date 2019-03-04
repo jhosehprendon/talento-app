@@ -14,11 +14,14 @@ class CandidateList extends React.Component {
         }
 
         return this.props.candidates.map(candidate => {
+            let content = candidate.candidateStatus.find(el => el.status === true).prop
+            let color = candidate.candidateStatus.find(el => el.prop === content).color
             return (
                 <div key={candidate._id} style={{margin: '10px'}}>
                     <Link to={`/candidates/${candidate._id}`} className="header">
                         {candidate.name}
                     </Link> 
+                    <div style={{float: 'right', color: color}}>{content}</div>
                     <div className="ui fitted divider"></div>
                 </div>
             )

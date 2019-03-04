@@ -27,7 +27,7 @@ class TaskList extends React.Component {
                     >
                         {task.name}
                     </Link> 
-                    <div style={{float: 'right', }}>{task.completed.completed ? <p style={{color: '#27ae60'}}>Completed</p> : <p style={{color: '#e74c3c'}}>Not completed</p>}</div>
+                    <div style={{float: 'right' }}>{task.completed.completed ? <p style={{color: '#27ae60'}}>Completed</p> : <p style={{color: '#e74c3c'}}>Not completed</p>}</div>
                     <div className="ui fitted divider"></div>
                 </div>
             )

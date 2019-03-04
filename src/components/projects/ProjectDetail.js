@@ -14,9 +14,7 @@ class ProjectDetail extends React.Component {
 
     componentDidMount() {
         const { id } = this.props.match.params
-        this.props.fetchProject(id).then(() => {
-            this.setState({creator: this.props.project.userIds[0].name})
-        })
+        this.props.fetchProject(id)
     }
 
     onShowInvite = () => {
@@ -76,7 +74,7 @@ class ProjectDetail extends React.Component {
                         <h5>Company</h5>
                         <p>{company}</p>
                         <h5>Created by</h5>
-                        <p>{this.state.creator}</p>
+                        <p>{this.props.project.userIds[0].name}</p>
                         <h5>Memebers assigned</h5>
                         {userIds.map(el => <div key={el._id}>{el.name}</div>)}
                     </div>   
