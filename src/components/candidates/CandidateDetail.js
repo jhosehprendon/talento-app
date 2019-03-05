@@ -60,7 +60,7 @@ class CandidateDetail extends React.Component {
                 </div>
                 <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>
                     <h5 style={{margin:'10px'}}><i className="tasks icon"></i> Tasks assigned to this candidate </h5>
-                    <div className="content">
+                    <div className="content" style={{backgroundColor: '#fcfcfd'}}>
                         <TaskList 
                             tasks={tasks}
                             candidateId={this.props.match.params.id}

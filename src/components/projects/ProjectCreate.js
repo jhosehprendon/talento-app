@@ -12,11 +12,11 @@ class ProjectCreate extends React.Component {
     render() {
         return (
             <div>
-                <h3>Create a Project</h3>
+                <h3>Create a Job</h3>
                 <div className="ui fitted divider"></div>
                 <ProjectForm 
                     onSubmit={this.onSubmit} 
-                    buttonText='Create Project' 
+                    buttonText='Create a Job' 
                 />
             </div>    
         )

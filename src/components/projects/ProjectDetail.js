@@ -67,8 +67,8 @@ class ProjectDetail extends React.Component {
 
         const { name, description, location, seniority, company, userIds } = this.props.project
 
-        let content = this.props.project.projectStatus.find(el => el.status === true).prop
-        let color = this.props.project.projectStatus.find(el => el.prop === content).color
+        let status = this.props.project.projectStatus.find(el => el.status === true).prop
+        let color = this.props.project.projectStatus.find(el => el.prop === status).color
 
         return (
             <div >
@@ -76,11 +76,11 @@ class ProjectDetail extends React.Component {
                     <div className="content">
                         <h1 className="header">{name}</h1>
                         <div className="ui fitted divider"></div>
-                        <p style={{float: 'right', margin: '10px 0', color: color, fontWeight: 'bold'}}>{content}</p>
+                        <p style={{float: 'right', margin: '10px 0', color: color, fontWeight: 'bold'}}>{status}</p>
                         <h5>Status</h5>
-                        <select onChange={this.handleDropdownChange} value={content} className="ui selection dropdown">
-                            <option key={0} value='Open'>Open</option>
-                            <option key={1} value='Closed'>Closed</option>
+                        <select onChange={this.handleDropdownChange} value={status} className="ui selection dropdown">
+                            <option key={1} value='Open'>Open</option>
+                            <option key={2} value='Closed'>Closed</option>
                         </select>
                         <h5>Description</h5>
                         <p>{description}</p>
@@ -101,7 +101,7 @@ class ProjectDetail extends React.Component {
             
                 <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>
                     <h5 style={{margin:'10px'}}><i className="users icon"></i> Candidates for this position</h5>
-                    <div className="content">
+                    <div className="content" style={{backgroundColor: '#fcfcfd'}}>
                         <CandidateList projectId={this.props.match.params.id}/>
                     </div>
                 </div>

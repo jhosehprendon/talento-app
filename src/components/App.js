@@ -11,6 +11,7 @@ import CandidateEdit from '../components/candidates/CandidateEdit';
 import TaskCreate from '../components/tasks/TaskCreate';
 import TaskDetail from '../components/tasks/TaskDetail';
 import NoteCreate from '../components/tasks/NoteCreate';
+import ProjectListOpen from '../components/projects/ProjectListOpen';
 // import OrderList from '../components/orders/OrderList';
 // import OrderDelete from '../components/orders/OrderDelete';
 // import OrderDetail from '../components/orders/OrderDetail';
@@ -29,6 +30,7 @@ class App extends React.Component {
                         <Header /> 
                         <Switch>
                             <Route path="/" exact component={ProjectList}/>
+                            <Route path="/jobs/:userId" exact component={ProjectListOpen}/>
                             <Route path="/signup" component={Signup}/>
                             <Route path="/login" component={Login}/>
                             <Route path="/projects/new/:id" component={ProjectCreate}/>

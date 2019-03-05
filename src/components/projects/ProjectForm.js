@@ -38,7 +38,7 @@ class ProjectForm extends React.Component {
 
 
     onSubmit = (formValues) => {
-        if(this.props.buttonText === 'Create Project') {
+        if(this.props.buttonText === 'Create a Job') {
             var _id = localStorage.getItem('userId')
             var name = localStorage.getItem('userName')
             var userIds =[]
@@ -53,11 +53,11 @@ class ProjectForm extends React.Component {
             <div className="ui card" style={{margin: 'auto', marginTop: '50px', marginBottom: '50px'}}>
                 <div className="content">
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
-                        <Field name="name" component={this.renderInput} label="Project Name"/>
+                        <Field name="name" component={this.renderInput} label="Job Title"/>
                         <Field name="location" component={this.renderInput} label="City or Remote"/>
                         <Field name="seniority" component={this.renderInput} label="Seniority Level"/>
                         <Field name="company" component={this.renderInput} label="Company Requiring Candidate"/>
-                        <Field name="description" component={this.renderTextArea} label="Project Description"/>
+                        <Field name="description" component={this.renderTextArea} label="Job Description"/>
                         <button style={{marginTop: '15px'}} className="ui button primary">{this.props.buttonText}</button>
                     </form>
                 </div>
