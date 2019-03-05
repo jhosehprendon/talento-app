@@ -67,15 +67,18 @@ class ProjectDetail extends React.Component {
 
         const { name, description, location, seniority, company, userIds } = this.props.project
 
+        let content = this.props.project.projectStatus.find(el => el.status === true).prop
+        let color = this.props.project.projectStatus.find(el => el.prop === content).color
+
         return (
             <div >
                 <div className="ui card" style={{margin: 'auto', float: 'left', marginBottom: '50px'}}>
                     <div className="content">
                         <h1 className="header">{name}</h1>
                         <div className="ui fitted divider"></div>
-                        <p style={{float: 'right', margin: '10px 0', color: (this.props.project.projectStatus.find(el => el.status === true)).color }}>{(this.props.project.projectStatus.find(el => el.status === true)).prop}</p>
+                        <p style={{float: 'right', margin: '10px 0', color: color, fontWeight: 'bold'}}>{content}</p>
                         <h5>Status</h5>
-                        <select onChange={this.handleDropdownChange} value={(this.props.project.projectStatus.find(el => el.status === true)).prop} className="ui selection dropdown">
+                        <select onChange={this.handleDropdownChange} value={content} className="ui selection dropdown">
                             <option key={0} value='Open'>Open</option>
                             <option key={1} value='Closed'>Closed</option>
                         </select>

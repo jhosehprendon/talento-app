@@ -15,9 +15,9 @@ class ProjectList extends React.Component {
         if(project.userIds[0]._id === currentUserId && !!currentUserId) {
             return (
                 <div className="right floated content">
-                    <Link className="ui button basic primary " to={`/projects/edit/${project._id}`}><i style={{margin: "auto"}} className="edit outline icon"></i></Link>
-                    <Link to ={`/projects/delete/${project._id}`} className="ui button basic negative ">
-                        <i style={{margin: "auto"}} className="trash alternate outline icon"></i>
+                    <Link  to={`/projects/edit/${project._id}`}><i style={{margin: "auto"}} className="edit outline icon"></i></Link>
+                    <Link to ={`/projects/delete/${project._id}`} style={{color: '#e74c3c'}}>
+                        <i style={{margin: "auto", marginLeft: '10px'}} className="trash alternate outline icon"></i>
                     </Link>
                 </div>
             )
@@ -32,23 +32,20 @@ class ProjectList extends React.Component {
         return this.props.projects.map(project => {
             let content = project.projectStatus.find(el => el.status === true).prop
             let color = project.projectStatus.find(el => el.prop === content).color
-            return (
+            return (            
                 <div className="ui celled list" key={project._id}>
                     <div className="ui items">
                         <div className="item" >
                             <div className="content" style={{fontSize: '12px'}}>
                                 <Link to={`/projects/${project._id}`} className="header">
-                                    {project.name} <p style={{fontSize: '12px'}}>for {project.company}</p>
-                                </Link>                
-                                <div style={{float: 'right', color: color}}>
-                                    <span style={{marginRight: '15px', fontSize: '14px'}}>{content}</span>
+                                    {project.name} <span style={{marginLeft: '15px', fontSize: '14px', color: color}}>{content}</span> <p style={{fontSize: '12px'}}>for {project.company}</p>
+                                </Link>       
                                     {this.renderAdmin(project)}
-                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="ui divider"></div>
+                    </div>            
                 </div>
-
             )
         })
     }
@@ -57,7 +54,7 @@ class ProjectList extends React.Component {
         if(this.props.isSignedIn) {
             return (
                 <div style={{textAlign:'right'}}>
-                    <Link to={`/projects/new/${localStorage.getItem('userId')}`} className="ui button primary">Create Project</Link>
+                    <Link to={`/projects/new/${localStorage.getItem('userId')}`} className="ui button primary"><i class="plus circle icon"></i>Create Project</Link>
                 </div>
             )
         }
@@ -77,7 +74,14 @@ class ProjectList extends React.Component {
                 </h4>
                     {this.renderCreate()}
                 <div className="ui celled list">
-                    {this.renderList()}
+                    <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%', width: '100%', backgroundColor: '#f9fafb'}}>
+                        <div className="content">
+                            {this.renderList()}
+                        </div>
+                        <div style={{textAlign:'center', marginBottom: '20px'}}>
+                            <Link to={`/projects/new/${localStorage.getItem('userId')}`}><i class="plus circle icon"></i></Link>
+                        </div>
+                    </div>
                 </div>
                 
             </div>

@@ -35,6 +35,9 @@ class CandidateDetail extends React.Component {
 
         const { name, email, tasks, candidateCV } = this.props.candidate
 
+        let content = this.props.candidate.candidateStatus.find(el => el.status === true).prop
+        let color = this.props.candidate.candidateStatus.find(el => el.prop === content).color
+
         return (
             <div style={{marginTop: '50px'}}>
                 <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%'}}>
@@ -44,9 +47,9 @@ class CandidateDetail extends React.Component {
                             <Link className="ui basic primary " to={`/candidates/edit/${this.props.match.params.id}`}><i className="edit outline icon"></i></Link>
                         </div>
                         <div className="ui fitted divider"></div>
-                        <p style={{float: 'right', margin: '10px 0', color: (this.props.candidate.candidateStatus.find(el => el.status === true)).color }}>{(this.props.candidate.candidateStatus.find(el => el.status === true)).prop}</p>
+                        <p style={{float: 'right', margin: '10px 0', color: color, fontWeight: 'bold'}}>{content}</p>
                         <h5>Status</h5>
-                        <select onChange={this.handleDropdownChange} value={(this.props.candidate.candidateStatus.find(el => el.status === true)).prop} className="ui selection dropdown">
+                        <select onChange={this.handleDropdownChange} value={content} className="ui selection dropdown">
                             {this.renderDropdownOptions()}
                         </select>
                         <h5>Email</h5>
