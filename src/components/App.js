@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
 import ProjectCreate from '../components/projects/ProjectCreate';
 import ProjectEdit from '../components/projects/ProjectEdit';
 import ProjectDelete from '../components/projects/ProjectDelete';
@@ -12,6 +12,7 @@ import TaskCreate from '../components/tasks/TaskCreate';
 import TaskDetail from '../components/tasks/TaskDetail';
 import NoteCreate from '../components/tasks/NoteCreate';
 import ProjectListOpen from '../components/projects/ProjectListOpen';
+import CandidateCreateOpen from '../components/candidates/CandidateCreateOpen';
 // import OrderList from '../components/orders/OrderList';
 // import OrderDelete from '../components/orders/OrderDelete';
 // import OrderDetail from '../components/orders/OrderDetail';
@@ -25,12 +26,15 @@ import history from '../history';
 const Public = () => {
     return (
         <div className="ui container">
-            <React.Fragment>
-                    <h1>hola</h1>
+            <Router history={history}>
+                <div>
+                    <h1>Header</h1>
                     <Switch>
-                        <Route path="/jobs/:userId" component={ProjectListOpen}/>
+                        <Route path="/jobs/:userId" exact component={ProjectListOpen}/>
+                        <Route path="/jobs/:userId/:projectId" exact component={CandidateCreateOpen}/>
                     </Switch>
-            </React.Fragment>
+                </div>
+            </Router>
         </div>
     )
 }
@@ -38,11 +42,11 @@ const Public = () => {
 const Admin = () => {
     return (
         <div className="ui container">
-            <React.Fragment>
+            <Router history={history}>
+                <div>
                     <Header /> 
-                    <Switch>
+                    <Switch >
                         <Route path="/" exact component={ProjectList}/>
-                        {/* <Route path="/jobs/:userId" exact component={ProjectListOpen}/> */}
                         <Route path="/signup" component={Signup}/>
                         <Route path="/login" component={Login}/>
                         <Route path="/projects/new/:id" component={ProjectCreate}/>
@@ -56,18 +60,19 @@ const Admin = () => {
                         <Route path="/tasks/:id/:candidateId" exact component={TaskDetail}/>
                         <Route path="/notes/new/:taskId/:candidateId" component={NoteCreate}/>
                     </Switch>
-            </React.Fragment>
+                </div>
+            </Router>
         </div>
     )
 }
 
 const App = () => (
-    <BrowserRouter>
-      <Switch history={history}>
+    <Router history={history}>
+      <Switch>
         <Route path="/jobs/:userId" component={Public} />
         <Route path="/" component={Admin} />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 
 

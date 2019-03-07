@@ -58,7 +58,7 @@ class CandidateDetail extends React.Component {
                         {candidateCV ? <a href='#' onClick={() => this.props.downloadCV(candidateCV)}>Download</a> : <p>No CV uploaded yet</p>}
                     </div>   
                 </div>
-                <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>
+                <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%', marginBottom: '30px'}}>
                     <h5 style={{margin:'10px'}}><i className="tasks icon"></i> Tasks assigned to this candidate </h5>
                     <div className="content" style={{backgroundColor: '#fcfcfd'}}>
                         <TaskList 

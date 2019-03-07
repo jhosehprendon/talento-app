@@ -19,7 +19,8 @@ import { SIGN_UP,
     CLEAR_USER,
     EDIT_CANDIDATE_NOTE,
     GET_CV,
-    ERROR_EDIT_CANDIDATE
+    ERROR_EDIT_CANDIDATE,
+    EDIT_CANDIDATE_TASK
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -227,7 +228,7 @@ export const editCandidateTask = (id, formValues) => {
                   'Authorization': 'Bearer ' + token
                 }
               })
-            dispatch({ type: EDIT_CANDIDATE, payload: response.data })
+            dispatch({ type: EDIT_CANDIDATE_TASK, payload: response.data })
             history.push(`/candidates/${id}`)
         } else {
             dispatch(signOut())

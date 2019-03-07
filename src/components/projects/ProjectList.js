@@ -74,7 +74,7 @@ class ProjectList extends React.Component {
                 </h4>
                     {this.renderCreate()}
                 <div className="ui celled list">
-                    <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%', width: '100%', backgroundColor: '#fcfcfd'}}>
+                    <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%', width: '100%', backgroundColor: '#fcfcfd', marginBottom: '30px'}}>
                         <div className="content">
                             {this.renderList()}
                         </div>

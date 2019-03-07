@@ -5,7 +5,8 @@ import {
     EDIT_CANDIDATE,
     EDIT_CANDIDATE_NOTE,
     GET_CV,
-    ERROR_EDIT_CANDIDATE
+    ERROR_EDIT_CANDIDATE,
+    EDIT_CANDIDATE_TASK
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -24,6 +25,8 @@ export default (state = INITIAL_STATE, action) => {
         case EDIT_CANDIDATE:
             return {...state, [action.payload._id]: action.payload}
         case EDIT_CANDIDATE_NOTE:
+            return {...state, [action.payload._id]: action.payload}
+        case EDIT_CANDIDATE_TASK:
             return {...state, [action.payload._id]: action.payload}
         case GET_CV:
             return {...state, cv: action.payload}
