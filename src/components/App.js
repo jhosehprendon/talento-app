@@ -19,23 +19,22 @@ import CandidateCreateOpen from '../components/candidates/CandidateCreateOpen';
 import Signup from './Signup';
 import Login from './Login';
 import Header from './Header';
+import HeaderOpen from './HeaderOpen'
 import history from '../history';
 
 
 
 const Public = () => {
     return (
-        <div className="ui container">
             <Router history={history}>
                 <div>
-                    <h1>Header</h1>
+                    <HeaderOpen />
                     <Switch>
                         <Route path="/jobs/:userId" exact component={ProjectListOpen}/>
                         <Route path="/jobs/:userId/:projectId" exact component={CandidateCreateOpen}/>
                     </Switch>
                 </div>
             </Router>
-        </div>
     )
 }
 

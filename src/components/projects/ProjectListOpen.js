@@ -38,15 +38,10 @@ class ProjectList extends React.Component {
     }
 
     render() {
-
         return(
-            <div>
-                <h2>Jobs</h2>
-                <h4 className="ui horizontal divider header" style={{marginTop:'-15px', marginBottom: '40px'}}>
-                    <i className="clipboard outline icon"></i>
-                </h4>
+            <div className="ui container" style={{marginTop: '50px'}}>
                 <div className="ui celled list">
-                    <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%', width: '100%', backgroundColor: '#fcfcfd'}}>
+                    <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%', width: '100%', backgroundColor: '#fcfcfd', marginBottom: '40px'}}>
                         <div className="content">
                             {this.renderList()}
                         </div>
