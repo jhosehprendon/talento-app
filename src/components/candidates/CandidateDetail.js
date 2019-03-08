@@ -55,7 +55,7 @@ class CandidateDetail extends React.Component {
                         <h5>Email</h5>
                         <p>{email}</p>
                         <h5>Summary</h5>
-                        {summary ? <p>{summary}</p> : <p>Not provided yet</p>}
+                        {summary ? <p>{summary.split('\n\n').map((el, i) => <div style={{marginBottom: '20px'}} key={i}>{el}</div>)}</p> : <p>Not provided yet</p>}
                         <h5>LinkedIn</h5>
                         {linkedin ? <a href={`${linkedin}`}>{linkedin}</a> : <p>Not provided yet</p>}
                         <h5>CV File</h5>
