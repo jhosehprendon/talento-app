@@ -31,9 +31,9 @@ class CandidateCreateOpen extends React.Component {
         } else {
             return (
             <div>
-                <h1 style={{textAlign: 'center', marginTop: '50px'}}>Job Description</h1>
-                <div style={{float: 'left', position: 'relative', left: '50%', marginTop: '35px'}}>
-                    <div style={{float: 'left', position: 'relative', left: '-50%'}}>
+                <h1 style={{ marginTop: '80px', marginLeft: '10%'}}>Job Description</h1>
+                <div style={{float: 'left', position: 'relative', left: '10%', marginTop: '35px', width: '50rem', marginBottom: '30px'}}>
+                    <div style={{float: 'left'}}>
                         <h3>{this.props.project.name} - {this.props.project.location}</h3>
                         <p style={{fontSize:'15px'}}>{this.props.project.description}</p>
                     </div>

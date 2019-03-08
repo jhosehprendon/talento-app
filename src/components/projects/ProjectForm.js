@@ -29,7 +29,7 @@ class ProjectForm extends React.Component {
         return (
             <div className={className}>
                 <label>{label}</label>
-                <textarea rows="10" {...input} autoComplete='off'/>
+                <textarea rows="10" {...input} autoComplete='off' placeholder='Provide relevant and detailed information about the position. Mention skills needed, experience, daily work, location, company, expectations, etc'/>
                 {this.renderError(meta)}
             </div>
         )

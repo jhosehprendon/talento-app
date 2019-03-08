@@ -116,7 +116,7 @@ class CandidateFormOpen extends React.Component {
 
     render() {
         return (
-            <div className="ui card" style={{margin: 'auto', marginTop: '180px', marginBottom: '50px', width: '30rem'}}>
+            <div className="ui card" style={{margin: 'auto', marginBottom: '50px', width: '30rem'}}>
                 <div className="content">
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
                         <Field name="name" component={this.renderInput} label="Full Name"/>

@@ -40,7 +40,7 @@ class CandidateDetail extends React.Component {
 
         return (
             <div style={{marginTop: '50px'}}>
-                <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%'}}>
+                <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%', marginBottom: '30px'}}>
                     <div className="content">
                         <div style={{display: "flex", justifyContent: "space-between"}}>
                             <h3 className="header">{name}</h3>
