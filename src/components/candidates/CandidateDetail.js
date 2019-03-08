@@ -33,7 +33,7 @@ class CandidateDetail extends React.Component {
             return <div>loading...</div>
         }
 
-        const { name, email, tasks, candidateCV } = this.props.candidate
+        const { name, email, tasks, candidateCV, summary, linkedin } = this.props.candidate
 
         let content = this.props.candidate.candidateStatus.find(el => el.status === true).prop
         let color = this.props.candidate.candidateStatus.find(el => el.prop === content).color
@@ -54,6 +54,10 @@ class CandidateDetail extends React.Component {
                         </select>
                         <h5>Email</h5>
                         <p>{email}</p>
+                        <h5>Summary</h5>
+                        {summary ? <p>{summary}</p> : <p>Not provided yet</p>}
+                        <h5>LinkedIn</h5>
+                        {linkedin ? <a href={`${linkedin}`}>{linkedin}</a> : <p>Not provided yet</p>}
                         <h5>CV File</h5>
                         {candidateCV ? <a href='#' onClick={() => this.props.downloadCV(candidateCV)}>Download</a> : <p>No CV uploaded yet</p>}
                     </div>   
