@@ -1,5 +1,6 @@
 import { SIGN_UP, 
     LOG_IN, 
+    LOG_IN_ERROR,
     SIGN_OUT,
     AUTH_ERROR, 
     CHANGE_AUTH_NULL, 
@@ -49,16 +50,24 @@ export const signUp = formValues => {
 }
 
 export const logIn = formValues => {
-    return async dispatch => {
-        const response = await talento.post('http://localhost:3002/user/login', {...formValues})
-        dispatch({ type: LOG_IN, payload: response.data })
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('userId', response.data.userId);
-        localStorage.setItem('userName', response.data.userName);
-        dispatch(getUser(localStorage.getItem('userId', response.data.userId))).then(() => {
-            history.push('/')
-        })
-    }
+
+        return async dispatch => {
+            try {
+                const response = await talento.post('http://localhost:3002/user/login', {...formValues})
+                dispatch({ type: LOG_IN, payload: response.data })
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('userId', response.data.userId);
+                localStorage.setItem('userName', response.data.userName);
+                dispatch(getUser(localStorage.getItem('userId', response.data.userId))).then(() => {
+                    history.push('/')
+                })
+            }
+            catch {
+                dispatch({ type: LOG_IN_ERROR })
+            }
+        }
+
+   
 }
 
 export const signOut = () => {

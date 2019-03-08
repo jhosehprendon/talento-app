@@ -22,11 +22,17 @@ class Login extends React.Component {
             <div>
                 <h3 style={{textAlign: 'center'}}>Log In</h3>
                 <AuthForm onSubmit={this.onSubmit} authMode='LogIn' />
-                <div style={{color: 'red'}}>{this.props.authError}</div>
+                <div style={{color: 'red', textAlign: 'center'}}>{this.props.authError}</div>
             </div>    
         )
     }  
 }
 
+const mapStateToProps = state => {
+    return {
+        authError: state.auth.loginError
+    } 
+}
 
-export default connect(null, { logIn, changeAuthNull, changeAuthBack })(Login)
+
+export default connect(mapStateToProps, { logIn, changeAuthNull, changeAuthBack })(Login)

@@ -58,6 +58,19 @@ class AuthForm extends React.Component {
 const validate = (formValues) => {
     const errors = {}
 
+    if(!formValues.name) {
+        errors.name = 'You must enter a name'
+    }
+
+    let validateEmail = (email) => {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    if(!validateEmail(formValues.email)) {
+        errors.email = 'Please enter a valid email'
+    }
+
     if(!formValues.email) {
         errors.email = 'You must enter an email'
     }

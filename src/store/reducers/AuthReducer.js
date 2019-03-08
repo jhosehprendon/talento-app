@@ -1,9 +1,10 @@
-import { LOG_IN, SIGN_UP, SIGN_OUT, AUTH_ERROR, CHANGE_AUTH_NULL, CHANGE_AUTH_BACK} from '../actions/types'
+import { LOG_IN, LOG_IN_ERROR, SIGN_UP, SIGN_OUT, AUTH_ERROR, CHANGE_AUTH_NULL, CHANGE_AUTH_BACK} from '../actions/types'
 
 const INITIAL_STATE = {
     isSignedIn: localStorage.getItem('token') !== null,
     userId: null,
-    error: null
+    error: null,
+    loginError: null
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -12,6 +13,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, isSignedIn: true }
         case LOG_IN:
             return { ...state, isSignedIn: true, userId: action.payload.userId }
+        case LOG_IN_ERROR:
+            return {...state, loginError: 'Incorrect email or password, try again'}
         case AUTH_ERROR:
             return {...state, error: 'Email already exist'}
         case CHANGE_AUTH_NULL:

@@ -25,6 +25,7 @@ class Signup extends React.Component {
                 <div class="ui two column very relaxed stackable grid">
                     <div class="column">
                         <AuthForm onSubmit={this.onSubmit} authMode='SignUp' />
+                        <div style={{color: 'red', textAlign: 'center'}}>{this.props.authError}</div>
                     </div>
                     <div class="middle aligned column">
                         <Link to={'/login'} className="header ui big button" style={{padding: '10px'}}>Log In</Link>
