@@ -8,12 +8,22 @@ class CandidateList extends React.Component {
         this.props.fetchCandidates(this.props.projectId)
     }
 
+    renderBreak = (i) => {
+        const candidateLen = this.props.candidates.length;
+        if (candidateLen === i + 1) {
+            return null
+          } else {
+            return <div className="ui divider"></div>
+          }
+
+    }
+
     renderCandidateList = () => {
         if(this.props.candidates.length < 1) {
             return <div>No Candidates yet</div>
         }
 
-        return this.props.candidates.map(candidate => {
+        return this.props.candidates.map((candidate, i) => {
             let content = candidate.candidateStatus.find(el => el.status === true).prop
             let color = candidate.candidateStatus.find(el => el.prop === content).color
             return (
@@ -22,7 +32,7 @@ class CandidateList extends React.Component {
                         {candidate.name}
                     </Link> 
                     <div style={{float: 'right', color: color}}>{content}</div>
-                    <div className="ui fitted divider"></div>
+                    {this.renderBreak(i)}
                 </div>
             )
         })

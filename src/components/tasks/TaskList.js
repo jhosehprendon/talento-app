@@ -12,6 +12,16 @@ class TaskList extends React.Component {
         })
     }
 
+    renderBreak = (i) => {
+        const tasksLen = this.props.tasks.length;
+        if (tasksLen === i + 1) {
+            return null
+          } else {
+            return <div className="ui divider"></div>
+          }
+
+    }
+
     renderTaskList = () => {
 
         if(this.props.tasks.length < 1 ) {
@@ -28,7 +38,7 @@ class TaskList extends React.Component {
                         {task.name}
                     </Link> 
                     <div style={{float: 'right' }}>{task.completed.completed ? <p style={{color: '#27ae60'}}>Completed</p> : <p style={{color: '#e74c3c'}}>Not completed</p>}</div>
-                    <div className="ui fitted divider"></div>
+                    {this.renderBreak(i)}
                 </div>
             )
         })
