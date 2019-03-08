@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createCandidateOpen, fetchProject } from '../../store/actions';
+import { createCandidateOpen, fetchProject, changeHeaderOpen } from '../../store/actions';
 import CandidateFormOpen from './CandidateFormOpen';
 
 class CandidateCreateOpen extends React.Component {
@@ -11,7 +11,8 @@ class CandidateCreateOpen extends React.Component {
 
     componentDidMount() {
         const { projectId } = this.props.match.params
-        this.props.fetchProject(projectId)
+        this.props.fetchProject(projectId).then(() => this.props.changeHeaderOpen(`${this.props.project.name} - ${this.props.project.location}`))
+
     }
 
     onSubmit = (formValues) => {
@@ -31,11 +32,11 @@ class CandidateCreateOpen extends React.Component {
         } else {
             return (
             <div>
-                <h1 style={{ marginTop: '80px', marginLeft: '10%'}}>Job Description</h1>
-                <div style={{float: 'left', position: 'relative', left: '10%', marginTop: '35px', width: '50rem', marginBottom: '30px'}}>
-                    <div style={{float: 'left'}}>
+                <h1 style={{ marginTop: '80px', marginLeft: '15%'}}>Job Description</h1>
+                <div style={{margin: '35px 15% 45px 15%'}}>
+                    <div>
                         <h3>{this.props.project.name} - {this.props.project.location}</h3>
-                        <p style={{fontSize:'15px'}}>{this.props.project.description}</p>
+                        <p style={{fontSize:'15px', lineHeight: '1.8'}}>{this.props.project.description}</p>
                     </div>
                 </div>
                 <CandidateFormOpen
@@ -66,4 +67,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, {createCandidateOpen, fetchProject})(CandidateCreateOpen)
+export default connect(mapStateToProps, {createCandidateOpen, fetchProject, changeHeaderOpen})(CandidateCreateOpen)

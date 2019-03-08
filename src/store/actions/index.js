@@ -20,11 +20,18 @@ import { SIGN_UP,
     EDIT_CANDIDATE_NOTE,
     GET_CV,
     ERROR_EDIT_CANDIDATE,
-    EDIT_CANDIDATE_TASK
+    EDIT_CANDIDATE_TASK,
+    CHANGE_HEADER_OPEN
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
 import {saveAs} from 'file-saver'
+
+// HEADER IN PUBLIC SYSTEM
+
+export const changeHeaderOpen = (prop) => {
+    return { type: CHANGE_HEADER_OPEN, payload: prop }
+}
 
 // AUTHENTICATION
 

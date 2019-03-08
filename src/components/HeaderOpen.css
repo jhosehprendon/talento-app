@@ -4,15 +4,17 @@
     left: 0;
     top: 0;
     width: 100%;
-    background-image: url("http://webmadewell.com/wp-content/uploads/2018/01/img-bg-sample-parallax-header.jpg");
+    background-image: url("https://farm7.staticflickr.com/6234/6234213565_830637e185_b.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 280px;
+    height: 350px;
+    position: relative;
+
   }
   .sample-header::before {
     content: "";
-    /* position: absolute; */
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
@@ -30,4 +32,6 @@
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
     font-family: "Montserrat", sans-serif;
   }
+
+  /* <a data-flickr-embed="true"  href="https://www.flickr.com/photos/lacantine/6234213565/in/photolist-auTYuM-auWyQh-auWyaU-auWzvo-6xS5TL-C6izWE-DEXRAa-C8FCmd-CXUtir-CXUtgT-CXUt98-VNDybd-njFCnP-ikWRxA-WPXvbJ-nfjqQQ-7HwvuF-7HwvJx-bAE87t-dUp3m7-V8Jc5m-dUigwr-69U1t8-ni2QMc-wFgFRC-G7U8XG-qhbHgF-ek1Ni4-nhCzUE-cSfPYs-ikXbBA-dCou8f-7sRZju-eWgifg-eWgiCK-72p5ny-pkmayf-cvpnxj-FTB7p-4eKahS-cvpngL-cvpnCy-93EQis-7xdcmz-pZWM2M-bm6fNn-bxXspm-P5Wr1Y-qf5yUu-bm6ftP/" title="coworking"><img src="https://farm7.staticflickr.com/6234/6234213565_830637e185_b.jpg" width="1024" height="680" alt="coworking"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script> */
   

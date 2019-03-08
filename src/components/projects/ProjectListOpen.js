@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchProjects } from '../../store/actions/index';
+import { fetchProjects, changeHeaderOpen } from '../../store/actions/index';
 
 class ProjectList extends React.Component {
 
     componentDidMount() {
-        this.props.fetchProjects(this.props.match.params.userId)
+        this.props.fetchProjects(this.props.match.params.userId).then(() => this.props.changeHeaderOpen('Jobs.'))
     }
 
     renderList = () => {
@@ -59,4 +59,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {fetchProjects})(ProjectList)
+export default connect(mapStateToProps, {fetchProjects, changeHeaderOpen})(ProjectList)

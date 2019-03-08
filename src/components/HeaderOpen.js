@@ -1,5 +1,6 @@
 import React from 'react';
 import './HeaderOpen.css';
+import { connect } from 'react-redux';
 
 class Header extends React.Component  {
 
@@ -8,6 +9,7 @@ class Header extends React.Component  {
         <div>
             <div class="sample-header">
             <div class="sample-header-section">
+                <h1 style={{fontSize: '50px'}}>{this.props.headerOpenContent}</h1>
             </div>
             </div>
         </div>
@@ -15,5 +17,11 @@ class Header extends React.Component  {
     } 
 }
 
+const mapStateToProps = state => {
+    return {
+        headerOpenContent: state.projects.headerOpenContent
+    }
+}
 
-export default Header;
+
+export default connect(mapStateToProps)(Header);
