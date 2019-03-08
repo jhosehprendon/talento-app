@@ -43,7 +43,7 @@ class ProjectList extends React.Component {
                                     {this.renderAdmin(project)}
                             </div>
                         </div>
-                        <div class="ui divider"></div>
+                        <div className="ui divider"></div>
                     </div>            
                 </div>
             )
@@ -54,7 +54,7 @@ class ProjectList extends React.Component {
         if(this.props.isSignedIn) {
             return (
                 <div style={{textAlign:'right'}}>
-                    <Link to={`/projects/new/${localStorage.getItem('userId')}`} className="ui button primary"><i class="plus circle icon"></i>Create a Job</Link>
+                    <Link to={`/projects/new/${localStorage.getItem('userId')}`} className="ui button primary"><i className="plus circle icon"></i>Create a Job</Link>
                 </div>
             )
         }
@@ -79,7 +79,7 @@ class ProjectList extends React.Component {
                             {this.renderList()}
                         </div>
                         <div style={{textAlign:'center', marginBottom: '20px'}}>
-                            <Link to={`/projects/new/${localStorage.getItem('userId')}`}><i class="plus circle icon"></i></Link>
+                            <Link to={`/projects/new/${localStorage.getItem('userId')}`}><i className="plus circle icon"></i></Link>
                         </div>
                     </div>
                 </div>

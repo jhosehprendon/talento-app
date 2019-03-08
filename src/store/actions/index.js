@@ -192,6 +192,25 @@ export const createCandidate = (formValues, projectId) => {
     }
 }
 
+export const createCandidateOpen = (formValues, userId) => {
+    return async dispatch => {
+        const token = window.localStorage.getItem('token')
+        // const {userId} = getState().auth
+        if(token) {
+            const response = await talento.post('http://localhost:3002/candidates', formValues, {
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+                }
+            })
+            dispatch({ type: CREATE_CANDIDATE, payload: response.data })
+            // history.push(`/jobs/${userId}`)
+        } else {
+            dispatch(signOut())
+        } 
+    }
+}
+
 export const editCandidate = (id, formValues) => {
     return async (dispatch, getState) => {
         const token = localStorage.getItem('token')

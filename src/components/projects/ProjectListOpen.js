@@ -39,7 +39,7 @@ class ProjectList extends React.Component {
 
     render() {
         return(
-            <div className="ui container" style={{marginTop: '50px'}}>
+            <div className="ui container" style={{marginTop: '100px'}}>
                 <div className="ui celled list">
                     <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%', width: '100%', backgroundColor: '#fcfcfd', marginBottom: '40px'}}>
                         <div className="content">

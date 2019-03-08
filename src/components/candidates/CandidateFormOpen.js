@@ -55,82 +55,74 @@ class CandidateFormOpen extends React.Component {
         // const className = `field ${meta.error && meta.touched ? 'error' : ''}`
         return (
             <div>
-                <label>{label}</label>
+                <label style={{fontWeight: 'bold'}}>{label}</label>
                 <input type="file" onChange={this.handleChange}/>
                 {/* {this.renderError(meta)} */}
             </div>
         )
     }
 
+    renderTextArea = ({input, label, meta}) => {
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`
+        return (
+            <div className={className}>
+                <label>{label}</label>
+                <textarea 
+                    rows="10" 
+                    {...input} 
+                    autoComplete='off' 
+                    placeholder='Please share a paragraph summarizing your professional career and experience'
+                />
+                {this.renderError(meta)}
+            </div>
+        )
+    }
+
     onSubmit = (formValues) => {
 
-        // Addind candidate
-        if(this.props.buttonText === 'Add Candidate') {
+        // Candidate applies and is added
 
-            const userId = localStorage.getItem('userId')
-            const projectId =this.props.projectId
+        const userId = this.props.userId
+        const projectId =this.props.projectId
 
-            let formData = new FormData();
-            formData.set('name', formValues.name)
-            formData.set('email', formValues.email)
-            formData.set('userId', userId)
-            formData.set('projectId', projectId)
+        let formData = new FormData();
+        formData.set('name', formValues.name)
+        formData.set('email', formValues.email)
+        formData.set('summary', formValues.summary)
+        formData.set('linkedin', formValues.linkedin)
+        formData.set('userId', userId)
+        formData.set('projectId', projectId)
 
-            // NO CV
-            if(this.state.candidateCV === null) {
-                var arr = []
+        // NO CV
+        if(this.state.candidateCV === null) {
+            var arr = []
 
-                for (var key of formData.entries()) {
-                    var obj = {}
-                    obj['propName'] = key[0]
-                    obj['value'] = key[1]
-                    arr.push(obj)
-                }
-
-                this.props.onSubmit(arr)
-            } else {
-                // WITH CV
-                formData.set('candidateCV', this.state.candidateCV)
-                this.props.onSubmit(formData)
+            for (var key of formData.entries()) {
+                var obj = {}
+                obj['propName'] = key[0]
+                obj['value'] = key[1]
+                arr.push(obj)
             }
 
+            this.props.onSubmit(arr)
         } else {
-            // Edit Candidate
-            let formData = new FormData();
-            formData.set('name', formValues.name)
-            formData.set('email', formValues.email)
+            // WITH CV
+            formData.set('candidateCV', this.state.candidateCV)
+            this.props.onSubmit(formData)
+        }
 
-            // NO CV
-            if(this.state.candidateCV === null) {
-                arr = []
-
-                for (key of formData.entries()) {
-                    obj = {}
-                    obj['propName'] = key[0]
-                    obj['value'] = key[1]
-                    arr.push(obj)
-                }
-    
-                this.props.onSubmit(arr)
-
-            } else {
-                // WITH CV
-                formData.set('candidateCV', this.state.candidateCV)
-                this.props.onSubmit(formData)
-            }
-
-           
-        }   
     } 
 
 
     render() {
         return (
-            <div className="ui card" style={{margin: 'auto', marginTop: '50px'}}>
+            <div className="ui card" style={{margin: 'auto', marginTop: '180px', marginBottom: '50px', width: '30rem'}}>
                 <div className="content">
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error"> 
-                        <Field name="name" component={this.renderInput} label="Enter candidate name"/>
-                        <Field name="email" component={this.renderInput} label="Enter candidate email"/>
+                        <Field name="name" component={this.renderInput} label="Full Name"/>
+                        <Field name="email" component={this.renderInput} label="Email"/>
+                        <Field name="summary" component={this.renderTextArea} label="Summary"/>
+                        <Field name="linkedin" component={this.renderInput} label="LinkedIn Profile"/>
                         <Field name="candidateCV" component={this.renderInputFile} label="Select CV file"/>
                         <div style={{marginTop: '10px'}}>
                             {this.props.errorEditCandidate ? <p style={{color:'#e74c3c'}}>{this.props.errorEditCandidate}</p> : null}
@@ -155,6 +147,10 @@ const validate = (formValues) => {
 
     if(!formValues.email) {
         errors.description = 'You must enter an email'
+    }
+
+    if(!formValues.summary) {
+        errors.summary = 'You must enter a summary'
     }
 
     return errors
