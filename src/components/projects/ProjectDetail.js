@@ -83,7 +83,7 @@ class ProjectDetail extends React.Component {
                             <option key={2} value='Closed'>Closed</option>
                         </select>
                         <h5>Description</h5>
-                        <p>{description.split('\n\n').map((el, i) => <div style={{marginBottom: '20px'}} key={i}>{el}</div>)}</p>
+                        {description.split('\n\n').map((el, i) => <div style={{marginBottom: '20px'}} key={i}>{el}</div>)}
                         <h5>Location</h5>
                         <p>{location}</p>
                         <h5>Seniority Level</h5>

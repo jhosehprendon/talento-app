@@ -31,8 +31,9 @@ class TaskList extends React.Component {
         return this.props.tasks.map((task, i) => {
             return (
                 <div key={task.name} style={{margin: '10px'}}>
-                       <input type="checkbox" value={task.completed.completed} checked={task.completed.completed} onChange={() => this.onChangeTaskStatus(!task.completed.completed, i)} /> <Link 
-                        to={`/tasks/${i}/${this.props.candidateId}`} 
+                    <input type="checkbox" value={task.completed.completed} checked={task.completed.completed} onChange={() => this.onChangeTaskStatus(!task.completed.completed, i)} /> 
+                    <Link 
+                        to={`/taskdetail/${i}/${this.props.candidateId}`} 
                         className="header"
                     >
                         {task.name}
@@ -48,7 +49,7 @@ class TaskList extends React.Component {
         return (
             <div>
                 <div style={{textAlign:'right', marginBottom: '30px'}}>
-                    <Link to={`/tasks/new/${this.props.candidateId}`} className="ui button primary">Add Task <i style={{marginLeft: '5px'}} className="plus circle icon"></i></Link>
+                    <Link to={`/tasks/${this.props.candidateId}`} className="ui button primary">Add Task <i style={{marginLeft: '5px'}} className="plus circle icon"></i></Link>
                 </div>
                     {this.renderTaskList()} 
             </div>

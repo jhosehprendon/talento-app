@@ -56,8 +56,8 @@ const Admin = () => {
                             <Route path="/candidates/new/:id" component={CandidateCreate}/>
                             <Route path="/candidates/:id" exact component={CandidateDetail}/>
                             <Route path="/candidates/edit/:id" exact component={CandidateEdit}/>
-                            <Route path="/tasks/new/:id" component={TaskCreate}/>
-                            <Route path="/tasks/:id/:candidateId" exact component={TaskDetail}/>
+                            <Route path="/tasks/:id" component={TaskCreate}/>
+                            <Route path="/taskdetail/:id/:candidateId" exact component={TaskDetail}/>
                             <Route path="/notes/new/:taskId/:candidateId" component={NoteCreate}/>
                         </div>
                     </Switch>

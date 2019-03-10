@@ -286,7 +286,7 @@ export const editCandidateNote = (id, taskId, formValues) => {
                 }
               })
             dispatch({ type: EDIT_CANDIDATE_NOTE, payload: response.data })
-            history.push(`/tasks/${taskId}/${id}`)
+            history.push(`/taskdetail/${taskId}/${id}`)
         } else {
             dispatch(signOut())
         } 
