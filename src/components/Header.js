@@ -8,7 +8,7 @@ class Header extends React.Component  {
         return (
             <div className="ui sencondary pointing menu">
                 <Link to="/" className="item">
-                    Dashtal
+                    Softhunt
                 </Link>
                 
                 <div className="right menu">

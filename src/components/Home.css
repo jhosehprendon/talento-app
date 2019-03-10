@@ -1,0 +1,31 @@
+li, p, h1, h2, h3 {
+    color: grey;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 12px -2px rgba(0,0,0,.2);
+    padding: 15px
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a, li p {
+    display: block;
+    color: grey;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    text-decoration: underline;
+    color: grey
+  }
+  

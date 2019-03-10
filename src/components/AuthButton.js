@@ -41,7 +41,7 @@ class AuthButton extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{marginRight: '10px'}}>
                 {this.renderAuthButton()}
             </div>
         )

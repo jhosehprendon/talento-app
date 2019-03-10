@@ -20,7 +20,7 @@ export default (state = INITIAL_STATE, action) => {
         case CHANGE_AUTH_NULL:
             return {...state, isSignedIn: null}
         case CHANGE_AUTH_BACK:
-            return {...state, isSignedIn: localStorage.getItem('token') !== null}
+            return {...state, isSignedIn: localStorage.getItem('token') !== null, error: null, loginError: null}
         case SIGN_OUT:
             return { ...state, isSignedIn: false, userId: null }
         default: 

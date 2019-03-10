@@ -13,6 +13,7 @@ import TaskDetail from '../components/tasks/TaskDetail';
 import NoteCreate from '../components/tasks/NoteCreate';
 import ProjectListOpen from '../components/projects/ProjectListOpen';
 import CandidateCreateOpen from '../components/candidates/CandidateCreateOpen';
+import Home from './Home';
 // import OrderList from '../components/orders/OrderList';
 // import OrderDelete from '../components/orders/OrderDelete';
 // import OrderDetail from '../components/orders/OrderDetail';
@@ -40,34 +41,35 @@ const Public = () => {
 
 const Admin = () => {
     return (
-        <div className="ui container">
             <Router history={history}>
                 <div>
                     <Header /> 
                     <Switch >
-                        <Route path="/" exact component={ProjectList}/>
-                        <Route path="/signup" component={Signup}/>
-                        <Route path="/login" component={Login}/>
-                        <Route path="/projects/new/:id" component={ProjectCreate}/>
-                        <Route path="/projects/edit/:id" exact component={ProjectEdit}/>
-                        <Route path="/projects/delete/:id" exact component={ProjectDelete}/>
-                        <Route path="/projects/:id" exact component={ProjectDetail}/>
-                        <Route path="/candidates/new/:id" component={CandidateCreate}/>
-                        <Route path="/candidates/:id" exact component={CandidateDetail}/>
-                        <Route path="/candidates/edit/:id" exact component={CandidateEdit}/>
-                        <Route path="/tasks/new/:id" component={TaskCreate}/>
-                        <Route path="/tasks/:id/:candidateId" exact component={TaskDetail}/>
-                        <Route path="/notes/new/:taskId/:candidateId" component={NoteCreate}/>
+                        <div className="ui container">
+                            <Route path="/" exact component={ProjectList}/>
+                            <Route path="/signup" component={Signup}/>
+                            <Route path="/login" component={Login}/>
+                            <Route path="/projects/new/:id" component={ProjectCreate}/>
+                            <Route path="/projects/edit/:id" exact component={ProjectEdit}/>
+                            <Route path="/projects/delete/:id" exact component={ProjectDelete}/>
+                            <Route path="/projects/:id" exact component={ProjectDetail}/>
+                            <Route path="/candidates/new/:id" component={CandidateCreate}/>
+                            <Route path="/candidates/:id" exact component={CandidateDetail}/>
+                            <Route path="/candidates/edit/:id" exact component={CandidateEdit}/>
+                            <Route path="/tasks/new/:id" component={TaskCreate}/>
+                            <Route path="/tasks/:id/:candidateId" exact component={TaskDetail}/>
+                            <Route path="/notes/new/:taskId/:candidateId" component={NoteCreate}/>
+                        </div>
                     </Switch>
                 </div>
             </Router>
-        </div>
     )
 }
 
 const App = () => (
     <Router history={history}>
       <Switch>
+        <Route path="/home" component={Home}/>
         <Route path="/jobs/:userId" component={Public} />
         <Route path="/" component={Admin} />
       </Switch>
