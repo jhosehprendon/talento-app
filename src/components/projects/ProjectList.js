@@ -10,6 +10,10 @@ class ProjectList extends React.Component {
         this.props.fetchProjects(userId)
     }
 
+    state = {
+        showPublicLink: false
+    }
+
     renderAdmin = (project) => {
         const currentUserId = localStorage.getItem('userId')
         if(project.userIds[0]._id === currentUserId && !!currentUserId) {
@@ -19,6 +23,21 @@ class ProjectList extends React.Component {
                     <Link to ={`/projects/delete/${project._id}`} style={{color: '#bdc3c7'}}>
                         <i style={{margin: "auto", marginLeft: '10px'}} className="trash alternate outline icon"></i>
                     </Link>
+                </div>
+            )
+        }
+    }
+
+    renderLinkButton = () => {
+        if(!this.state.showPublicLink) {
+            return (
+                <button className="ui button primary" onClick={() => this.setState({ showPublicLink: true })}>Get Your Job List Link</button>
+            )
+        } else {
+            return(
+                <div>
+                    <button className="ui button primary" onClick={() => this.setState({ showPublicLink: false })}>Hide Link</button>
+                    <Link to={`/jobs/${localStorage.getItem('userId')}`}>Click here</Link>
                 </div>
             )
         }
@@ -72,6 +91,7 @@ class ProjectList extends React.Component {
                 <h4 className="ui horizontal divider header" style={{marginTop:'-15px', marginBottom: '40px'}}>
                     <i className="clipboard outline icon"></i>
                 </h4>
+                    {this.renderLinkButton()}
                     {this.renderCreate()}
                 <div className="ui celled list">
                     <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%', width: '100%', backgroundColor: '#fcfcfd', marginBottom: '30px'}}>

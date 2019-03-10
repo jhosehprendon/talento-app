@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; 
 import './Home.css'
 
 const  Home = () => {
@@ -6,18 +7,18 @@ const  Home = () => {
         <div>
             <ul>
                 <div className="ui container">
-                <li style={{float:'left', fontSize: '18px'}}><p>Softhunt</p></li>
+                <li style={{float:'left', fontSize: '18px'}}><p style={{color: '#3b3b3b'}}>Softhunt</p></li>
                 <div style={{float:'right'}}>
-                    <button style={{marginTop:'5px'}} className="ui button primary">Signup</button>
-                    <li><a href="#home">Login</a></li>
+                    <Link to={`/signup`} style={{marginTop:'5px'}} className="ui button primary">Signup</Link>
+                    <li><Link to={localStorage.getItem('userId') ? `/` : `/login`}>Login</Link></li>
                 </div>
                 </div>
             </ul>
-            <div style={{marginTop:'16%'}} className="ui stackable three column grid">
+            <div style={{marginTop:'11%'}} className="ui stackable three column grid">
                     <div className="column" style={{ marginLeft: '20%'}}>
                         <h1>Super powers for Recruiters</h1>
                         <h3>Softhunt helps recruiters build awesome job listings and manage their candidates in one place</h3>
-                        <button style={{marginTop:'5px'}} className="ui large button primary">Start Free</button>
+                        <Link to={`/signup`} style={{marginTop:'5px'}} className="ui button large primary">Start Free</Link>
                     </div>
                     <div className="column">
                         <img style={{width: '70%'}} src={require('../images/background.png')} />
@@ -29,7 +30,7 @@ const  Home = () => {
                 <div className="ui stackable three column grid">
                         <div className="column" style={{marginTop:'120px', marginLeft: '25%'}}>
                             <h1>Create a job list</h1>
-                            <h3>Add new job positions with descriptions and specifications. Create a professional looking listing where candidates can apply</h3>
+                            <h3>Add new job positions with descriptions and specifications. Create a professional-looking listing where your candidates can apply</h3>
                         </div>
                         <div className="column">
                             <img style={{width: '40%', marginTop: '120px'}} src={require('../images/1.png')} />

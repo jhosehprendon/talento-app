@@ -28,7 +28,7 @@ class Signup extends React.Component {
                         <div style={{color: 'red', textAlign: 'center'}}>{this.props.authError}</div>
                     </div>
                     <div class="middle aligned column">
-                        <Link to={'/login'} className="header ui big button" style={{padding: '10px'}}>Log In</Link>
+                        <Link to={localStorage.getItem('userId') ? `/` : `/login`} className="header ui big button" style={{padding: '10px'}}>Log In</Link>
                     </div>
                 </div>
                 <div class="ui vertical divider">

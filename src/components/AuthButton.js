@@ -8,6 +8,7 @@ class AuthButton extends React.Component {
 
     onSignOutClick = () => {
         this.props.signOut()
+        history.push('/login')
     }
 
     renderAuthButton() {
