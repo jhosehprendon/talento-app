@@ -37,7 +37,7 @@ class ProjectList extends React.Component {
             return(
                 <div>
                     <button className="ui button primary" onClick={() => this.setState({ showPublicLink: false })}>Hide Link</button>
-                    <Link to={`/jobs/${localStorage.getItem('userId')}`}>Click here</Link>
+                    <Link target="_blank" to={`/jobs/${localStorage.getItem('userId')}`}>Click here</Link>
                 </div>
             )
         }

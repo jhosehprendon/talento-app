@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { createCandidateOpen, fetchProject, changeHeaderOpen } from '../../store/actions';
 import CandidateFormOpen from './CandidateFormOpen';
 
@@ -25,9 +26,12 @@ class CandidateCreateOpen extends React.Component {
     renderContent = () => {
         if(this.state.applied) {
             return (
-                <div>
-                    <h1 style={{textAlign: 'center', marginTop: '50px'}}>Thanks!</h1>
+                <div style={{textAlign: 'center', marginTop: '50px'}}>
+                    <h1 >Thanks!</h1>
                     <p style={{fontSize:'15px', textAlign: 'center'}}>You have applied succesfully to the {this.props.project.name} position</p>
+                    <Link style={{marginTop: '30px'}} to={`/jobs/${this.props.match.params.userId}`} className="header">
+                        <span >Back to Jobs</span>
+                    </Link> 
                 </div>
             )
         } else {
