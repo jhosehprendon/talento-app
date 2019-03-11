@@ -44,7 +44,7 @@ class CandidateDetail extends React.Component {
                     <div className="content">
                         <div style={{display: "flex", justifyContent: "space-between"}}>
                             <h3 className="header">{name}</h3>
-                            <Link className="ui basic primary " to={`/candidates/edit/${this.props.match.params.id}`}><i className="edit outline icon"></i></Link>
+                            <Link className="ui basic primary " to={`/app/candidates/edit/${this.props.match.params.id}`}><i className="edit outline icon"></i></Link>
                         </div>
                         <div className="ui fitted divider"></div>
                         <p style={{float: 'right', margin: '10px 0', color: color, fontWeight: 'bold'}}>{content}</p>

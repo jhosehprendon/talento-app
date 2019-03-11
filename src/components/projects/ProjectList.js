@@ -19,8 +19,8 @@ class ProjectList extends React.Component {
         if(project.userIds[0]._id === currentUserId && !!currentUserId) {
             return (
                 <div className="right floated content">
-                    <Link  to={`/projects/edit/${project._id}`}><i style={{margin: "auto"}} className="edit outline icon"></i></Link>
-                    <Link to ={`/projects/delete/${project._id}`} style={{color: '#bdc3c7'}}>
+                    <Link  to={`/app/projects/edit/${project._id}`}><i style={{margin: "auto"}} className="edit outline icon"></i></Link>
+                    <Link to ={`/app/projects/delete/${project._id}`} style={{color: '#bdc3c7'}}>
                         <i style={{margin: "auto", marginLeft: '10px'}} className="trash alternate outline icon"></i>
                     </Link>
                 </div>
@@ -56,7 +56,7 @@ class ProjectList extends React.Component {
                     <div className="ui items">
                         <div className="item" >
                             <div className="content" style={{fontSize: '12px'}}>
-                                <Link to={`/projects/${project._id}`} className="header">
+                                <Link to={`/app/projects/${project._id}`} className="header">
                                     {project.name} <span style={{marginLeft: '15px', fontSize: '14px', color: color}}>{status}</span> <p style={{fontSize: '12px'}}>for {project.company}</p>
                                 </Link>       
                                     {this.renderAdmin(project)}
@@ -73,7 +73,7 @@ class ProjectList extends React.Component {
         if(this.props.isSignedIn) {
             return (
                 <div style={{textAlign:'right'}}>
-                    <Link to={`/projects/new/${localStorage.getItem('userId')}`} className="ui button primary"><i className="plus circle icon"></i>Create a Job</Link>
+                    <Link to={`/app/projects/new/${localStorage.getItem('userId')}`} className="ui button primary"><i className="plus circle icon"></i>Create a Job</Link>
                 </div>
             )
         }
@@ -99,7 +99,7 @@ class ProjectList extends React.Component {
                             {this.renderList()}
                         </div>
                         <div style={{textAlign:'center', marginBottom: '20px'}}>
-                            <Link to={`/projects/new/${localStorage.getItem('userId')}`}><i className="plus circle icon"></i></Link>
+                            <Link to={`/app/projects/new/${localStorage.getItem('userId')}`}><i className="plus circle icon"></i></Link>
                         </div>
                     </div>
                 </div>

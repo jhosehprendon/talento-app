@@ -46,19 +46,19 @@ const Admin = () => {
                     <Header /> 
                     <Switch >
                         <div className="ui container">
-                            <Route path="/" exact component={ProjectList}/>
-                            <Route path="/signup" component={Signup}/>
-                            <Route path="/login" component={Login}/>
-                            <Route path="/projects/new/:id" component={ProjectCreate}/>
-                            <Route path="/projects/edit/:id" exact component={ProjectEdit}/>
-                            <Route path="/projects/delete/:id" exact component={ProjectDelete}/>
-                            <Route path="/projects/:id" exact component={ProjectDetail}/>
-                            <Route path="/candidates/new/:id" component={CandidateCreate}/>
-                            <Route path="/candidates/:id" exact component={CandidateDetail}/>
-                            <Route path="/candidates/edit/:id" exact component={CandidateEdit}/>
-                            <Route path="/tasks/:id" component={TaskCreate}/>
-                            <Route path="/taskdetail/:id/:candidateId" exact component={TaskDetail}/>
-                            <Route path="/notes/new/:taskId/:candidateId" component={NoteCreate}/>
+                            <Route path="/app" exact component={ProjectList}/>
+                            <Route path="/app/signup" component={Signup}/>
+                            <Route path="/app/login" component={Login}/>
+                            <Route path="/app/projects/new/:id" component={ProjectCreate}/>
+                            <Route path="/app/projects/edit/:id" exact component={ProjectEdit}/>
+                            <Route path="/app/projects/delete/:id" exact component={ProjectDelete}/>
+                            <Route path="/app/projects/:id" exact component={ProjectDetail}/>
+                            <Route path="/app/candidates/new/:id" component={CandidateCreate}/>
+                            <Route path="/app/candidates/:id" exact component={CandidateDetail}/>
+                            <Route path="/app/candidates/edit/:id" exact component={CandidateEdit}/>
+                            <Route path="/app/tasks/:id" component={TaskCreate}/>
+                            <Route path="/app/taskdetail/:id/:candidateId" exact component={TaskDetail}/>
+                            <Route path="/app/notes/new/:taskId/:candidateId" component={NoteCreate}/>
                         </div>
                     </Switch>
                 </div>
@@ -69,9 +69,9 @@ const Admin = () => {
 const App = () => (
     <Router history={history}>
       <Switch>
-        <Route path="/home" component={Home}/>
+        <Route path="/app" component={Admin} />
         <Route path="/jobs/:userId" component={Public} />
-        <Route path="/" component={Admin} />
+        <Route path="/" component={Home}/>
       </Switch>
     </Router>
   );

@@ -28,7 +28,7 @@ class CandidateList extends React.Component {
             let color = candidate.candidateStatus.find(el => el.prop === content).color
             return (
                 <div key={candidate._id} style={{margin: '10px'}}>
-                    <Link to={`/candidates/${candidate._id}`} className="header">
+                    <Link to={`/app/candidates/${candidate._id}`} className="header">
                         {candidate.name}
                     </Link> 
                     <div style={{float: 'right', color: color}}>{content}</div>
@@ -42,7 +42,7 @@ class CandidateList extends React.Component {
         return (
             <div>
                 <div style={{textAlign:'right', marginBottom: '30px'}}>
-                    <Link to={`/candidates/new/${this.props.projectId}`} className="ui button primary">Add New Candidate <i style={{marginLeft: '5px'}} className="plus circle icon"></i></Link>
+                    <Link to={`/app/candidates/new/${this.props.projectId}`} className="ui button primary">Add New Candidate <i style={{marginLeft: '5px'}} className="plus circle icon"></i></Link>
                 </div>
                     {this.renderCandidateList()} 
             </div>

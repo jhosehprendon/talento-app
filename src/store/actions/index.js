@@ -59,7 +59,7 @@ export const logIn = formValues => {
                 localStorage.setItem('userId', response.data.userId);
                 localStorage.setItem('userName', response.data.userName);
                 dispatch(getUser(localStorage.getItem('userId', response.data.userId))).then(() => {
-                    history.push('/')
+                    history.push('/app')
                 })
             }
             catch {
@@ -74,7 +74,7 @@ export const signOut = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
     localStorage.removeItem('userName')
-    history.push('/')
+    history.push('/app')
  
     return dispatch => {
         dispatch({type: SIGN_OUT})
@@ -112,7 +112,7 @@ export const createProject = (formValues) => {
                 }
             })
             dispatch({ type: CREATE_PROJECT, payload: response.data })
-            history.push('/')
+            history.push('/app')
         } else {
             dispatch(signOut())
         } 
@@ -147,7 +147,7 @@ export const editProject = (id, formValues) => {
               })
             dispatch({ type: EDIT_PROJECT, payload: response.data })
             if(!formValues.status) {
-                history.push('/')
+                history.push('/app')
             }
         } else {
             dispatch(signOut())
@@ -166,7 +166,7 @@ export const deleteProject = (id) => {
             }
           })
         dispatch({ type: DELETE_PROJECT, payload: id })
-        history.push('/')
+        history.push('/app')
     }
 }
 
@@ -201,7 +201,7 @@ export const createCandidate = (formValues, projectId) => {
                 }
             })
             dispatch({ type: CREATE_CANDIDATE, payload: response.data })
-            history.push(`/projects/${projectId}`)
+            history.push(`/app/projects/${projectId}`)
         } else {
             dispatch(signOut())
         } 
@@ -240,7 +240,7 @@ export const editCandidate = (id, formValues) => {
                     }
                   })
                 dispatch({ type: EDIT_CANDIDATE, payload: response.data })
-                history.push(`/candidates/${id}`)
+                history.push(`/app/candidates/${id}`)
             } catch {
                 dispatch({ type: ERROR_EDIT_CANDIDATE, payload: 'Select correct file type .pdf or .doc' })
             }
@@ -264,7 +264,7 @@ export const editCandidateTask = (id, formValues) => {
                 }
               })
             dispatch({ type: EDIT_CANDIDATE_TASK, payload: response.data })
-            history.push(`/candidates/${id}`)
+            history.push(`/app/candidates/${id}`)
         } else {
             dispatch(signOut())
         } 
@@ -286,7 +286,7 @@ export const editCandidateNote = (id, taskId, formValues) => {
                 }
               })
             dispatch({ type: EDIT_CANDIDATE_NOTE, payload: response.data })
-            history.push(`/taskdetail/${taskId}/${id}`)
+            history.push(`/app/taskdetail/${taskId}/${id}`)
         } else {
             dispatch(signOut())
         } 

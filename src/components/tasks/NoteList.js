@@ -43,7 +43,7 @@ class NoteList extends React.Component {
         return (
             <div>
                 <div style={{textAlign:'right', marginBottom: '30px'}}>
-                    <Link to={`/notes/new/${this.props.taskId}/${this.props.candidateId}`} className="ui button primary">Add a Note <i style={{marginLeft: '5px'}} className="plus circle icon"></i></Link>
+                    <Link to={`/app/notes/new/${this.props.taskId}/${this.props.candidateId}`} className="ui button primary">Add a Note <i style={{marginLeft: '5px'}} className="plus circle icon"></i></Link>
                 </div>
                     {this.renderNoteList()} 
             </div>

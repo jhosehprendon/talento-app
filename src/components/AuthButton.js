@@ -8,13 +8,13 @@ class AuthButton extends React.Component {
 
     onSignOutClick = () => {
         this.props.signOut()
-        history.push('/login')
+        history.push('/app/login')
     }
 
     renderAuthButton() {
          if (this.props.isSignedIn) {
             return (
-                <div style={{float: 'right'}}>
+                <div>
                     {/* <Link to="/orders" style={{display: 'inline', marginRight: '10px'}}>
                         My Orders
                     </Link> */}
@@ -28,12 +28,12 @@ class AuthButton extends React.Component {
         } else if (!this.props.isSignedIn) {
             return (
                 <div style={{display: 'inline'}}>
-                    <Link to="/login" style={{display: 'inline', marginRight: '10px'}}>
-                        Log In
-                    </Link>
-                    <button onClick={() => history.push('/signup')} className="ui blue button" style={styles.buttonStyle}>
+                    <button onClick={() => history.push('/app/signup')} className="ui blue button" style={styles.buttonStyle}>
                         Sign Up
                     </button>
+                    <Link to="/app/login" style={{display: 'inline', margin: '14px 10px 0 0', float: 'right', color: 'white'}}>
+                        Log In
+                    </Link>
                 </div>
                
             )
@@ -52,7 +52,8 @@ class AuthButton extends React.Component {
 const styles = {
     buttonStyle: {
         marginTop: '7px', 
-        marginBottom: '6px'
+        marginBottom: '6px',
+        float: 'right'
     }
 }
 

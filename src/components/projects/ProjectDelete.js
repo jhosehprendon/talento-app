@@ -15,7 +15,7 @@ class ProjectDelete extends React.Component {
        return (
             <React.Fragment>
                 <button onClick={() => this.props.deleteProject(this.props.match.params.id)} className="ui button" style={{color: '#e74c3c'}}>Delete</button>
-                <Link className="ui button" to={'/'}>Cancel</Link>
+                <Link className="ui button" to={'/app'}>Cancel</Link>
             </React.Fragment> 
        )       
     }

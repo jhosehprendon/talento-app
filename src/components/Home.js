@@ -8,8 +8,8 @@ const  Home = () => {
                 <div className="ui container">
                     <li style={{float:'left', fontSize: '18px'}}><p style={{color: '#3b3b3b'}}>Softhunt</p></li>
                     <div style={{float:'right'}}>
-                        <Link to={`/signup`} style={{marginTop:'6px'}} className="ui button primary">Signup</Link>
-                        <li><Link to={localStorage.getItem('userId') ? `/` : `/login`}>Login</Link></li>
+                        <Link to={localStorage.getItem('userId') ? `/app` : `/app/signup`} style={{marginTop:'6px'}} className="ui button primary">Signup</Link>
+                        <li><Link to={localStorage.getItem('userId') ? `/app` : `/app/login`}>Login</Link></li>
                     </div>
                 </div>
             </ul>
@@ -17,7 +17,7 @@ const  Home = () => {
                     <div className="column" style={{ marginLeft: '20%'}}>
                         <h1>Super powers for Recruiters</h1>
                         <h3>Softhunt helps recruiters build awesome job listings and manage their candidates in one place</h3>
-                        <Link to={`/signup`} style={{marginTop:'5px'}} className="ui button large primary">Start Free</Link>
+                        <Link to={localStorage.getItem('userId') ? `/app` : `/app/signup`} style={{marginTop:'5px'}} className="ui button large primary">Start Free</Link>
                     </div>
                     <div className="column">
                         <img style={{width: '70%'}} src={require('../images/background.png')} />

@@ -10,10 +10,10 @@ class Header extends React.Component  {
             <div>
                 <ul>
                     <div className="ui container">
-                        <Link to="/" className="item"><li style={{float:'left', fontSize: '18px'}}><p style={{color: 'white'}}>Softhunt</p></li></Link>
+                        <Link to="/app" className="item"><li style={{float:'left', fontSize: '18px'}}><p style={{color: 'white'}}>Softhunt</p></li></Link>
                         <div>
                             <AuthButton />
-                            <div style={{marginTop: '14px', marginRight: '10px', color: 'white', float: 'right'}}>{localStorage.getItem('userName') !== null ? localStorage.getItem('userName').split(' ')[0]  : null}</div>
+                            <div style={{marginTop: '16px', marginRight: '10px', color: 'white', float: 'right'}}>{localStorage.getItem('userName') !== null ? localStorage.getItem('userName').split(' ')[0]  : null}</div>
                         </div>
                     </div>
                 </ul>
