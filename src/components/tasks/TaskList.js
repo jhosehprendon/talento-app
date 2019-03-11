@@ -36,7 +36,7 @@ class TaskList extends React.Component {
                         to={`/taskdetail/${i}/${this.props.candidateId}`} 
                         className="header"
                     >
-                        {task.name}
+                        <span style={{marginLeft: '10px'}}>{task.name}</span>
                     </Link> 
                     <div style={{float: 'right' }}>{task.completed.completed ? <p style={{color: '#27ae60'}}>Completed</p> : <p style={{color: '#e74c3c'}}>Not completed</p>}</div>
                     {this.renderBreak(i)}

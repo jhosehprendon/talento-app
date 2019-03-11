@@ -7,6 +7,16 @@ class NoteList extends React.Component {
     //     <p>{note}</p>
     // }
 
+    renderBreak = (i) => {
+        const notesLen = this.props.notes.length;
+        if (notesLen === i + 1) {
+            return null
+          } else {
+            return <div className="ui divider"></div>
+          }
+
+    }
+
     renderNoteList = () => {
 
         if(this.props.notes.length < 1 ) {
@@ -23,7 +33,7 @@ class NoteList extends React.Component {
                         {task.name}
                     </Link>  */}
                     <p><span style={{fontWeight: 'bold'}}>{note.note.split(' ')[0]}</span> {note.note.split(' ').slice(1).join(' ')}</p>
-                    <div className="ui fitted divider"></div>
+                    {this.renderBreak(i)}
                 </div>
             )
         })
