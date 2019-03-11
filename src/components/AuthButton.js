@@ -14,7 +14,7 @@ class AuthButton extends React.Component {
     renderAuthButton() {
          if (this.props.isSignedIn) {
             return (
-                <div>
+                <div style={{float: 'right'}}>
                     {/* <Link to="/orders" style={{display: 'inline', marginRight: '10px'}}>
                         My Orders
                     </Link> */}
@@ -27,7 +27,7 @@ class AuthButton extends React.Component {
             return null
         } else if (!this.props.isSignedIn) {
             return (
-                <div>
+                <div style={{display: 'inline'}}>
                     <Link to="/login" style={{display: 'inline', marginRight: '10px'}}>
                         Log In
                     </Link>
@@ -51,7 +51,7 @@ class AuthButton extends React.Component {
 
 const styles = {
     buttonStyle: {
-        marginTop: '6px', 
+        marginTop: '7px', 
         marginBottom: '6px'
     }
 }

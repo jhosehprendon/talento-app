@@ -1,15 +1,13 @@
-li, h2, h3 {
-    color: #3b3b3b;
-}
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: white;
+    background-color: #383E42;
     box-shadow: 0 4px 12px -2px rgba(0,0,0,.2);
-    padding: 15px
+    padding: 5px;
+    margin-bottom: 20px;
   }
   
   li {
@@ -28,4 +26,3 @@ ul {
     text-decoration: underline;
     color: grey
   }
-  

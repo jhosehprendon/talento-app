@@ -1,20 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AuthButton from './AuthButton';
+import './Header.css'
 
 class Header extends React.Component  {
 
     render() {
         return (
-            <div className="ui sencondary pointing menu">
-                <Link to="/" className="item">
-                    Softhunt
-                </Link>
-                
-                <div className="right menu">
-                    <div style={{marginTop: '14px', marginRight: '10px', color: '#585858'}}>{localStorage.getItem('userName') !== null ? localStorage.getItem('userName').split(' ')[0]  : null}</div>
-                    <AuthButton />
-                </div>
+            <div>
+                <ul>
+                    <div className="ui container">
+                        <Link to="/" className="item"><li style={{float:'left', fontSize: '18px'}}><p style={{color: 'white'}}>Softhunt</p></li></Link>
+                        <div>
+                            <AuthButton />
+                            <div style={{marginTop: '14px', marginRight: '10px', color: 'white', float: 'right'}}>{localStorage.getItem('userName') !== null ? localStorage.getItem('userName').split(' ')[0]  : null}</div>
+                        </div>
+                    </div>
+                </ul>
             </div>
         )
     } 
@@ -22,3 +24,5 @@ class Header extends React.Component  {
 
 
 export default Header;
+
+

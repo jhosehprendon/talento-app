@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-import './Home.css'
 
 const  Home = () => {
     return (
         <div>
-            <ul>
+            <ul style={{backgroundColor: 'white', padding: '15px'}}>
                 <div className="ui container">
-                <li style={{float:'left', fontSize: '18px'}}><p style={{color: '#3b3b3b'}}>Softhunt</p></li>
-                <div style={{float:'right'}}>
-                    <Link to={`/signup`} style={{marginTop:'5px'}} className="ui button primary">Signup</Link>
-                    <li><Link to={localStorage.getItem('userId') ? `/` : `/login`}>Login</Link></li>
-                </div>
+                    <li style={{float:'left', fontSize: '18px'}}><p style={{color: '#3b3b3b'}}>Softhunt</p></li>
+                    <div style={{float:'right'}}>
+                        <Link to={`/signup`} style={{marginTop:'6px'}} className="ui button primary">Signup</Link>
+                        <li><Link to={localStorage.getItem('userId') ? `/` : `/login`}>Login</Link></li>
+                    </div>
                 </div>
             </ul>
             <div style={{marginTop:'11%'}} className="ui stackable three column grid">
@@ -53,7 +52,7 @@ const  Home = () => {
                 <div style={{paddingBottom: '100px'}} className="ui stackable three column grid">
                         <div className="column" style={{marginLeft: '25%'}}>
                             <h1>Team work</h1>
-                            <h3>Assign tasks to team members, organize information, manage progress, communicate and share notes.</h3>
+                            <h3>Add team members, organize information, manage progress, communicate and share notes.</h3>
                         </div>
                         <div className="column">
                             <img style={{width: '40%'}} src={require('../images/3.png')} />
