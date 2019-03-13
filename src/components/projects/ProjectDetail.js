@@ -27,7 +27,7 @@ class ProjectDetail extends React.Component {
         this.setState({ tryInvite: true })
         await this.props.getUserInfo(formValues)
         if(!this.props.userId) {
-            this.setState({ noEmailError: 'Email not found', tryInvite: false})
+            this.setState({ noEmailError: 'Email not found, this person needs to create a Softhunt account first', tryInvite: false})
         } else {
             const userInfo = {userInfo: this.props.userInfo}
             this.props.editProject(this.props.match.params.id, userInfo).then(() => {
@@ -77,7 +77,7 @@ class ProjectDetail extends React.Component {
 
     render() {
         if(!this.props.project) {
-            return <div>loading...</div>
+            return <div style ={{marginTop: '10px'}} class="ui active centered inline loader"></div>
         }
 
         const { name, description, location, seniority, company, userIds } = this.props.project

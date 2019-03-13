@@ -10,7 +10,7 @@ class TaskDetail extends React.Component {
 
     render() {
         if(!this.props.candidate) {
-            return <div>loading...</div>
+            return <div style ={{marginTop: '10px'}} class="ui active centered inline loader"></div>
         }
 
         const { name, description, notes } = this.props.candidate.tasks[this.props.match.params.id]

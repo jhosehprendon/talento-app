@@ -31,7 +31,7 @@ class CandidateDetail extends React.Component {
 
     render() {
         if(!this.props.candidate) {
-            return <div>loading...</div>
+            return <div style ={{marginTop: '10px'}} class="ui active centered inline loader"></div>
         }
 
         const { name, email, tasks, candidateCV, summary, linkedin } = this.props.candidate

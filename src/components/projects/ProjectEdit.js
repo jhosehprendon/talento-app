@@ -36,7 +36,7 @@ class ProjectEdit extends React.Component {
 
     render () {
         if(!this.props.project) {
-            return <div>loading...</div>
+            return <div style ={{marginTop: '10px'}} class="ui active centered inline loader"></div>
         }
 
         const { name, description, location, seniority, company } = this.props.project

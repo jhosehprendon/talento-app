@@ -4,7 +4,8 @@
     left: 0;
     top: 0;
     width: 100%;
-    background-image: url("https://farm7.staticflickr.com/6234/6234213565_830637e185_b.jpg");
+    /* background-image: url("https://farm7.staticflickr.com/6234/6234213565_830637e185_b.jpg"); */
+    background-image: url("../images/headeropen.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
