@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchCandidate, downloadCV, editCandidateStatus } from '../../store/actions';
 import { Link } from 'react-router-dom';
 import TaskList from '../tasks/TaskList';
+import history from '../../history';
 
 class CandidateDetail extends React.Component {
 

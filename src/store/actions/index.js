@@ -39,7 +39,7 @@ export const changeHeaderOpen = (prop) => {
 export const signUp = formValues => {
     return async dispatch => {
         try{
-            await talento.post('http://localhost:3002/user/signup', {...formValues})
+            await talento.post('/user/signup', {...formValues})
             dispatch({ type: SIGN_UP })
             dispatch(logIn(formValues))
         }
@@ -53,7 +53,7 @@ export const logIn = formValues => {
 
         return async dispatch => {
             try {
-                const response = await talento.post('http://localhost:3002/user/login', {...formValues})
+                const response = await talento.post('/user/login', {...formValues})
                 dispatch({ type: LOG_IN, payload: response.data })
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('userId', response.data.userId);
@@ -105,7 +105,7 @@ export const createProject = (formValues) => {
         const token = window.localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.post('http://localhost:3002/projects', formValues, {
+            const response = await talento.post('/projects', formValues, {
                 headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
@@ -121,7 +121,7 @@ export const createProject = (formValues) => {
 
 export const fetchProjects = (id) => {
     return async dispatch => {
-        const response = await talento.get(`http://localhost:3002/projects/${id}`)
+        const response = await talento.get(`/projects/${id}`)
         dispatch({ type: FETCH_PROJECTS, payload: response.data.projects })
     }
 }
@@ -129,7 +129,7 @@ export const fetchProjects = (id) => {
 export const fetchProject = (id) => {
     return async dispatch => {
 
-        const response = await talento.get(`http://localhost:3002/projects/project/${id}`)
+        const response = await talento.get(`/projects/project/${id}`)
         dispatch({ type: FETCH_PROJECT, payload: response.data.project })
     }
 }
@@ -139,7 +139,7 @@ export const editProject = (id, formValues) => {
         const token = localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.patch(`http://localhost:3002/projects/${id}`, formValues, {
+            const response = await talento.patch(`/projects/${id}`, formValues, {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': 'Bearer ' + token
@@ -159,7 +159,7 @@ export const editProject = (id, formValues) => {
 export const deleteProject = (id) => {
     return async dispatch => {
         const token = localStorage.getItem('token')
-        await talento.delete(`http://localhost:3002/projects/${id}`, {
+        await talento.delete(`/projects/${id}`, {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ' + token
@@ -176,7 +176,7 @@ export const deleteProject = (id) => {
 
 export const fetchCandidates = (id) => {
     return async dispatch => {
-        const response = await talento.get(`http://localhost:3002/candidates/${id}`)
+        const response = await talento.get(`/candidates/${id}`)
         dispatch({ type: FETCH_CANDIDATES, payload: response.data.candidates })
     }   
 }
@@ -184,7 +184,7 @@ export const fetchCandidates = (id) => {
 export const fetchCandidate = (id) => {
     return async dispatch => {
 
-        const response = await talento.get(`http://localhost:3002/candidates/candidate/${id}`)
+        const response = await talento.get(`/candidates/candidate/${id}`)
         dispatch({ type: FETCH_CANDIDATE, payload: response.data.candidate })
     }
 }
@@ -194,7 +194,7 @@ export const createCandidate = (formValues, projectId) => {
         const token = window.localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.post('http://localhost:3002/candidates', formValues, {
+            const response = await talento.post('/candidates', formValues, {
                 headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
@@ -213,7 +213,7 @@ export const createCandidateOpen = (formValues, userId) => {
         const token = window.localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.post('http://localhost:3002/candidates', formValues, {
+            const response = await talento.post('/candidates', formValues, {
                 headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
@@ -233,7 +233,7 @@ export const editCandidate = (id, formValues) => {
         // const {userId} = getState().auth
         if(token) {
             try{
-                const response = await talento.patch(`http://localhost:3002/candidates/${id}`, formValues, {
+                const response = await talento.patch(`/candidates/${id}`, formValues, {
                     headers: {
                       'Content-Type': 'application/json',
                       'Authorization': 'Bearer ' + token
@@ -257,7 +257,7 @@ export const editCandidateTask = (id, formValues) => {
         const token = localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.patch(`http://localhost:3002/candidates/task/${id}`, formValues, {
+            const response = await talento.patch(`/candidates/task/${id}`, formValues, {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': 'Bearer ' + token
@@ -279,7 +279,7 @@ export const editCandidateNote = (id, taskId, formValues) => {
         const token = localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.patch(`http://localhost:3002/candidates/notes/${id}/${taskId}`, formValues, {
+            const response = await talento.patch(`/candidates/notes/${id}/${taskId}`, formValues, {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': 'Bearer ' + token
@@ -301,7 +301,7 @@ export const editCandidateTaskStatus = (id, taskId, status) => {
         const token = localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.patch(`http://localhost:3002/candidates/taskStatus/${id}/${taskId}`, status, {
+            const response = await talento.patch(`/candidates/taskStatus/${id}/${taskId}`, status, {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': 'Bearer ' + token
@@ -322,7 +322,7 @@ export const editCandidateStatus = (id, status) => {
         const token = localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.patch(`http://localhost:3002/candidates/candidateStatus/${id}`, status, {
+            const response = await talento.patch(`/candidates/candidateStatus/${id}`, status, {
                 headers: {
                   'Content-Type': 'application/json',
                   'Authorization': 'Bearer ' + token
@@ -340,7 +340,7 @@ export const editCandidateStatus = (id, status) => {
 
 export const getUserInfo = (email) => {
     return async dispatch => {
-        const response = await talento.get(`http://localhost:3002/user/${email}`)
+        const response = await talento.get(`/user/${email}`)
         console.log(response.data)
         if(response.data.user.length < 1) {
             return      
@@ -352,7 +352,7 @@ export const getUserInfo = (email) => {
 
 export const getUser = (userId) => {
     return async dispatch => {
-        const response = await talento.get(`http://localhost:3002/user/user/${userId}`)
+        const response = await talento.get(`/user/user/${userId}`)
 
         localStorage.setItem('userName', response.data.user[0].name);
         dispatch({ type: GET_USER, payload: response.data.user })
@@ -364,7 +364,7 @@ export const getUser = (userId) => {
 export const downloadCV = (filePath) => {
     return async dispatch => {
 
-        const response = await talento.get(`http://localhost:3002/candidates/download/${filePath}`, {responseType: 'blob'})
+        const response = await talento.get(`/candidates/download/${filePath}`, {responseType: 'blob'})
         saveAs(response.data, filePath)
         dispatch({ type: GET_CV, payload: response.data.user })
       
