@@ -4,6 +4,10 @@ import { fetchProject, editProject} from '../../store/actions';
 import ProjectForm from './ProjectForm';
 
 class ProjectEdit extends React.Component {
+
+    state = {
+        tryEdit: false
+    }
     
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.id)
@@ -14,8 +18,20 @@ class ProjectEdit extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        
-        this.props.editProject(this.props.match.params.id, formValues)
+        this.setState({ tryEdit: true })
+        this.props.editProject(this.props.match.params.id, formValues).then(() => {
+            this.setState({tryEdit: false})
+        })
+    }
+
+    renderSpinner = () => {
+        if(this.state.tryEdit) {
+            return (
+                <div style ={{marginTop: '-40px'}} class="ui active centered inline loader"></div>
+            )
+        } else {
+            return null
+        }
     }
 
     render () {
@@ -40,6 +56,7 @@ class ProjectEdit extends React.Component {
                     onSubmit={this.onSubmit}
                     buttonText='Edit Project'
                 />
+                {this.renderSpinner()}
             </div>
         )
     } 

@@ -9,7 +9,8 @@ class ProjectDetail extends React.Component {
     state = {
         showInvite: false,
         noEmailError: '',
-        creator: ''
+        creator: '',
+        tryInvite: false
     }
 
     componentDidMount() {
@@ -23,12 +24,15 @@ class ProjectDetail extends React.Component {
     }
 
     onSendInvite = async (formValues) => {
+        this.setState({ tryInvite: true })
         await this.props.getUserInfo(formValues)
         if(!this.props.userId) {
-            this.setState({ noEmailError: 'Email not found'})
+            this.setState({ noEmailError: 'Email not found', tryInvite: false})
         } else {
             const userInfo = {userInfo: this.props.userInfo}
-            this.props.editProject(this.props.match.params.id, userInfo)
+            this.props.editProject(this.props.match.params.id, userInfo).then(() => {
+                this.setState({tryInvite: false})
+            })
         }
         
 
@@ -58,7 +62,17 @@ class ProjectDetail extends React.Component {
         .then(() => {
             this.props.fetchProject(this.props.match.params.id)
         })
-      }
+    }
+
+    renderSpinner = () => {
+        if(this.state.tryInvite) {
+            return (
+                <div style ={{marginTop: '10px'}} class="ui active centered inline loader"></div>
+            )
+        } else {
+            return null
+        }
+    }
 
 
     render() {
@@ -98,6 +112,7 @@ class ProjectDetail extends React.Component {
                     </div>   
                     <button onClick={this.onShowInvite} to={`/candidates/new/${this.props.projectId}`} className="ui button primary">Invite Team Member<i style={{marginLeft:'10px'}} className="user plus icon"></i></button>
                     {this.renderInvite()}
+                    {this.renderSpinner()}
                 </div>
             
                 <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>

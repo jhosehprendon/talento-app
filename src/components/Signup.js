@@ -6,6 +6,10 @@ import AuthForm from './AuthForm';
 
 class Signup extends React.Component {
 
+    state = {
+        trySingup: false
+    }
+
     componentDidMount() {
         this.props.changeAuthNull()
     }
@@ -16,7 +20,23 @@ class Signup extends React.Component {
 
 
     onSubmit = (formValues) => {
-        this.props.signUp(formValues)
+        this.setState({ trySingup: true })
+
+        this.props.signUp(formValues).then(() => {
+            this.setState({trySingup: false})
+        })
+    
+        
+    }
+
+    renderSpinner = () => {
+        if(this.state.trySingup) {
+            return (
+                <div style ={{marginTop: '20px'}} class="ui active centered inline loader"></div>
+            )
+        } else {
+            return null
+        }
     }
 
     render() {
@@ -25,6 +45,7 @@ class Signup extends React.Component {
                 <div class="ui two column very relaxed stackable grid">
                     <div class="column">
                         <AuthForm onSubmit={this.onSubmit} authMode='SignUp' />
+                        {this.renderSpinner()}
                         <div style={{color: 'red', textAlign: 'center'}}>{this.props.authError}</div>
                     </div>
                     <div class="middle aligned column">

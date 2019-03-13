@@ -5,8 +5,26 @@ import CandidateForm from './CandidateForm';
 
 class CandidateCreate extends React.Component {
 
+    state = {
+        tryCreate: false
+    }
+
     onSubmit = (formValues) => {
-        this.props.createCandidate(formValues, this.props.match.params.id)
+        this.setState({ tryCreate: true })
+
+        this.props.createCandidate(formValues, this.props.match.params.id).then(() => {
+            this.setState({tryCreate: false})
+        })
+    }
+
+    renderSpinner = () => {
+        if(this.state.tryCreate) {
+            return (
+                <div style ={{marginTop: '10px'}} class="ui active centered inline loader"></div>
+            )
+        } else {
+            return null
+        }
     }
 
     render() {
@@ -19,6 +37,7 @@ class CandidateCreate extends React.Component {
                     buttonText='Add Candidate' 
                     projectId={this.props.match.params.id}
                 />
+                {this.renderSpinner()}
             </div>
         )
     }

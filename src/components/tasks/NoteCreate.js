@@ -5,8 +5,15 @@ import NoteForm from './NoteForm';
 
 class NoteCreate extends React.Component {
 
+    state = {
+        tryCreate: false
+    }
+
     onSubmit = (formValues) => {
-        this.props.editCandidateNote(this.props.match.params.candidateId, this.props.match.params.taskId, formValues)
+        this.setState({ tryCreate: true })
+        this.props.editCandidateNote(this.props.match.params.candidateId, this.props.match.params.taskId, formValues).then(() => {
+            this.setState({tryCreate: false})
+        })
     }
 
     getCandidateName = () => {
@@ -14,6 +21,16 @@ class NoteCreate extends React.Component {
             return ''
         } else {
             return localStorage.getItem('userName')
+        }
+    }
+
+    renderSpinner = () => {
+        if(this.state.tryCreate) {
+            return (
+                <div style ={{marginTop: '-30px'}} class="ui active centered inline loader"></div>
+            )
+        } else {
+            return null
         }
     }
 
@@ -28,6 +45,7 @@ class NoteCreate extends React.Component {
                     onSubmit={this.onSubmit}
                     candidateName={candidateName} 
                 />
+                {this.renderSpinner()}
             </div>
         )
     }

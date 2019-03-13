@@ -5,8 +5,26 @@ import ProjectForm from './ProjectForm';
 
 class ProjectCreate extends React.Component {
 
+    state = {
+        tryCreate: false
+    }
+
     onSubmit = (formValues) => {
-        this.props.createProject(formValues)
+        this.setState({ tryCreate: true })
+
+        this.props.createProject(formValues).then(() => {
+            this.setState({tryCreate: false})
+        })
+    }
+
+    renderSpinner = () => {
+        if(this.state.tryCreate) {
+            return (
+                <div style ={{marginTop: '-40px'}} class="ui active centered inline loader"></div>
+            )
+        } else {
+            return null
+        }
     }
 
     render() {
@@ -18,6 +36,7 @@ class ProjectCreate extends React.Component {
                     onSubmit={this.onSubmit} 
                     buttonText='Create a Job' 
                 />
+                {this.renderSpinner()}
             </div>    
         )
     }

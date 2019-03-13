@@ -5,9 +5,25 @@ import TaskForm from './TaskForm';
 
 class TaskCreate extends React.Component {
 
+    state = {
+        tryCreate: false
+    }
 
     onSubmit = (formValues) => {
-        this.props.editCandidateTask(this.props.match.params.id, formValues)
+        this.setState({ tryCreate: true })
+        this.props.editCandidateTask(this.props.match.params.id, formValues).then(() => {
+            this.setState({tryCreate: false})
+        })
+    }
+
+    renderSpinner = () => {
+        if(this.state.tryCreate) {
+            return (
+                <div style ={{marginTop: '-30px'}} class="ui active centered inline loader"></div>
+            )
+        } else {
+            return null
+        }
     }
 
     render() {
@@ -18,6 +34,7 @@ class TaskCreate extends React.Component {
                 <TaskForm 
                     onSubmit={this.onSubmit} 
                 />
+                {this.renderSpinner()}
             </div>
         )
     }

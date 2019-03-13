@@ -5,6 +5,11 @@ import AuthForm from './AuthForm';
 
 class Login extends React.Component {
 
+    state = {
+        tryLogin: false
+    }
+
+
     componentDidMount() {
         this.props.changeAuthNull()
     }
@@ -14,7 +19,21 @@ class Login extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        this.props.logIn(formValues)
+        this.setState({ tryLogin: true })
+
+        this.props.logIn(formValues).then(() => {
+            this.setState({tryLogin: false})
+        })
+    }
+
+    renderSpinner = () => {
+        if(this.state.tryLogin) {
+            return (
+                <div style ={{marginTop: '20px'}} class="ui active centered inline loader"></div>
+            )
+        } else {
+            return null
+        }
     }
 
     render() {
@@ -22,6 +41,7 @@ class Login extends React.Component {
             <div>
                 <h3 style={{textAlign: 'center'}}>Log In</h3>
                 <AuthForm onSubmit={this.onSubmit} authMode='LogIn' />
+                {this.renderSpinner()}
                 <div style={{color: 'red', textAlign: 'center'}}>{this.props.authError}</div>
             </div>    
         )
