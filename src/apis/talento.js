@@ -1,5 +1,6 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'http://localhost:3002'
+    // baseURL: 'http://localhost:3002'
+    baseURL: 'https://softhunt-api.herokuapp.com'
 })
