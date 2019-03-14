@@ -4,6 +4,10 @@ import { fetchCandidate, editCandidate} from '../../store/actions';
 import CandidateForm from './CandidateForm';
 
 class CandidateEdit extends React.Component {
+
+    state = {
+        tryEdit: false
+    }
     
     componentDidMount() {
         this.props.fetchCandidate(this.props.match.params.id)
@@ -14,13 +18,25 @@ class CandidateEdit extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        
-        this.props.editCandidate(this.props.match.params.id, formValues)
+        this.setState({ tryEdit: true })
+        this.props.editCandidate(this.props.match.params.id, formValues).then(() => {
+            this.setState({tryEdit: false})
+        })
+    }
+
+    renderSpinner = () => {
+        if(this.state.tryEdit) {
+            return (
+                <div style ={{marginTop: '10px'}} class="ui active centered inline loader"></div>
+            )
+        } else {
+            return null
+        }
     }
 
     render () {
         if(!this.props.candidate) {
-            return <div style ={{marginTop: '10px'}} class="ui active centered inline loader"></div>
+            return <div style ={{marginTop: '-30px'}} class="ui active centered inline loader"></div>
         }
 
         const { name, email } = this.props.candidate
@@ -41,6 +57,7 @@ class CandidateEdit extends React.Component {
                     fileMessage='Choose a new file if you want to edit, otherwise leave it'
                     errorEditCandidate = {this.props.errorEditCandidate}
                 />
+                {this.renderSpinner()}
             </div>
         )
     } 
