@@ -7,7 +7,8 @@ import CandidateFormOpen from './CandidateFormOpen';
 class CandidateCreateOpen extends React.Component {
 
     state= {
-        applied: false
+        applied: false,
+        tryCreate: false
     }
 
     componentDidMount() {
@@ -18,9 +19,20 @@ class CandidateCreateOpen extends React.Component {
 
 
     onSubmit = (formValues) => {
+        this.setState({ tryCreate: true })
         this.props.createCandidateOpen(formValues, this.props.match.params.userId).then(() => {
-            this.setState({ applied: true })
+            this.setState({ applied: true, tryCreate: false })
         })
+    }
+
+    renderSpinner = () => {
+        if(this.state.tryCreate) {
+            return (
+                <div style ={{marginTop: '-40px'}} class="ui active centered inline loader"></div>
+            )
+        } else {
+            return null
+        }
     }
 
     renderContent = () => {
@@ -30,7 +42,7 @@ class CandidateCreateOpen extends React.Component {
                     <h1 >Thanks!</h1>
                     <p style={{fontSize:'15px', textAlign: 'center'}}>You have applied succesfully to the {this.props.project.name} position</p>
                     <Link style={{marginTop: '30px'}} to={`/jobs/${this.props.match.params.userId}`} className="header">
-                        <span >Back to Jobs</span>
+                        Back to Jobs
                     </Link> 
                 </div>
             )
@@ -56,6 +68,7 @@ class CandidateCreateOpen extends React.Component {
                     projectId={this.props.match.params.projectId}
                     userId={this.props.match.params.userId}
                 />
+                {this.renderSpinner()}
             </div>
             )
         }
