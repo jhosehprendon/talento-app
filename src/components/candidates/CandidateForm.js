@@ -56,7 +56,7 @@ class CandidateForm extends React.Component {
         return (
             <div>
                 <label>{label}</label>
-                <input type="file" onChange={this.handleChange}/>
+                <input type="file" onChange={this.handleChange} accept="application/pdf, application/msword"/>
                 {/* {this.renderError(meta)} */}
             </div>
         )
