@@ -41,9 +41,9 @@ class CandidateCreateOpen extends React.Component {
                 <div style={{textAlign: 'center', marginTop: '50px'}}>
                     <h1 >Thanks!</h1>
                     <p style={{fontSize:'15px', textAlign: 'center'}}>You have applied succesfully to the {this.props.project.name} position</p>
-                    <Link style={{marginTop: '30px'}} to={`/jobs/${this.props.match.params.userId}`} className="header">
+                    <a style={{marginTop: '30px'}} href={`/jobs/${this.props.match.params.userId}`} className="header">
                         Back to Jobs
-                    </Link> 
+                    </a> 
                 </div>
             )
         } else {
@@ -56,7 +56,7 @@ class CandidateCreateOpen extends React.Component {
                         <h3><i class="address card outline icon"></i> {this.props.project.name}</h3>
                         <h3 style={{marginTop:'-10px'}}><i className="map marker alternate icon"></i> {this.props.project.location}</h3>
                         <div style={{marginTop: '40px'}}>
-                            <p style={{fontSize:'15px', lineHeight: '1.5'}}>{this.props.project.description.split('\n\n').map((el, i) => <div style={{marginBottom: '20px'}} key={i}>{el}</div>)}</p>
+                            <p style={{fontSize:'15px', lineHeight: '1.5'}}>{this.props.project.description.split('\n').map((el, i) => <div style={{marginBottom: '20px'}} key={i}>{el}</div>)}</p>
                         </div>
                     </div>
                 </div>

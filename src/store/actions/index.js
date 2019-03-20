@@ -181,6 +181,13 @@ export const fetchCandidates = (id) => {
     }   
 }
 
+export const fetchCandidatesTotal = (userId) => {
+    return async dispatch => {
+        const response = await talento.get(`/candidates/candidates/${userId}`)
+        dispatch({ type: FETCH_CANDIDATES, payload: response.data.candidates })
+    }   
+}
+
 export const fetchCandidate = (id) => {
     return async dispatch => {
 

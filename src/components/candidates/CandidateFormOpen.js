@@ -5,7 +5,7 @@ class CandidateFormOpen extends React.Component {
     state = {
         candidateCV: null,
         disabled: false ,
-        file: null,
+        // file: null,
         blob: null
     }
 
@@ -14,7 +14,7 @@ class CandidateFormOpen extends React.Component {
         if(this.props.candidateCV) {
 
             this.setState({
-                file: `http://localhost:3002/${this.props.candidateCV}`,
+                // file: `http://localhost:3002/${this.props.candidateCV}`,
                 candidateCV: this.state.candidateCV
             })
         }
@@ -45,7 +45,7 @@ class CandidateFormOpen extends React.Component {
         this.setState({
             candidateCV: event.target.files[0],
             disabled: false,
-            file: URL.createObjectURL(event.target.files[0])
+            // file: URL.createObjectURL(event.target.files[0])
         })   
 
     }

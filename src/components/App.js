@@ -13,6 +13,7 @@ import TaskDetail from '../components/tasks/TaskDetail';
 import NoteCreate from '../components/tasks/NoteCreate';
 import ProjectListOpen from '../components/projects/ProjectListOpen';
 import CandidateCreateOpen from '../components/candidates/CandidateCreateOpen';
+import CandidateListTotal from '../components/candidates/CandidateListTotal';
 import Home from './Home';
 // import OrderList from '../components/orders/OrderList';
 // import OrderDelete from '../components/orders/OrderDelete';
@@ -47,6 +48,7 @@ const Admin = () => {
                     <Switch >
                         <div className="ui container">
                             <Route path="/app" exact component={ProjectList}/>
+                            <Route path="/app/candidates" exact component={CandidateListTotal}/>
                             <Route path="/app/signup" component={Signup}/>
                             <Route path="/app/login" component={Login}/>
                             <Route path="/app/projects/new/:id" component={ProjectCreate}/>
