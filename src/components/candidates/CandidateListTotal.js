@@ -13,7 +13,7 @@ class CandidateListTotal extends React.Component {
         if (candidateLen === i + 1) {
             return null
           } else {
-            return <div style={{marginBottom: '-10px'}} className="ui divider"></div>
+            return <div className="ui divider"></div>
           }
 
     }
@@ -46,9 +46,9 @@ class CandidateListTotal extends React.Component {
                 <i class="users icon"></i>
                 </h4>
                 <div className="ui card" style={{margin: 'auto', float: 'left', marginRight: '5%', width: '100%', backgroundColor: '#fcfcfd', marginBottom: '30px'}}>
-                    <div style={{textAlign:'right', marginBottom: '30px'}}>
-                    </div>
+                    <div className="content">
                         {this.renderCandidateList()} 
+                    </div>
                 </div>
             </div>
             

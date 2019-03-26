@@ -91,6 +91,9 @@ class ProjectList extends React.Component {
                 <h4 className="ui horizontal divider header" style={{marginTop:'-15px', marginBottom: '40px'}}>
                     <i className="clipboard outline icon"></i>
                 </h4>
+                    <div style={{marginBottom: '20px'}}>
+                        <Link to={`/app/candidates`}>My Candidates</Link>
+                    </div>
                     {this.renderLinkButton()}
                     {this.renderCreate()}
                 <div className="ui celled list">
