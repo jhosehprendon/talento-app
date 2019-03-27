@@ -15,8 +15,8 @@ class ProjectList extends React.Component {
     }
 
     renderAdmin = (project) => {
-        const currentUserId = localStorage.getItem('userId')
-        if(project.userIds[0]._id === currentUserId && !!currentUserId) {
+        // const currentUserId = localStorage.getItem('userId')
+        // if(project.userIds[0]._id === currentUserId && !!currentUserId) {
             return (
                 <div className="right floated content">
                     <Link  to={`/app/projects/edit/${project._id}`}><i style={{margin: "auto"}} className="edit outline icon"></i></Link>
@@ -25,7 +25,7 @@ class ProjectList extends React.Component {
                     </Link>
                 </div>
             )
-        }
+        // }
     }
 
     renderLinkButton = () => {
