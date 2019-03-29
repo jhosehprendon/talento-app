@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {fetchCandidatesTotal} from '../../store/actions';
+import {fetchCandidatesTotal, fetchProjects} from '../../store/actions';
 import { Link } from 'react-router-dom';
 
 class CandidateListTotal extends React.Component {
     componentDidMount() {
-        this.props.fetchCandidatesTotal(localStorage.getItem('userId'))
+  
+        const userId = localStorage.getItem('userId')
+        this.props.fetchProjects(userId).then(() => {
+            console.log(this.props.projectIds)
+            this.props.fetchCandidatesTotal(this.props.projectIds)
+        })
+        
     }
 
     renderBreak = (i) => {
@@ -58,8 +64,9 @@ class CandidateListTotal extends React.Component {
 
 const mapStateTopProps = state => {
     return {
-        candidates: state.candidates.candidates
+        candidates: state.candidates.candidates,
+        projectIds: state.projects.projects.map(el => el._id)
     }
 }
 
-export default connect(mapStateTopProps, {fetchCandidatesTotal})(CandidateListTotal)
+export default connect(mapStateTopProps, {fetchCandidatesTotal, fetchProjects})(CandidateListTotal)
