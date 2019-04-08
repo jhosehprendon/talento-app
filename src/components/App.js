@@ -41,6 +41,21 @@ const Public = () => {
     )
 }
 
+const User = () => {
+    return (
+            <Router history={history}>
+                <div>
+                <Header />
+                    <Switch>
+                        <div className="ui container">
+                            <Route path="/user" component={UserProfile}/>
+                        </div>
+                    </Switch>
+                </div>
+            </Router>
+    )
+}
+
 const Admin = () => {
     return (
             <Router history={history}>
@@ -62,7 +77,6 @@ const Admin = () => {
                             <Route path="/app/tasks/:id" component={TaskCreate}/>
                             <Route path="/app/taskdetail/:id/:candidateId" exact component={TaskDetail}/>
                             <Route path="/app/notes/new/:taskId/:candidateId" component={NoteCreate}/>
-                            <Route path="/app/user" component={UserProfile}/>
                         </div>
                     </Switch>
                 </div>
@@ -74,6 +88,7 @@ const App = () => (
     <Router history={history}>
       <Switch>
         <Route path="/app" component={Admin} />
+        <Route path="/user" component={User} />
         <Route path="/jobs/:userId" component={Public} />
         <Route path="/" component={Home}/>
       </Switch>
