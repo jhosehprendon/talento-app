@@ -15,6 +15,7 @@ import ProjectListOpen from '../components/projects/ProjectListOpen';
 import CandidateCreateOpen from '../components/candidates/CandidateCreateOpen';
 import CandidateListTotal from '../components/candidates/CandidateListTotal';
 import Home from './Home';
+import UserProfile from '../components/user/UserProfile';
 // import OrderList from '../components/orders/OrderList';
 // import OrderDelete from '../components/orders/OrderDelete';
 // import OrderDetail from '../components/orders/OrderDetail';
@@ -61,6 +62,7 @@ const Admin = () => {
                             <Route path="/app/tasks/:id" component={TaskCreate}/>
                             <Route path="/app/taskdetail/:id/:candidateId" exact component={TaskDetail}/>
                             <Route path="/app/notes/new/:taskId/:candidateId" component={NoteCreate}/>
+                            <Route path="/app/user" component={UserProfile}/>
                         </div>
                     </Switch>
                 </div>
