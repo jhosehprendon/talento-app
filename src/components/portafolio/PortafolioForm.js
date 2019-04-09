@@ -39,7 +39,7 @@ class PortafolioForm extends React.Component {
 
 
     onSubmit = (formValues) => {
-        if(this.props.buttonText === 'Create a Job') {
+        if(this.props.buttonText === 'Create project') {
             var _id = localStorage.getItem('userId')
             var name = localStorage.getItem('userName')
             var userIds =[]

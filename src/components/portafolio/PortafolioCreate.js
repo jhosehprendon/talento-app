@@ -12,7 +12,7 @@ class PortafolioCreate extends React.Component {
     onSubmit = (formValues) => {
         this.setState({ tryCreate: true })
 
-        this.props.createProject(formValues).then(() => {
+        this.props.createPortafolio(formValues).then(() => {
             this.setState({tryCreate: false})
         })
     }

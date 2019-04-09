@@ -386,7 +386,7 @@ export const createPortafolio = (formValues) => {
         const token = window.localStorage.getItem('token')
         // const {userId} = getState().auth
         if(token) {
-            const response = await talento.post('/projects', formValues, {
+            const response = await talento.post('/portafolio', formValues, {
                 headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
