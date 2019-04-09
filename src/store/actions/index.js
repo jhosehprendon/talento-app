@@ -23,7 +23,8 @@ import { SIGN_UP,
     ERROR_EDIT_CANDIDATE,
     EDIT_CANDIDATE_TASK,
     CHANGE_HEADER_OPEN,
-    CREATE_PORTAFOLIO
+    CREATE_PORTAFOLIO,
+    FETCH_PRORTAFOLIO_PROJECTS
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -397,5 +398,12 @@ export const createPortafolio = (formValues) => {
         } else {
             dispatch(signOut())
         } 
+    }
+}
+
+export const fetchPortafolio = (id) => {
+    return async dispatch => {
+        const response = await talento.get(`/portafolio/${id}`)    
+        dispatch({ type: FETCH_PRORTAFOLIO_PROJECTS, payload: response.data.projects })
     }
 }

@@ -1,5 +1,6 @@
 import {
-    CREATE_PORTAFOLIO
+    CREATE_PORTAFOLIO,
+    FETCH_PRORTAFOLIO_PROJECTS
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -8,8 +9,8 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
-        // case FETCH_PROJECTS:
-        //     return {...state, projects: action.payload}
+        case FETCH_PRORTAFOLIO_PROJECTS:
+            return {...state, portafolio: action.payload}
         // case FETCH_PROJECT:
         //     return {...state, [action.payload._id]: action.payload}
         case CREATE_PORTAFOLIO:
