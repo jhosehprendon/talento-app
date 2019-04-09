@@ -16,8 +16,8 @@ class UserProfile extends Component {
         }
 
         return (
-            <div >
-                <div className="ui card" style={{margin: 'auto', float: 'left', marginBottom: '50px'}}>
+            <div>
+                <div className="ui card" style={{margin: 'auto', float: 'left', marginBottom: '50px', marginTop:'20px'}}>
                     <div className="content">
                         <h1 className="header">{this.props.user[0].name}</h1>
                         <h5>{this.props.user[0].email}</h5>

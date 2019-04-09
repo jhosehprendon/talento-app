@@ -25,6 +25,9 @@ class CandidateListTotal extends React.Component {
     }
 
     renderCandidateList = () => {
+        if(!this.props.candidates[0]) {
+            return <div style ={{marginTop: '10px'}} className="ui active centered inline loader"></div>
+        }
         if(this.props.candidates.length < 1) {
             return <div>No Candidates yet</div>
         }
