@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createProject } from '../../store/actions/index';
+import { createPortafolio } from '../../store/actions/index';
 import PortafolioForm from './PortafolioForm';
 
 class PortafolioCreate extends React.Component {
@@ -42,4 +42,4 @@ class PortafolioCreate extends React.Component {
     }
 }
 
-export default connect(null, {createProject})(PortafolioCreate)
+export default connect(null, {createPortafolio})(PortafolioCreate)

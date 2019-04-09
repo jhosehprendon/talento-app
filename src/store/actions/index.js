@@ -22,7 +22,8 @@ import { SIGN_UP,
     GET_CV,
     ERROR_EDIT_CANDIDATE,
     EDIT_CANDIDATE_TASK,
-    CHANGE_HEADER_OPEN
+    CHANGE_HEADER_OPEN,
+    CREATE_PORTAFOLIO
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -375,5 +376,26 @@ export const downloadCV = (filePath) => {
         saveAs(response.data, filePath)
         dispatch({ type: GET_CV, payload: response.data.user })
       
+    }
+}
+
+// PORTAFOLIO
+
+export const createPortafolio = (formValues) => {
+    return async (dispatch, getState) => {
+        const token = window.localStorage.getItem('token')
+        // const {userId} = getState().auth
+        if(token) {
+            const response = await talento.post('/projects', formValues, {
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+                }
+            })
+            dispatch({ type: CREATE_PORTAFOLIO, payload: response.data })
+            history.push('/app')
+        } else {
+            dispatch(signOut())
+        } 
     }
 }
