@@ -18,11 +18,14 @@ class PortafolioDetail extends React.Component {
             return <div style ={{marginTop: '10px'}} class="ui active centered inline loader"></div>
         }
 
-        const { name } = this.props.portafolio
+        const { name, objective, platform, results } = this.props.portafolio
 
         return (
             <div >
-                 {name}
+                 <div>{name}</div>
+                 <div>{objective}</div>
+                 <div>{platform}</div>
+                 <div>{results}</div>
             </div>
         )
     }

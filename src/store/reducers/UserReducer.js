@@ -1,7 +1,8 @@
 import {
     GET_USER_INFO,
     GET_USER,
-    CLEAR_USER
+    CLEAR_USER,
+    EDIT_USER
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -17,6 +18,8 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, user: action.payload}
         case CLEAR_USER:
             return {...state, user: {}}
+        case EDIT_USER:
+            return {...state, user: action.payload}
         default:
             return state
     }

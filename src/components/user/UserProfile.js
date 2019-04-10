@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import { getUser } from '../../store/actions';
 import PortafolioList from '../portafolio/PortafolioList';
 
@@ -20,7 +21,10 @@ class UserProfile extends Component {
             <div>
                 <div className="ui card" style={{margin: 'auto', float: 'left', marginBottom: '50px'}}>
                     <div className="content">
-                        <h1 className="header">{this.props.user[0].name}</h1>
+                        <div style={{display: "flex", justifyContent: "space-between"}}>
+                         <h1 className="header">{this.props.user[0].name}</h1>
+                         <Link className="ui basic primary " to={`/user/edit/${localStorage.getItem('userId')}`}><i className="edit outline icon"></i></Link>
+                        </div>
                         <h5>{this.props.user[0].email}</h5>
                     </div>   
                 </div>

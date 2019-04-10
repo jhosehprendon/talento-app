@@ -17,6 +17,7 @@ import { SIGN_UP,
     EDIT_CANDIDATE,
     GET_USER_INFO,
     GET_USER,
+    EDIT_USER,
     CLEAR_USER,
     EDIT_CANDIDATE_NOTE,
     GET_CV,
@@ -369,6 +370,28 @@ export const getUser = (userId) => {
     }
 }
 
+export const editUser = (id, formValues) => {
+    return async (dispatch, getState) => {
+        const token = localStorage.getItem('token')
+        // const {userId} = getState().auth
+        if(token) {
+            const response = await talento.patch(`/user/user/${id}`, formValues, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + token
+                }
+              })
+            dispatch({ type: EDIT_USER, payload: response.data })
+            if(!formValues.status) {
+                history.push('/app')
+            }
+        } else {
+            dispatch(signOut())
+        } 
+       
+    }
+}
+
 // FILE
 
 export const downloadCV = (filePath) => {
@@ -395,7 +418,7 @@ export const createPortafolio = (formValues) => {
                 }
             })
             dispatch({ type: CREATE_PORTAFOLIO, payload: response.data })
-            history.push('/app')
+            history.push('/user')
         } else {
             dispatch(signOut())
         } 
