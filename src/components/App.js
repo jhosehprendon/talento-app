@@ -17,7 +17,8 @@ import CandidateListTotal from '../components/candidates/CandidateListTotal';
 import Home from './Home';
 
 import UserProfile from '../components/user/UserProfile';
-import PortafolioCreate from '../components/portafolio/PortafolioCreate'
+import PortafolioCreate from '../components/portafolio/PortafolioCreate';
+import PortafolioDetail from '../components/portafolio/PortafolioDetail';
 
 // import OrderList from '../components/orders/OrderList';
 // import OrderDelete from '../components/orders/OrderDelete';
@@ -53,6 +54,7 @@ const User = () => {
                         <div className="ui container">
                             <Route path="/user" exact component={UserProfile}/>
                             <Route path="/user/portafolio/new" exact component={PortafolioCreate}/>
+                            <Route path="/user/portafolio/:id" exact component={PortafolioDetail}/>
                         </div>
                     </Switch>
                 </div>

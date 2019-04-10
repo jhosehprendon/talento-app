@@ -24,7 +24,8 @@ import { SIGN_UP,
     EDIT_CANDIDATE_TASK,
     CHANGE_HEADER_OPEN,
     CREATE_PORTAFOLIO,
-    FETCH_PRORTAFOLIO_PROJECTS
+    FETCH_PRORTAFOLIO_PROJECTS,
+    FETCH_PRORTAFOLIO_PROJECT
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -405,5 +406,13 @@ export const fetchPortafolio = (id) => {
     return async dispatch => {
         const response = await talento.get(`/portafolio/${id}`)    
         dispatch({ type: FETCH_PRORTAFOLIO_PROJECTS, payload: response.data.projects })
+    }
+}
+
+export const fetchPortafolioProject = (id) => {
+    return async dispatch => {
+
+        const response = await talento.get(`/portafolio/project/${id}`)
+        dispatch({ type: FETCH_PRORTAFOLIO_PROJECT, payload: response.data.project })
     }
 }

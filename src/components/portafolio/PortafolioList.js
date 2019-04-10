@@ -55,7 +55,7 @@ class PortafolioList extends React.Component {
                     <div className="ui items">
                         <div className="item" >
                             <div className="content" style={{fontSize: '12px'}}>
-                                <Link to={`/app/projects/${project._id}`} className="header">
+                                <Link to={`/user/portafolio/${project._id}`} className="header">
                                     {project.name}
                                 </Link>       
                                     {/* {this.renderAdmin(project)} */}
