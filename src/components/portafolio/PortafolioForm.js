@@ -44,9 +44,13 @@ class PortafolioForm extends React.Component {
             var name = localStorage.getItem('userName')
             var userIds =[]
             userIds.push({_id, name})
+
+            this.props.onSubmit({...formValues, userIds}) 
+        } else {
+            this.props.onSubmit(formValues) 
+
         }
         
-        this.props.onSubmit({...formValues, userIds}) 
     }
     
     render() {

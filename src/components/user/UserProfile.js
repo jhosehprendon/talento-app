@@ -29,7 +29,7 @@ class UserProfile extends Component {
                     </div>   
                 </div>
             
-                <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%'}}>
+                <div className="ui card" style={{margin: 'auto', marginTop: '50px', width: '60%', marginBottom: '30px'}}>
                     <h5 style={{margin:'10px'}}><i className="users icon"></i> Portafolio</h5>
                     <div className="content" style={{backgroundColor: '#fcfcfd'}}>
                         <PortafolioList/>

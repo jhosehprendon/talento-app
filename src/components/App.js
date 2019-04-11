@@ -20,6 +20,7 @@ import UserProfile from '../components/user/UserProfile';
 import UserEdit from '../components/user/UserEdit';
 import PortafolioCreate from '../components/portafolio/PortafolioCreate';
 import PortafolioDetail from '../components/portafolio/PortafolioDetail';
+import PortafolioEdit from '../components/portafolio/PortafolioEdit';
 
 // import OrderList from '../components/orders/OrderList';
 // import OrderDelete from '../components/orders/OrderDelete';
@@ -57,6 +58,7 @@ const User = () => {
                             <Route path="/user/edit/:id" exact component={UserEdit}/>
                             <Route path="/user/portafolio/project/:id" exact component={PortafolioDetail}/>
                             <Route path="/user/portafolio/new" exact component={PortafolioCreate}/>
+                            <Route path="/user/portafolio/project/edit/:id" exact component={PortafolioEdit}/>
                         </div>
                     </Switch>
                 </div>

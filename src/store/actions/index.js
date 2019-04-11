@@ -26,7 +26,8 @@ import { SIGN_UP,
     CHANGE_HEADER_OPEN,
     CREATE_PORTAFOLIO,
     FETCH_PRORTAFOLIO_PROJECTS,
-    FETCH_PRORTAFOLIO_PROJECT
+    FETCH_PRORTAFOLIO_PROJECT,
+    EDIT_PRORTAFOLIO_PROJECT
 } from './types';
 import talento from '../../apis/talento';
 import history from '../../history';
@@ -383,7 +384,7 @@ export const editUser = (id, formValues) => {
               })
             dispatch({ type: EDIT_USER, payload: response.data })
             if(!formValues.status) {
-                history.push('/app')
+                history.push('/user')
             }
         } else {
             dispatch(signOut())
@@ -437,5 +438,27 @@ export const fetchPortafolioProject = (id) => {
 
         const response = await talento.get(`/portafolio/project/${id}`)
         dispatch({ type: FETCH_PRORTAFOLIO_PROJECT, payload: response.data.project })
+    }
+}
+
+export const editPortafolioProject = (id, formValues) => {
+    return async (dispatch, getState) => {
+        const token = localStorage.getItem('token')
+        // const {userId} = getState().auth
+        if(token) {
+            const response = await talento.patch(`/portafolio/project/${id}`, formValues, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + token
+                }
+              })
+            dispatch({ type: EDIT_PRORTAFOLIO_PROJECT, payload: response.data })
+            if(!formValues.status) {
+                history.push(`/user/portafolio/project/${id}`)
+            }
+        } else {
+            dispatch(signOut())
+        } 
+       
     }
 }

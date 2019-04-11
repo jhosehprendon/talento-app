@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchPortafolioProject } from '../../store/actions';
 
 class PortafolioDetail extends React.Component {
@@ -8,7 +9,6 @@ class PortafolioDetail extends React.Component {
     componentDidMount() {
         window.scrollTo(0,0)
         const { id } = this.props.match.params
-        console.log('hey')
         this.props.fetchPortafolioProject(id)
     }
 
@@ -21,11 +21,19 @@ class PortafolioDetail extends React.Component {
         const { name, objective, platform, results } = this.props.portafolio
 
         return (
-            <div >
-                 <div>{name}</div>
-                 <div>{objective}</div>
-                 <div>{platform}</div>
-                 <div>{results}</div>
+            <div className="ui card" style={{margin: 'auto', width: '80%', marginBottom: '50px'}}>
+                <div style={{display: "flex"}}>
+                    <h3 style={{margin:'15px'}}> {name}</h3>
+                    <Link style={{marginTop: '17px'}} className="ui basic primary " to={`/user/portafolio/project/edit/${this.props.match.params.id}`}><i className="edit outline icon"></i></Link>
+                </div>
+                <div className="content">
+                    <h4>Objective</h4>
+                    <div>{objective}</div>
+                    <h4>Platform</h4>
+                    <div>{platform}</div>
+                    <h4>Results</h4>
+                    <div>{results}</div>
+                 </div>
             </div>
         )
     }
